@@ -12,6 +12,7 @@ public class ScalingText : MonoBehaviour
     {
         if (!_textComponent) _textComponent = GetComponent<TMP_Text>();
         if (!_textRectTransform) _textRectTransform = GetComponent<RectTransform>();
+        _maxFontSize = _textComponent.fontSize;
     }
 
     public void SetText(string value)
