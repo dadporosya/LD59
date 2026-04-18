@@ -4,6 +4,9 @@ public class Leg : OrganBase
 {
     public int XPPerStep = 5;
     private EscapeProgressManager escapeProgressManager;
+    
+    private ScrollManager scrollManager;
+    
     private Animator animator;
     
     public override void Awake()
@@ -11,6 +14,7 @@ public class Leg : OrganBase
         base.Awake();
         if (!escapeProgressManager) escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
         if (!animator) animator = GetComponent<Animator>();
+        if (!scrollManager) scrollManager = FindFirstObjectByType<ScrollManager>();
     }
 
     public override void Action()
@@ -18,6 +22,8 @@ public class Leg : OrganBase
         base.Action();
         escapeProgressManager.ChangeXP(XPPerStep);
         animator.Play("LegStep");
+        
+        scrollManager.Scroll(2, 2);
     }
     
 }

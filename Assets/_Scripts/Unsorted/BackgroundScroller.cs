@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,13 @@ public class BackgroundScroller : MonoBehaviour
 {
     public Transform backgroundParent;
     public Queue<Transform> backgroundObjects = new Queue<Transform>();
-  public float borderX;
-    
+    public float borderX;
+
     [SerializeField] private bool scrolling = false;
-    
+    private Coroutine scrollCoroutine;
+    public float remainingDistance=0;
+    public float currentSpeed=0;
+
     private void Start()
     {
         foreach (Transform backgroundObject in backgroundParent)
@@ -20,21 +24,39 @@ public class BackgroundScroller : MonoBehaviour
         borderX = backgroundObjects.Peek().localPosition.x;
     }
 
-    private void FixedUpdate()
+    public void Scroll(float distance, float speed)
     {
-        if (scrolling)
+        remainingDistance += distance;
+        currentSpeed = speed;
+
+        if (scrollCoroutine != null) return;
+        StartCoroutine(ScrollCoroutine());
+    }
+
+    private IEnumerator ScrollCoroutine()
+    {
+        while (remainingDistance > 0)
         {
+            float moveAmount = currentSpeed * Time.deltaTime;
+            if (moveAmount > remainingDistance) moveAmount = remainingDistance;
+            
             foreach (Transform backgroundObject in backgroundObjects)
             {
-                backgroundObject.Translate(new Vector3(-0.2f, 0f, 0f));
+                backgroundObject.Translate(new Vector3(-moveAmount, 0f, 0f));
             }
+            
+            remainingDistance -= moveAmount;
+            
+            if (backgroundObjects.Count > 0 && backgroundObjects.Peek().position.x < borderX)
+            {
+                Transform bg = backgroundObjects.Dequeue();
+                bg.position = backgroundObjects.Peek().position + new Vector3(backgroundObjects.Peek().GetComponent<SpriteRenderer>().bounds.size.x, 0, 0);
+                backgroundObjects.Enqueue(bg);
+            }
+            
+            yield return null;
         }
 
-        if (backgroundObjects.Count > 0 && backgroundObjects.Peek().position.x < borderX)
-        {
-            Transform bg = backgroundObjects.Dequeue();
-            bg.position = backgroundObjects.Peek().position + new Vector3(backgroundObjects.Peek().GetComponent<SpriteRenderer>().bounds.size.x, 0, 0);
-            backgroundObjects.Enqueue(bg);
-        }
+        remainingDistance = 0;
     }
 }
