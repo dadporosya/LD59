@@ -14,18 +14,23 @@ public class CellsManager : MonoBehaviour
     }
     
     public int maxCellCount=0;
-    [SerializeField] private int initialMaxCell=10;
+    [SerializeField] private int initialMaxCell=50;
     public int level=1;
     
     public Bar cellBar;
 
-    [SerializeField] private float levelMult=1.2f;
-    [SerializeField] private float levelConst = 5;
+    [SerializeField] private float levelMult=1.25f;
+    [SerializeField] private float levelConst = 10;
 
     private void Start()
     {
         if (!cellBar) cellBar = GameObject.Find("CellBar").GetComponent<Bar>();
         GenerateLevel(levelIn:level);
+    }
+
+    public void UpdateCellBar()
+    {
+        cellBar.Init(cellCount, maxCellCount);
     }
 
     public void GenerateLevel(bool nextLevel=true, int levelIn=-1)
@@ -36,20 +41,21 @@ public class CellsManager : MonoBehaviour
         if (levelIn > 0) level = levelIn; 
         
         maxCellCount = (int)M.Ceiling(initialMaxCell * M.Pow(levelMult, level - 1) + levelConst * (level-1));
-        cellBar.Init(cellCount, maxCellCount);
-
+        UpdateCellBar();
         CheckOverflow();
     }
 
     public void SetCellCount(int value)
     {
         cellCount = value;
+        UpdateCellBar();
         CheckOverflow();
     }
 
     public void ChangeCellCount(int value)
     {
         cellCount += value;
+        UpdateCellBar();
         CheckOverflow();
     }
 
