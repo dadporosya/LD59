@@ -22,6 +22,7 @@ public class PurchaseManager : MonoBehaviour
 
     public void generateChoices()
     {
+        h.Out(upgradeManager.organs.Count);
         if (upgradeManager.organs.Count < Preferences.maxOrganCount)
         {
             choicesForRandomItem.AddRange(organsContainer.objects.Values);
