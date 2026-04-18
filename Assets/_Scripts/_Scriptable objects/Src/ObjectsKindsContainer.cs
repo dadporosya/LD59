@@ -55,7 +55,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-
+[CreateAssetMenu(fileName = "ObjectsKindsContainer", menuName = "Scriptable Objects/ObjectsKindsContainer")]
 public class ObjectsKindsContainer : ScriptableObject
 {
     [SerializeField] public List<ScriptableObject> rawObject; // mb swtich
