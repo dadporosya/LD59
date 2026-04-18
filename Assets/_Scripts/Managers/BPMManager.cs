@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BPMManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class BPMManager : MonoBehaviour
     [SerializeField] private float magnitude=0.5f;
     [SerializeField] private float sharpness = 7f;
     [SerializeField] private float beatDuration = 0.2f;
+
+    public UnityEvent OnBeat;
 
     private void Start()
     {
@@ -77,6 +80,7 @@ public class BPMManager : MonoBehaviour
 
     private void HeartBeat()
     {
+        OnBeat?.Invoke();
         h.ShakeOnce(magnitude, sharpness, 0, h.RangeWithCoof(beatDuration, 0.5f));
     }
 

@@ -274,6 +274,9 @@ MonoBehaviour:
   magnitude: 0.25
   sharpness: 5
   beatDuration: 0.2
+  OnBeat:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &78007951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5700201050214200351, guid: 3adf474995c9c2c48bfd1e35f616d2d8, type: 3}
@@ -3114,7 +3117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundScroller
   backgroundParent: {fileID: 1676477848}
   borderX: 0
-  scrolling: 1
+  scrolling: 0
 --- !u!1 &1639338823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
@@ -3176,6 +3179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Heart
   _actionIcon: {fileID: 0}
   BMPPerBeat: 10
+  beatPower: 1.1
 --- !u!1 &1659053163
 GameObject:
   m_ObjectHideFlags: 0
