@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,6 +30,8 @@ public class Neuron : MonoBehaviour
     public float maxSparksCount = 2;
     
     private List<Spark> sparks = new List<Spark>();
+
+    [SerializeField] private TextMeshProUGUI numberText;
     
     private void OnEnable()
     {
@@ -48,6 +51,9 @@ public class Neuron : MonoBehaviour
     }
     private void Start()
     {
+        if (!numberText) numberText = GetComponentInChildren<TextMeshProUGUI>();
+        if (numberText)  numberText.text = actionLabel;
+        
         if (!bottomPoint) bottomPoint = h.GetFirstChildByTag(bottom.transform, "Point");
         if (!topPoint) topPoint = h.GetFirstChildByTag(top.transform, "Point");
         if (actionPerformerGO) actionPerformer = actionPerformerGO.GetComponent<IAction>();
