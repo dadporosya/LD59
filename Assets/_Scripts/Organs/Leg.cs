@@ -37,6 +37,7 @@ public class Leg : OrganBase
     // This will be called from Animation Event
     public void OnLegStep2()
     {
+        // h.Out(XPPerStep, Preferences.distancePerXP);
         float distance = XPPerStep * Preferences.distancePerXP;
         float currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         float speed = distance / currentAnimationLength;
