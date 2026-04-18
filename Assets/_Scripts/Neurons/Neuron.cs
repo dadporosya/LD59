@@ -16,6 +16,7 @@ public class Neuron : MonoBehaviour
     [SerializeField] private InputActionReference actionTrigger;
     public SpriteRenderer actionIcon;
     public IAction actionPerformer;
+    public Spark sparkPrefab;
     
     private void OnEnable()
     {
@@ -48,7 +49,25 @@ public class Neuron : MonoBehaviour
     {
         if (actionTrigger != null && actionTrigger.action.triggered)
         {
-            actionPerformer.Action();
+            Triggered();
         }
+    }
+
+    public void Triggered()
+    {
+        SpawnSpark();
+        if (actionPerformer != null) actionPerformer.Action();
+    }
+
+    private void SpawnSpark()
+    {
+        
+        if (!sparkPrefab) return;
+        Spark saprkGO = Instantiate(sparkPrefab, parent:transform);
+        saprkGO.Init(bottomPoint, topPoint);
+        
+// #if UNITY_EDITOR
+//         UnityEditor.EditorApplication.isPaused = true;
+// #endif
     }
 }

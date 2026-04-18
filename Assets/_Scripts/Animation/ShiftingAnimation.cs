@@ -27,12 +27,14 @@ public class ShiftingAnimation : MonoBehaviour
     private int currentFrameId = 0;
     private int frameCount;
     private Image image;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         if (defaultPeriod) period = Preferences.shiftingAnimationPeriod;
         
         if (!image) image = GetComponent<Image>();
+        if (!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
         frameCount = frames.Count;
         currentFrameId = h.Range(0, frameCount - 1);
 
@@ -54,7 +56,8 @@ public class ShiftingAnimation : MonoBehaviour
         yield return null;
         while (animate)
         {
-            image.sprite = frames[currentFrameId];
+            if (image) image.sprite = frames[currentFrameId];
+            if (spriteRenderer) spriteRenderer.sprite = frames[currentFrameId];
             currentFrameId++;
             currentFrameId %= frameCount;
             yield return new WaitForSeconds(period);

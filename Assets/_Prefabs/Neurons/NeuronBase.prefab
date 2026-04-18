@@ -143,6 +143,9 @@ MonoBehaviour:
   bottomPoint: {fileID: 0}
   top: {fileID: 1724430254681610521}
   topPoint: {fileID: 0}
+  actionTrigger: {fileID: 0}
+  actionIcon: {fileID: 0}
+  sparkPrefab: {fileID: 8580258796308435582, guid: 36820bac02f64554eb5124bbd381abd5, type: 3}
 --- !u!1 &4701424606435675245
 GameObject:
   m_ObjectHideFlags: 0
