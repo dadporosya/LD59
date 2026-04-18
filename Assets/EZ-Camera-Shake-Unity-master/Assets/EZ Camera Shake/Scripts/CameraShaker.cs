@@ -7,6 +7,8 @@ namespace EZCameraShake
     [AddComponentMenu("EZ Camera Shake/Camera Shaker")]
     public class CameraShaker : MonoBehaviour
     {
+        public Transform self;
+        
         /// <summary>
         /// The single instance of the CameraShaker in the current scene. Do not use if you have multiple instances.
         /// </summary>
@@ -34,10 +36,23 @@ namespace EZCameraShake
 
         public List<CameraShakeInstance> cameraShakeInstances = new List<CameraShakeInstance>();
 
-        void Awake()
+        void Start()
         {
             Instance = this;
             instanceList.Add(gameObject.name, this);
+
+            if (PerspectiveManager.Instance.ENABLE_PRESPECTIVE)
+            {
+                RestPositionOffset = PerspectiveManager.Instance.perspectivePosition;
+                RestRotationOffset = PerspectiveManager.Instance.perspectiveRotation.eulerAngles;
+            }
+            else
+            {
+                RestPositionOffset = self.position;
+                RestRotationOffset = self.eulerAngles;
+            }
+
+            
         }
 
         void Update()

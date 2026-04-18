@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class AddiciotnalPerpective : MonoBehaviour
+public class AdditionalPerspective : MonoBehaviour
 {
     private void Start()
     {
-        transform.rotation = -PerspectiveManager.Instance.perspectiveRotation;
+        if (!PerspectiveManager.Instance.ENABLE_PRESPECTIVE) return;
+        // transform.rotation = Quaternion.Inverse(
+        //     PerspectiveManager.Instance.perspectiveRotation
+        // );
+        
+        transform.rotation = Quaternion.identity;
     }
 }
