@@ -749,7 +749,7 @@ MonoBehaviour:
   neuronParent: {fileID: 565068466}
   neurons: []
   neuronPrefab: {fileID: 7125259420758090977, guid: 2ea264467d130e54fb181c6574e69e57, type: 3}
-  organInSpawnPoint: {fileID: 0}
+  organInSpawnPoint: {fileID: 1978503083}
 --- !u!1 &343979560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8227258964828168276, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
@@ -2523,7 +2523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1251434598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ MonoBehaviour:
   currentCutScene: {fileID: 0}
   currentCutScenePath: IntroCutscene
   pathLabel: Cutscenes/
-  runOnStart: 1
+  runOnStart: 0
 --- !u!1 &1862823510
 GameObject:
   m_ObjectHideFlags: 0
