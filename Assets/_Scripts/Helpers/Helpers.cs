@@ -378,7 +378,7 @@ public static class h
         runner.StartCoroutine(SmoothScalingCoroutine(tObj, tScale, duration));
     }
 
-    static IEnumerator SmoothScalingCoroutine(Transform tObj, Vector3 tScale, float duration)
+    public static IEnumerator SmoothScalingCoroutine(Transform tObj, Vector3 tScale, float duration)
     {
         if (duration <= 0f)
         {
