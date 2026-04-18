@@ -10,7 +10,6 @@ public class CellsManager : MonoBehaviour
         set
         {
             _cellCount = value;
-            CheckOverflow();
         }
     }
     
@@ -38,25 +37,29 @@ public class CellsManager : MonoBehaviour
         
         maxCellCount = (int)M.Ceiling(initialMaxCell * M.Pow(levelMult, level - 1) + levelConst * (level-1));
         cellBar.Init(cellCount, maxCellCount);
+
+        CheckOverflow();
     }
 
     public void SetCellCount(int value)
     {
         cellCount = value;
+        CheckOverflow();
     }
 
     public void ChangeCellCount(int value)
     {
         cellCount += value;
+        CheckOverflow();
     }
 
     public void CheckOverflow()
     {
         // new organ or smt else
-        if (cellCount >= maxCellCount)
-        {
-            GenerateLevel();
-        }
+        if (cellCount < maxCellCount) return;
+        
+        GenerateLevel();
+        
     }
 
 }

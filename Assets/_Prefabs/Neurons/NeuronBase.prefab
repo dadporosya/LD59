@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5521168843020995337}
   - component: {fileID: 7125259420758090977}
   m_Layer: 0
-  m_Name: HeartNeuron
+  m_Name: NeuronBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
