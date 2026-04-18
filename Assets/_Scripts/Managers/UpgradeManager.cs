@@ -14,7 +14,8 @@ public class UpgradeManager : MonoBehaviour
     public Transform neuronParent;
     public List<Neuron> neurons=new List<Neuron>();
     public Neuron neuronPrefab;
-
+    public Transform organInSpawnPoint;
+    
     private void Start()
     {
         if (neuronParent)
@@ -36,6 +37,7 @@ public class UpgradeManager : MonoBehaviour
         if (organ.IsIn())
         {
             organ.transform.SetParent(organsInParent);
+            organ.transform.position = organInSpawnPoint.position;
         }
         else
         {
@@ -43,6 +45,15 @@ public class UpgradeManager : MonoBehaviour
         }
         
         Neuron neuron = Instantiate(neuronPrefab, neuronParent.position, Quaternion.identity, neuronParent);
+        string actionKey;
+        if (neurons.Count == 10)
+        {
+            actionKey = "0";
+        }
+        else
+        {
+            actionKey = h.Str(neurons.Count);
+        }
         neuron.Init(organ.gameObject);
         neurons.Add(neuron);
         //TODO : randomize pos of neuron

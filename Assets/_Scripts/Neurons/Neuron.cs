@@ -50,7 +50,7 @@ public class Neuron : MonoBehaviour
             actionTrigger.action.Disable();
     }
 
-    public void Init(GameObject actionPerformerIn=null)
+    public void Init(GameObject actionPerformerIn=null, string actionKey="")
     {
         if (actionPerformerIn) actionPerformerGO = actionPerformerIn;
         
@@ -81,18 +81,21 @@ public class Neuron : MonoBehaviour
             lineRenderer.SetPosition(1, topPoint.position);
             // TODO dynamic size and scale, so it always suit
         }
-    }
-    
-    private void Start()
-    {
-        Init(actionPerformerGO);
         
+        if (actionKey!="") actionLabel = actionKey;
         GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
         if (m.actionContainer.ContainsKey(actionLabel))
         {
             actionTrigger = m.actionContainer[actionLabel];
             OnEnable();
         };
+    }
+    
+    private void Start()
+    {
+        Init(actionPerformerGO);
+        
+        
     }
 
     private void Update()
