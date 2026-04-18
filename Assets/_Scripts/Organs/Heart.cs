@@ -8,11 +8,18 @@ public class Heart : MonoBehaviour, IAction
     private GameManager gameManager;
     public Sprite actionIcon
     {
-        get { return _actionIcon; }
+        get
+        {
+            if (!_actionIcon)
+            {
+                _actionIcon = GetComponentInChildren<SpriteRenderer>().sprite;
+            }
+            return _actionIcon;
+        }
         set { _actionIcon = value; }
     }
 
-    private void Start()
+    private void Awake()
     {
         if (!gameManager) gameManager = FindFirstObjectByType<GameManager>();
         if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;

@@ -13,6 +13,7 @@ public class Neuron : MonoBehaviour
     [HideInInspector] public Transform topPoint;
 
     [Header("Actions")]
+    public GameObject actionPerformerGO;
     [SerializeField] private InputActionReference actionTrigger;
     public SpriteRenderer actionIcon;
     public IAction actionPerformer;
@@ -33,7 +34,19 @@ public class Neuron : MonoBehaviour
     {
         if (!bottomPoint) bottomPoint = h.GetFirstChildByTag(bottom.transform, "Point");
         if (!topPoint) topPoint = h.GetFirstChildByTag(top.transform, "Point");
-        if (actionPerformer != null) actionIcon.sprite = actionPerformer.actionIcon;
+        if (actionPerformerGO) actionPerformer = actionPerformerGO.GetComponent<IAction>();
+        if (actionPerformer != null) 
+        {
+            actionIcon.sprite = actionPerformer.actionIcon;
+            if (actionPerformer.actionIcon != null)
+            {
+                Sprite sprite = actionPerformer.actionIcon;
+                float width = sprite.bounds.size.x;
+                float height = sprite.bounds.size.y;
+                float maxDimension = Mathf.Max(width, height);
+                actionIcon.transform.localScale = new Vector3(1f / maxDimension, 1f / maxDimension, 1f);
+            }
+        }
         
         if (!lineRenderer)
         {
@@ -56,14 +69,17 @@ public class Neuron : MonoBehaviour
     public void Triggered()
     {
         SpawnSpark();
-        if (actionPerformer != null) actionPerformer.Action();
+        
     }
 
     private void SpawnSpark()
     {
         if (!sparkPrefab) return;
-        Spark saprkGO = Instantiate(sparkPrefab, parent:transform);
-        saprkGO.Init(bottomPoint, topPoint);
-
+        Spark sparkGO = Instantiate(sparkPrefab, parent:transform);
+        sparkGO.Init(bottomPoint, topPoint);
+        if (actionPerformer != null)
+        {
+            sparkGO.onReachedTarget.AddListener(() => actionPerformer.Action());
+        }
     }
 }

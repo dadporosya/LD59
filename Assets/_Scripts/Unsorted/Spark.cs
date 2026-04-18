@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spark : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Spark : MonoBehaviour
     public float speed=1f;
     [SerializeField] private bool scaling = true;
     [SerializeField] private float scalingTime = 0.1f;
+    
+    [SerializeField] public UnityEvent onReachedTarget = new UnityEvent();
 
     public void Init(Transform posIn, Transform targetIn)
     {
@@ -61,6 +64,7 @@ public class Spark : MonoBehaviour
             yield return null;
         }
         
+        onReachedTarget?.Invoke();
         Destroy(gameObject);
     }
 }

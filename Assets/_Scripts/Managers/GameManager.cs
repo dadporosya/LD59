@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int bpm=90;
     [SerializeField] private TextMeshProUGUI bpmText;
-    public int bpmReduction = 5;
+    public int bpmReduction = 2;
 
     private Coroutine bpmCoroutine;
 
@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour
     {
         if (!newValue)
         {
-            bpm -= (int)h.Range(bpmReduction*0.5f, bpmReduction*1.5f);
+            int reduction = (int)h.Range(bpmReduction * 0.5f, bpmReduction * 1.5f);
+            h.Out(reduction);
+            bpm -= reduction;
         }
 
         bpmText.text = bpm.ToString();
