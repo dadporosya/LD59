@@ -17,3 +17,10 @@ public interface IAction
     public Sprite actionIcon { get; set; }
     public void Action(){}
 }
+
+public interface IOnMove
+{
+    public void StartMove();
+    public void OnMove();
+    public void EndMove();
+}

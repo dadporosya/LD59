@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class Heart : MonoBehaviour, IAction
+public class Brain : MonoBehaviour, IAction
 {
     [SerializeField] private Sprite _actionIcon;
     public Sprite actionIcon
@@ -17,19 +16,20 @@ public class Heart : MonoBehaviour, IAction
         set { _actionIcon = value; }
     }
     
-    public int BMPPerBeat = 10;
-    private BPMManager bpmManager;
+    public int cellsPerTap = 10;
+    private CellsManager cellsManager;
     
 
     private void Awake()
     {
-        if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
+        if (!cellsManager) cellsManager = FindFirstObjectByType<CellsManager>();
         if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;
     }
 
     public void Action()
     {
-        h.ShakeOnce(2f, 5f, 0, 0.2f);
-        bpmManager.ChangeBMP(BMPPerBeat);
+        cellsManager.ChangeCellCount(cellsPerTap);
     }
+    
+    
 }
