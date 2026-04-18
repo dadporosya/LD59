@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Point
   - FloatingObject
+  - OrganBound
   layers:
   - Default
   - TransparentFX

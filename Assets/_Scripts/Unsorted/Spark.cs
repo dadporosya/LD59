@@ -51,7 +51,7 @@ public class Spark : MonoBehaviour
 
         
         
-        while (Vector3.Distance(transform.position, target.position) > 0.1f)
+        while (Vector3.Distance(transform.position, target.position) > 0.01f)
         {
             currentTime += Time.deltaTime;
             if (scaling && currentTime > time * (1-scalingTime) && !hasStartedScale)

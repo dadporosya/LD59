@@ -91,7 +91,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.22685242
+        value: 0.152771
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -135,7 +135,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 1
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 1.5, y: 1}
     shadowBias: 1
     generateLightingData: 0
   m_MaskInteraction: 0
