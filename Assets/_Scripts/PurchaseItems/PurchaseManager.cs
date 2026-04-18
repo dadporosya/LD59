@@ -76,13 +76,20 @@ public class PurchaseManager : MonoBehaviour
     
     public void BuyItem(PurchaseItemBase item)
     {
-        h.Out("add item");
+        if (item is OrganPurchaseItem organItem)
+        {
+            BuyItem(organItem);
+        }
+        else if (item is UpgradePurchaseItem upgradeItem)
+        {
+            upgradeManager.AddOrgan(upgradeItem.content.organPrefab);
+        }
+        
         CloseShopWindow();
     }
     
     public void BuyItem(OrganPurchaseItem item)
     {
         upgradeManager.AddOrgan(item.content);
-        CloseShopWindow();
     }
 }
