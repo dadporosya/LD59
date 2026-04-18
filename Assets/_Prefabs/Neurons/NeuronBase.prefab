@@ -145,6 +145,7 @@ MonoBehaviour:
   top: {fileID: 1724430254681610521}
   topPoint: {fileID: 0}
   actionPerformerGO: {fileID: 0}
+  actionLabel: 
   actionTrigger: {fileID: -2382481325793965963, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   actionIcon: {fileID: 3331593002648939144}
   sparkPrefab: {fileID: 8580258796308435582, guid: 36820bac02f64554eb5124bbd381abd5, type: 3}
@@ -300,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 6402095978611889629}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 1.45, z: 0}
+  m_LocalPosition: {x: -0.08, y: 0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -352,7 +353,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
