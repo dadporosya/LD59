@@ -1,14 +1,30 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    public List<OrganUpgrade> organUpgrades;
-    public List<OrganPurchaseItem> organPurchaseItems;
-    public List<OrganBase> organs;
+    public List<OrganUpgrade> organUpgrades=new List<OrganUpgrade>();
+    public List<OrganPurchaseItem> organPurchaseItems=new List<OrganPurchaseItem>();
+    public List<OrganBase> organs=new List<OrganBase>();
 
     public Transform organsOutParent;
     public Transform organsInParent;
+
+    public Transform neuronParent;
+    public List<Neuron> neurons=new List<Neuron>();
+    public Neuron neuronPrefab;
+
+    private void Start()
+    {
+        if (neuronParent)
+        {
+            foreach (Transform neuron in neuronParent)
+            {
+                neurons.Add(neuron.GetComponent<Neuron>());
+            }
+        }
+    }
 
     public void AddOrgan(OrganBase organPrefab)
     {
@@ -22,5 +38,8 @@ public class UpgradeManager : MonoBehaviour
         {
             organ.transform.SetParent(organsOutParent);
         }
+        
+        Neuron neuron = Instantiate(neuronPrefab, neuronParent.position, Quaternion.identity, neuronParent);
+        
     }
 }

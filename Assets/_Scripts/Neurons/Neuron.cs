@@ -49,8 +49,11 @@ public class Neuron : MonoBehaviour
         if (actionTrigger != null)
             actionTrigger.action.Disable();
     }
-    private void Start()
+
+    public void Init(GameObject actionPerformerIn=null)
     {
+        if (actionPerformerIn) actionPerformerGO = actionPerformerIn;
+        
         if (!numberText) numberText = GetComponentInChildren<TextMeshProUGUI>();
         if (numberText)  numberText.text = actionLabel;
         
@@ -78,6 +81,11 @@ public class Neuron : MonoBehaviour
             lineRenderer.SetPosition(1, topPoint.position);
             // TODO dynamic size and scale, so it always suit
         }
+    }
+    
+    private void Start()
+    {
+        Init(actionPerformerGO);
         
         GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
         if (m.actionContainer.ContainsKey(actionLabel))
