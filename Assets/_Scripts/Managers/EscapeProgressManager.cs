@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EscapeProgressManager : MonoBehaviour
 {
-    public int currentXP=0;
-    public int maxXP=100;
+    public float currentXP=0;
+    public float maxXP=100;
     
     public Bar progressBar;
 
@@ -18,14 +18,14 @@ public class EscapeProgressManager : MonoBehaviour
         progressBar.Init(currentXP, maxXP);
     }
 
-    public void SetXP(int value)
+    public void SetXP(float value)
     {
         currentXP = value;
         UpdateBar();
         CheckOverflow();
     }
 
-    public void ChangeXP(int value)
+    public void ChangeXP(float value)
     {
         currentXP += value;
         UpdateBar();
