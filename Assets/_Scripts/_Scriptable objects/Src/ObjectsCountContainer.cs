@@ -12,7 +12,7 @@ public class ObjectsCountContainer : ScriptableObject
     public int defaultValue = 0;
 
     [SerializeField] private bool initFromKindsContainer=true;
-    public ObjectsKindsContainer<ScriptableObject> data;
+    public ObjectsKindsContainer data;
     
     [SerializeField] private bool initFromKeyContainer = false;
     public KeyContainer keyData;

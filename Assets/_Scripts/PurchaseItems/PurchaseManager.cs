@@ -8,8 +8,8 @@ public class PurchaseManager : MonoBehaviour
     [SerializeField] private PurchaseItemUIWindow purchaseItemWindowPrefab;
     private List<PurchaseItemUIWindow> currentPurchaseItems = new List<PurchaseItemUIWindow>();
 
-    public ObjectsKindsContainer<OrganPurchaseItem> organsContainer;
-    public ObjectsKindsContainer<UpgradePurchaseItem> upgradesContainer;
+    public ObjectsKindsContainer organsContainer;
+    public ObjectsKindsContainer upgradesContainer;
     
     private UpgradeManager upgradeManager;
     
@@ -20,26 +20,37 @@ public class PurchaseManager : MonoBehaviour
         if (!upgradeManager) upgradeManager = FindFirstObjectByType<UpgradeManager>();
     }
 
-    public void generateChoices()
+    public void GenerateChoices()
     {
-        h.Out(upgradeManager.organs.Count);
+        choicesForRandomItem.Clear();
+
+        // Add organs only if under the cap and player doesn't already own them
         if (upgradeManager.organs.Count < Preferences.maxOrganCount)
         {
-            choicesForRandomItem.AddRange(organsContainer.objects.Values);
-        }
-        
-        // Add upgrades where organ prefab is present in upgradeManager.organs
-        foreach (UpgradePurchaseItem upgrade in upgradesContainer.objects.Values)
-        {
-            if (upgrade.content.organPrefab != null && upgradeManager.organs.Contains(upgrade.content.organPrefab))
+            foreach (PurchaseItemBase organ in organsContainer.objects.Values)
             {
-                choicesForRandomItem.Add(upgrade);
+                if (organ is OrganPurchaseItem organItem && 
+                    !upgradeManager.organs.Contains(organItem.content))
+                {
+                    choicesForRandomItem.Add(organItem);
+                }
+            }
+        }
+
+        // Add upgrades only for organs the player currently owns
+        foreach (PurchaseItemBase upgrade in upgradesContainer.objects.Values)
+        {
+            if (upgrade is UpgradePurchaseItem upgradeItem &&
+                upgradeItem.content.organPrefab != null &&
+                upgradeManager.organs.Contains(upgradeItem.content.organPrefab))
+            {
+                choicesForRandomItem.Add(upgradeItem);
             }
         }
     }
     public PurchaseItemBase GetRandomItem()
     {
-        if (choicesForRandomItem == null || choicesForRandomItem.Count == 0) generateChoices();
+        if (choicesForRandomItem == null || choicesForRandomItem.Count == 0) GenerateChoices();
         h.Out(choicesForRandomItem);
         
         return h.RandChoice(choicesForRandomItem);
@@ -48,7 +59,7 @@ public class PurchaseManager : MonoBehaviour
     public void OpenShopWindow(int itemCount=3)
     {
         shopWindow.SetActive(true);
-        generateChoices();
+        GenerateChoices();
         h.Out(choicesForRandomItem);
         
         // TODO spacing and gap and accelerate + optimize
