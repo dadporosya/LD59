@@ -61,13 +61,9 @@ public class Neuron : MonoBehaviour
 
     private void SpawnSpark()
     {
-        
         if (!sparkPrefab) return;
         Spark saprkGO = Instantiate(sparkPrefab, parent:transform);
         saprkGO.Init(bottomPoint, topPoint);
-        
-// #if UNITY_EDITOR
-//         UnityEditor.EditorApplication.isPaused = true;
-// #endif
+
     }
 }

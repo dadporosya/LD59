@@ -43,7 +43,6 @@ public class Spark : MonoBehaviour
         if (scaling)
         {
             transform.localScale = Vector3.zero;
-            h.Out(initialScale);
             h.SmoothScaling(this, transform, initialScale,time*scalingTime);
         }
 
