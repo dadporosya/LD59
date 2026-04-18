@@ -16,6 +16,8 @@ public class Neuron : MonoBehaviour
 
     [Header("Actions")]
     public GameObject actionPerformerGO;
+
+    [SerializeField] private string actionLabel="";
     [SerializeField] private InputActionReference actionTrigger;
     public SpriteRenderer actionIcon;
     public IAction actionPerformer;
@@ -30,6 +32,11 @@ public class Neuron : MonoBehaviour
     
     private void OnEnable()
     {
+        GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
+        if (m.actionLabels.Contains(actionLabel))
+        {
+            actionTrigger = m.actionContainer[actionLabel];
+        };
         if (actionTrigger != null)
             actionTrigger.action.Enable();
     }

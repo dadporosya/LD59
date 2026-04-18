@@ -3,15 +3,7 @@ using UnityEngine;
 using M=System.MathF;
 public class CellsManager : MonoBehaviour
 {
-    [SerializeField] private int _cellCount = 0;
-    public int cellCount
-    {
-        get { return _cellCount; }
-        set
-        {
-            _cellCount = value;
-        }
-    }
+    [SerializeField] private int cellCount = 0;
     
     public int maxCellCount=0;
     [SerializeField] private int initialMaxCell=50;
