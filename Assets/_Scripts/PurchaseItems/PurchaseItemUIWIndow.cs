@@ -18,10 +18,12 @@ public class PurchaseItemUIWindow : MonoBehaviour
     {
         if (!contentIn)
         {
-            contentIn = purchaseManager.GetRandomItem();
+            h.Out(purchaseManager);
+            content = purchaseManager.GetRandomItem();
         }
+        else content = contentIn;
 
-        content = contentIn;
+        // content = contentIn;
         
         if (!content) return;
         purchaseItemIcon.sprite = content.sprite;
@@ -33,9 +35,11 @@ public class PurchaseItemUIWindow : MonoBehaviour
         if (!purchaseManager) purchaseManager = FindFirstObjectByType<PurchaseManager>();
         
         Init(content);
-
+        
+        if (!purchaseButton) purchaseButton = GetComponent<Button>();
+        
         if (!content) return;
-        purchaseButton.onClick.AddListener(() =>
+        if (purchaseButton) purchaseButton.onClick.AddListener(() =>
         {
             purchaseManager.BuyItem(content);
         });

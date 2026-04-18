@@ -48,6 +48,7 @@ public class PurchaseManager : MonoBehaviour
     {
         shopWindow.SetActive(true);
         generateChoices();
+        h.Out(choicesForRandomItem);
         
         // TODO spacing and gap and accelerate + optimize
         RectTransform shopWindowRect = shopWindow.GetComponent<RectTransform>();
