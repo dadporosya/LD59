@@ -5,7 +5,7 @@ public class Heart : MonoBehaviour, IAction
 {
     [SerializeField] private Sprite _actionIcon;
     public int BMPPerBeat = 10;
-    private GameManager gameManager;
+    private BPMManager bpmManager;
     public Sprite actionIcon
     {
         get
@@ -21,12 +21,12 @@ public class Heart : MonoBehaviour, IAction
 
     private void Awake()
     {
-        if (!gameManager) gameManager = FindFirstObjectByType<GameManager>();
+        if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;
     }
 
     public void Action()
     {
-        gameManager.ChangeBMP(BMPPerBeat);
+        bpmManager.ChangeBMP(BMPPerBeat);
     }
 }

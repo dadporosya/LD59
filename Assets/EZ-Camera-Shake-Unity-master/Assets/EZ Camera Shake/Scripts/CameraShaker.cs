@@ -66,6 +66,7 @@ namespace EZCameraShake
             
             if (Preferences.defaultCameraShake) transform.localPosition = posAddShake + RestPositionOffset;
             else transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, RestPositionOffset.z);
+            
             transform.localEulerAngles = rotAddShake + RestRotationOffset;
         }
  

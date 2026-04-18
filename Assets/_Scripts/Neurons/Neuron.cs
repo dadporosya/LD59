@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +20,13 @@ public class Neuron : MonoBehaviour
     public SpriteRenderer actionIcon;
     public IAction actionPerformer;
     public Spark sparkPrefab;
+    public float signalSpeed = 3f;
+
+    public float cooldown = 0.5f;
+    public bool onCooldown = false;
+    public float maxSparksCount = 2;
+    
+    private List<Spark> sparks = new List<Spark>();
     
     private void OnEnable()
     {
@@ -64,22 +73,36 @@ public class Neuron : MonoBehaviour
         {
             Triggered();
         }
+        
+        // Clean up destroyed sparks
+        
     }
 
     public void Triggered()
     {
-        SpawnSpark();
+        sparks.RemoveAll(s => s == null);
+        if (onCooldown || sparks.Count >= maxSparksCount) return;
         
+        onCooldown = true;
+        StartCoroutine(ResetCooldown());
+        SpawnSpark();
+    }
+
+    private IEnumerator ResetCooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
     }
 
     private void SpawnSpark()
     {
         if (!sparkPrefab) return;
-        Spark sparkGO = Instantiate(sparkPrefab, parent:transform);
-        sparkGO.Init(bottomPoint, topPoint);
+        Spark spark = Instantiate(sparkPrefab, parent:transform);
+        spark.Init(bottomPoint, topPoint, signalSpeed);
+        sparks.Add(spark);
         if (actionPerformer != null)
         {
-            sparkGO.onReachedTarget.AddListener(() => actionPerformer.Action());
+            spark.onReachedTarget.AddListener(() => actionPerformer.Action());
         }
     }
 }

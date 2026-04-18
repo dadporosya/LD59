@@ -180,6 +180,11 @@ public static class h
         return Random.Range(a, b);
     }
 
+    public static float RangeWithCoof(float a, float c)
+    {
+        return h.Range(a * (1 - c), a * (1 + c));
+    }
+
     public static float Range(float a)
     {
         return Range(-a, a);

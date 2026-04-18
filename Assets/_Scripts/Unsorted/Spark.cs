@@ -12,10 +12,11 @@ public class Spark : MonoBehaviour
     
     [SerializeField] public UnityEvent onReachedTarget = new UnityEvent();
 
-    public void Init(Transform posIn, Transform targetIn)
+    public void Init(Transform posIn, Transform targetIn, float speedIn=-1)
     {
         transform.position = posIn.position;
         this.target = targetIn;
+        if (speedIn > 0) speed = speedIn;
         StartMovement();
     }
 
