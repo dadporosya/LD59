@@ -63,9 +63,9 @@ namespace EZCameraShake
                     rotAddShake += CameraUtilities.MultiplyVectors(c.UpdateShake(), c.RotationInfluence);
                 }
             }
-
-            transform.localPosition = transform.position +  posAddShake + RestPositionOffset;
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, RestPositionOffset.z);
+            
+            if (Preferences.defaultCameraShake) transform.localPosition = posAddShake + RestPositionOffset;
+            else transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, RestPositionOffset.z);
             transform.localEulerAngles = rotAddShake + RestRotationOffset;
         }
  

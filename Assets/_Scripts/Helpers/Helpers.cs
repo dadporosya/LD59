@@ -345,7 +345,19 @@ public static class h
         return RandChoice(GetAllChildren(parent));
     }
 
-    public static Transform GetRndChildByTag(string tag)
+    public static Transform GetFirstChildByTag(Transform parent, string tag)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.CompareTag(tag))
+            {
+                return child;
+            }
+        }
+        return default;
+    }
+
+    public static Transform GetRndByTag(string tag)
     {
         return RandChoice(GameObject.FindGameObjectsWithTag(tag)).transform;
     }

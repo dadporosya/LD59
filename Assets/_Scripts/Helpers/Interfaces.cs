@@ -11,3 +11,8 @@ public interface IInteractable
     public void EndInteraction(GameObject target=null) {  }
     public void ContinuousInteraction(GameObject target=null) {  }
 }
+
+public interface IAction
+{
+    public void Action(){}
+}
