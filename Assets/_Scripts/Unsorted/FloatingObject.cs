@@ -3,6 +3,7 @@ using UnityEngine;
 public class FloatingObject : MonoBehaviour
 {
     [SerializeField] private Collider2D movementArea; // Green collider (allowed area)
+    [SerializeField] private bool defaultSpeed = true;
     [SerializeField] private float floatingSpeed = 2f;
     [SerializeField] private float ignoreDuration = 0.1f;
 
@@ -12,6 +13,7 @@ public class FloatingObject : MonoBehaviour
 
     private void Start()
     {
+        if (defaultSpeed) floatingSpeed = Preferences.floatingSpeed;
         objectCollider = GetComponent<Collider2D>();
 
         // Random start direction

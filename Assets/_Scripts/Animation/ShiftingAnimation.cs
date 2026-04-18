@@ -22,14 +22,15 @@ public class ShiftingAnimation : MonoBehaviour
         }
     }
     [SerializeField] private List<Sprite> frames;
-    [HideInInspector] public float period;
+    [SerializeField] private bool defaultPeriod=true;
+    [SerializeField] public float period;
     private int currentFrameId = 0;
     private int frameCount;
     private Image image;
 
     void Start()
     {
-        period = Preferences.shiftingAnimationPeriod;
+        if (defaultPeriod) period = Preferences.shiftingAnimationPeriod;
         
         if (!image) image = GetComponent<Image>();
         frameCount = frames.Count;
