@@ -59,7 +59,7 @@ public class PurchaseManager : MonoBehaviour
         for (int i = 0; i < itemCount; i++)
         {
             PurchaseItemUIWindow window = Instantiate(purchaseItemWindowPrefab, parent:shopWindow.transform);
-            if (!window.content) window.Init();
+            if (!window.content) window.Init(this);
             
             RectTransform windowRect = window.GetComponent<RectTransform>();
             windowRect.anchoredPosition = new Vector2(gap / 2 + i * (itemRect.rect.width + gap), 0);

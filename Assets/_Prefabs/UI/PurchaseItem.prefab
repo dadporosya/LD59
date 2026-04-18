@@ -145,7 +145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7482667652216324306, guid: 9bce509528c3ec6469dbfc44f7c7f3b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -198,7 +198,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3439854118138748901}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8487888313864905570}
+        m_TargetAssemblyTypeName: PurchaseItemUIWindow, Assembly-CSharp
+        m_MethodName: TestFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8487888313864905570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +226,7 @@ MonoBehaviour:
   purchaseItemIcon: {fileID: 7453991465318146175}
   titleText: {fileID: 4115442285114258994}
   descriptionText: {fileID: 6241048453014270322}
+  purchaseButton: {fileID: 2246184418265729146}
   content: {fileID: 0}
 --- !u!1 &4786826457217427434
 GameObject:

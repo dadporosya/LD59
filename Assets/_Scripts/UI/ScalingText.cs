@@ -3,14 +3,14 @@ using TMPro;
 
 public class ScalingText : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _textComponent;
+    [SerializeField] public TextMeshProUGUI _textComponent;
     [SerializeField] private RectTransform _textRectTransform;
     [SerializeField] private float _minFontSize = 1f;
     [SerializeField] private float _maxFontSize = 50f;
 
     private void Awake()
     {
-        if (!_textComponent) _textComponent = GetComponent<TMP_Text>();
+        if (!_textComponent) _textComponent = GetComponent<TextMeshProUGUI>();
         if (!_textRectTransform) _textRectTransform = GetComponent<RectTransform>();
         _maxFontSize = _textComponent.fontSize;
     }

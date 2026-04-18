@@ -7,18 +7,18 @@ public class PurchaseItemUIWindow : MonoBehaviour
     [SerializeField] private Image purchaseItemIcon;
     [SerializeField] private ScalingText titleText;
     [SerializeField] private ScalingText descriptionText;
-    
-    private Button purchaseButton;
+
+    [SerializeField] private Button purchaseButton;
 
     private PurchaseManager purchaseManager;
     
     public PurchaseItemBase content;
 
-    public void Init(PurchaseItemBase contentIn=null)
+    public void Init(PurchaseManager pm=null, PurchaseItemBase contentIn=null)
     {
+        if (pm) purchaseManager = pm;
         if (!contentIn)
         {
-            h.Out(purchaseManager);
             content = purchaseManager.GetRandomItem();
         }
         else content = contentIn;
@@ -27,24 +27,32 @@ public class PurchaseItemUIWindow : MonoBehaviour
         
         if (!content) return;
         purchaseItemIcon.sprite = content.sprite;
-        titleText.SetText(content.itemName);
-        descriptionText.SetText(content.itemDescription);
+        // titleText.SetText(content.itemName);
+        // descriptionText.SetText(content.itemDescription);
+        
+        titleText._textComponent.text = content.itemName;
+        descriptionText._textComponent.text = content.itemDescription;
     }
     private void Start()
     {
         if (!purchaseManager) purchaseManager = FindFirstObjectByType<PurchaseManager>();
         
-        Init(content);
+        Init(contentIn:content);
         
         if (!purchaseButton) purchaseButton = GetComponent<Button>();
         
         if (!content) return;
+        h.Out("assignbtn");
         if (purchaseButton) purchaseButton.onClick.AddListener(() =>
         {
             purchaseManager.BuyItem(content);
         });
     }
-    
+
+    public void TestFunc()
+    {
+        h.Out("TestFunc");
+    }
     
     
 }

@@ -35,6 +35,7 @@ public class ScreenManager : MonoBehaviour
 
         fadeImage = imageGO.AddComponent<Image>();
         fadeImage.color = new Color(0, 0, 0, 0); // fully transparent
+        fadeImage.raycastTarget = false; // don't block interactions
 
         // Stretch to fill screen
         RectTransform rect = fadeImage.rectTransform;
@@ -59,8 +60,6 @@ public class ScreenManager : MonoBehaviour
 
     public IEnumerator FadeRoutine(float from, float to, float duration, System.Action onComplete=null)
     {
-        fadeImage.raycastTarget = true; // block clicks during fade
-
         float elapsed = 0f;
         Color color = fadeImage.color;
 
@@ -75,7 +74,6 @@ public class ScreenManager : MonoBehaviour
         color.a = to;
         fadeImage.color = color;
 
-        fadeImage.raycastTarget = to > 0f; // only block if visible
         onComplete?.Invoke();
     }
 }

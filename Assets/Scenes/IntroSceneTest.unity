@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CellsManager
   cellCount: 0
   maxCellCount: 0
-  initialMaxCell: 50
+  initialMaxCell: 30
   level: 1
   cellBar: {fileID: 78007951}
   levelMult: 1.2
