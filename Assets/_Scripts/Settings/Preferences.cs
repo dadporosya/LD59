@@ -8,4 +8,5 @@ public static class Preferences
     public static bool defaultCameraShake = true;
     public static float floatingSpeed = 0.1f;
     
+    public static float distancePerXP = 2/5;
 }
