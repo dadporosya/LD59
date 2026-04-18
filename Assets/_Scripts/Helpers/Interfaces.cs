@@ -14,5 +14,6 @@ public interface IInteractable
 
 public interface IAction
 {
+    public Sprite actionIcon { get; set; }
     public void Action(){}
 }

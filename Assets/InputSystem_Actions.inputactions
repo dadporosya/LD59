@@ -1019,6 +1019,114 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "NeuronActions",
+            "id": "14c93c7e-7cb4-4ebc-ba68-6a057d0b8b9a",
+            "actions": [
+                {
+                    "name": "1 pressed",
+                    "type": "Button",
+                    "id": "01206755-f632-43e2-b144-7b63e340bd8f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "2 pressed",
+                    "type": "Button",
+                    "id": "be95f958-802d-46a8-beb1-66ac766542f3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "3 pressed",
+                    "type": "Button",
+                    "id": "1f832278-f534-4bb8-aab8-e973dc61bafd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "4 pressed",
+                    "type": "Button",
+                    "id": "c4c316a3-e410-433c-af6c-a52739d2ff3a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "5 pressed",
+                    "type": "Button",
+                    "id": "8fb5cdcb-5916-4cb9-9adb-38288d1790c3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "853f0a33-ebfe-4460-8727-e587a9dbd01c",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "1 pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e6e9ab5-6d31-4789-9c56-5ddd7ca299a9",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "2 pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8065c8f1-c121-4a2f-94e6-a427beed85e5",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "3 pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f26756d-a36d-4302-b616-af9100bc4241",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "4 pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20242051-407e-43c8-a982-9feed4aa318c",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "5 pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

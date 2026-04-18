@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Neuron : MonoBehaviour
 {
@@ -12,21 +13,26 @@ public class Neuron : MonoBehaviour
     [HideInInspector] public Transform topPoint;
 
     [Header("Actions")]
-    public Sprite actionIcon;
-    // button, activate neuron
-    // inst of IAction object
+    [SerializeField] private InputActionReference actionTrigger;
+    public SpriteRenderer actionIcon;
+    public IAction actionPerformer;
+    
+    private void OnEnable()
+    {
+        if (actionTrigger != null)
+            actionTrigger.action.Enable();
+    }
 
+    private void OnDisable()
+    {
+        if (actionTrigger != null)
+            actionTrigger.action.Disable();
+    }
     private void Start()
     {
-        if (!bottomPoint)
-        {
-            bottomPoint = h.GetFirstChildByTag(bottom.transform, "Point");
-        }
-
-        if (!topPoint)
-        {
-            topPoint = h.GetFirstChildByTag(top.transform, "Point");
-        }
+        if (!bottomPoint) bottomPoint = h.GetFirstChildByTag(bottom.transform, "Point");
+        if (!topPoint) topPoint = h.GetFirstChildByTag(top.transform, "Point");
+        if (actionPerformer != null) actionIcon.sprite = actionPerformer.actionIcon;
         
         if (!lineRenderer)
         {
@@ -37,6 +43,12 @@ public class Neuron : MonoBehaviour
             // TODO dynamic size and scale, so it always suit
         }
     }
-    
-    
+
+    private void Update()
+    {
+        if (actionTrigger != null && actionTrigger.action.triggered)
+        {
+            actionPerformer.Action();
+        }
+    }
 }
