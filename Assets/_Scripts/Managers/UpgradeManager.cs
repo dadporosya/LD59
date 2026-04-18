@@ -21,7 +21,10 @@ public class UpgradeManager : MonoBehaviour
         {
             foreach (Transform neuron in neuronParent)
             {
-                neurons.Add(neuron.GetComponent<Neuron>());
+                if (neuron.TryGetComponent<Neuron>(out Neuron neuronComponent))
+                {
+                    neurons.Add(neuronComponent);
+                }
             }
         }
     }
@@ -40,6 +43,8 @@ public class UpgradeManager : MonoBehaviour
         }
         
         Neuron neuron = Instantiate(neuronPrefab, neuronParent.position, Quaternion.identity, neuronParent);
-        
+        neuron.Init(organ.gameObject);
+        neurons.Add(neuron);
+        //TODO : randomize pos of neuron
     }
 }

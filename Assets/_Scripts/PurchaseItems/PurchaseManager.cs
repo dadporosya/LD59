@@ -12,19 +12,19 @@ public class PurchaseManager : MonoBehaviour
     public ObjectsKindsContainer<UpgradePurchaseItem> upgradesContainer;
     
     private UpgradeManager upgradeManager;
+    
+    private List<PurchaseItemBase> choicesForRandomItem = new List<PurchaseItemBase>();
 
     private void Start()
     {
         if (!upgradeManager) upgradeManager = FindFirstObjectByType<UpgradeManager>();
     }
 
-    public PurchaseItemBase GetRandomItem()
+    public void generateChoices()
     {
-        List<PurchaseItemBase> choices = new List<PurchaseItemBase>();
-
         if (upgradeManager.organs.Count < Preferences.maxOrganCount)
         {
-            choices.AddRange(organsContainer.objects.Values);
+            choicesForRandomItem.AddRange(organsContainer.objects.Values);
         }
         
         // Add upgrades where organ prefab is present in upgradeManager.organs
@@ -32,23 +32,39 @@ public class PurchaseManager : MonoBehaviour
         {
             if (upgrade.content.organPrefab != null && upgradeManager.organs.Contains(upgrade.content.organPrefab))
             {
-                choices.Add(upgrade);
+                choicesForRandomItem.Add(upgrade);
             }
         }
+    }
+    public PurchaseItemBase GetRandomItem()
+    {
+        if (choicesForRandomItem == null || choicesForRandomItem.Count == 0) generateChoices();
+        h.Out(choicesForRandomItem);
         
-        return h.RandChoice(choices);
+        return h.RandChoice(choicesForRandomItem);
     }
 
     public void OpenShopWindow(int itemCount=3)
     {
         shopWindow.SetActive(true);
+        generateChoices();
+        
+        // TODO spacing and gap and accelerate + optimize
+        RectTransform shopWindowRect = shopWindow.GetComponent<RectTransform>();
+        RectTransform itemRect = purchaseItemWindowPrefab.GetComponent<RectTransform>();
+        
+        float gap = 0.8f * (shopWindowRect.rect.width - itemRect.rect.width * itemCount) / itemCount;
+        
         for (int i = 0; i < itemCount; i++)
         {
             PurchaseItemUIWindow window = Instantiate(purchaseItemWindowPrefab, parent:shopWindow.transform);
             if (!window.content) window.Init();
+            
+            RectTransform windowRect = window.GetComponent<RectTransform>();
+            windowRect.anchoredPosition = new Vector2(gap / 2 + i * (itemRect.rect.width + gap), 0);
+            
             currentPurchaseItems.Add(window);
         }
-
     }
 
     public void CloseShopWindow()
@@ -59,11 +75,13 @@ public class PurchaseManager : MonoBehaviour
     
     public void BuyItem(PurchaseItemBase item)
     {
-        
+        h.Out("add item");
+        CloseShopWindow();
     }
     
     public void BuyItem(OrganPurchaseItem item)
     {
-        upgradeManager
+        upgradeManager.AddOrgan(item.content);
+        CloseShopWindow();
     }
 }

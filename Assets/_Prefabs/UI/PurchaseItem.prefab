@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1156635058249571609}
   - component: {fileID: 3439854118138748901}
   - component: {fileID: 2246184418265729146}
+  - component: {fileID: 8487888313864905570}
   m_Layer: 0
   m_Name: PurchaseItem
   m_TagString: Untagged
@@ -107,8 +108,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1595942137856248461}
-  - {fileID: 919196786782419556}
   - {fileID: 7091585170806058471}
+  - {fileID: 919196786782419556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -198,6 +199,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8487888313864905570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651927201410815089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531715ccce3de5841b2651b29a9f0d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PurchaseItemUIWindow
+  purchaseItemIcon: {fileID: 7453991465318146175}
+  titleText: {fileID: 4115442285114258994}
+  descriptionText: {fileID: 6241048453014270322}
+  content: {fileID: 0}
 --- !u!1 &4786826457217427434
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +226,7 @@ GameObject:
   - component: {fileID: 7091585170806058471}
   - component: {fileID: 7765687838780699860}
   - component: {fileID: 6574127164131335878}
-  - component: {fileID: 6291613573722701215}
+  - component: {fileID: 4115442285114258994}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -335,7 +352,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6291613573722701215
+--- !u!114 &4115442285114258994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,7 +361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4786826457217427434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82235414c4c055149aea388ff5823813, type: 3}
+  m_Script: {fileID: 11500000, guid: ac0748822c95fa64d88eced43213fcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScalingText
   _textComponent: {fileID: 0}
@@ -362,7 +379,7 @@ GameObject:
   - component: {fileID: 919196786782419556}
   - component: {fileID: 7601332147958202320}
   - component: {fileID: 2570062724577241061}
-  - component: {fileID: 7476635029156775013}
+  - component: {fileID: 6241048453014270322}
   m_Layer: 0
   m_Name: Description
   m_TagString: Untagged
@@ -489,7 +506,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7476635029156775013
+--- !u!114 &6241048453014270322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -498,7 +515,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7687714728192631230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82235414c4c055149aea388ff5823813, type: 3}
+  m_Script: {fileID: 11500000, guid: ac0748822c95fa64d88eced43213fcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScalingText
   _textComponent: {fileID: 0}

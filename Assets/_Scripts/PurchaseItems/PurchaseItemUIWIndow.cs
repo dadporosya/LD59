@@ -25,7 +25,7 @@ public class PurchaseItemUIWindow : MonoBehaviour
         
         if (!content) return;
         purchaseItemIcon.sprite = content.sprite;
-        titleText.SetText(content.name);
+        titleText.SetText(content.itemName);
         descriptionText.SetText(content.itemDescription);
     }
     private void Start()
@@ -33,7 +33,8 @@ public class PurchaseItemUIWindow : MonoBehaviour
         if (!purchaseManager) purchaseManager = FindFirstObjectByType<PurchaseManager>();
         
         Init(content);
-        
+
+        if (!content) return;
         purchaseButton.onClick.AddListener(() =>
         {
             purchaseManager.BuyItem(content);
