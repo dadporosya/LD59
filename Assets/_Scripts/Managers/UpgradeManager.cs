@@ -46,15 +46,15 @@ public class UpgradeManager : MonoBehaviour
         
         Neuron neuron = Instantiate(neuronPrefab, neuronParent.position, Quaternion.identity, neuronParent);
         string actionKey;
-        if (neurons.Count == 10)
+        if (neurons.Count+1 == 10)
         {
             actionKey = "0";
         }
         else
         {
-            actionKey = h.Str(neurons.Count);
+            actionKey = h.Str(neurons.Count+1);
         }
-        neuron.Init(organ.gameObject);
+        neuron.Init(organ.gameObject, actionKey);
         neurons.Add(neuron);
         //TODO : randomize pos of neuron
     }
