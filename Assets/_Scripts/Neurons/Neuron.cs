@@ -32,7 +32,11 @@ public class Neuron : MonoBehaviour
     
     private void OnEnable()
     {
-        
+        GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
+        if (m.actionContainer.ContainsKey(actionLabel))
+        {
+            actionTrigger = m.actionContainer[actionLabel];
+        };
         if (actionTrigger != null)
             actionTrigger.action.Enable();
     }
@@ -70,7 +74,7 @@ public class Neuron : MonoBehaviour
         }
         
         GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
-        if (m.actionLabels.Contains(actionLabel))
+        if (m.actionContainer.ContainsKey(actionLabel))
         {
             actionTrigger = m.actionContainer[actionLabel];
             OnEnable();

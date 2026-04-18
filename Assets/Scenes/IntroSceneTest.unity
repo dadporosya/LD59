@@ -2501,8 +2501,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalEventManager
   interactAction: {fileID: -6305076823258855367, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  actionLabels: []
-  actionReferences: []
+  actionLabels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  actionReferences:
+  - {fileID: -2382481325793965963, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 2116255983553136990, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1137833714
 GameObject:
   m_ObjectHideFlags: 0

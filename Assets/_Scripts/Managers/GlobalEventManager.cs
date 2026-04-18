@@ -34,9 +34,10 @@ public class GlobalEventManager : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < actionLabels.Count; i++)
+        for (int i = 0; i < MathF.Min(actionLabels.Count, actionReferences.Count); i++)
         {
             actionContainer.Add(actionLabels[i], actionReferences[i]);
         }
+        h.Out(actionContainer);
     }
 }
