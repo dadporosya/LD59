@@ -1,34 +1,20 @@
 using System;
 using UnityEngine;
 
-public class Heart : MonoBehaviour, IAction
+public class Heart : OrganBase
 {
-    [SerializeField] private Sprite _actionIcon;
-    public Sprite actionIcon
-    {
-        get
-        {
-            if (!_actionIcon)
-            {
-                _actionIcon = GetComponentInChildren<SpriteRenderer>().sprite;
-            }
-            return _actionIcon;
-        }
-        set { _actionIcon = value; }
-    }
-    
     public int BMPPerBeat = 10;
     private BPMManager bpmManager;
     
-
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
-        if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;
     }
 
-    public void Action()
+    public override void Action()
     {
+        base.Action();
         h.ShakeOnce(2f, 5f, 0, 0.2f);
         bpmManager.ChangeBMP(BMPPerBeat);
     }

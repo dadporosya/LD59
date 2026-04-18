@@ -18,14 +18,14 @@ public class EscapeProgressManager : MonoBehaviour
         progressBar.Init(currentXP, maxXP);
     }
 
-    public void SetCellCount(int value)
+    public void SetXP(int value)
     {
         currentXP = value;
         UpdateBar();
         CheckOverflow();
     }
 
-    public void ChangeCellCount(int value)
+    public void ChangeXP(int value)
     {
         currentXP += value;
         UpdateBar();

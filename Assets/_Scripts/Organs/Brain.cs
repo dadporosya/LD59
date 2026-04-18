@@ -1,35 +1,19 @@
 using UnityEngine;
 
-public class Brain : MonoBehaviour, IAction
+public class Brain : OrganBase
 {
-    [SerializeField] private Sprite _actionIcon;
-    public Sprite actionIcon
-    {
-        get
-        {
-            if (!_actionIcon)
-            {
-                _actionIcon = GetComponentInChildren<SpriteRenderer>().sprite;
-            }
-            return _actionIcon;
-        }
-        set { _actionIcon = value; }
-    }
-    
     public int cellsPerTap = 10;
     private CellsManager cellsManager;
-    
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         if (!cellsManager) cellsManager = FindFirstObjectByType<CellsManager>();
-        if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;
     }
 
-    public void Action()
+    public override void Action()
     {
+        base.Action();
         cellsManager.ChangeCellCount(cellsPerTap);
     }
-    
-    
 }
