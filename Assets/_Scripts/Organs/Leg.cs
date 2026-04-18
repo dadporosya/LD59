@@ -4,16 +4,18 @@ public class Leg : OrganBase
 {
     public float XPPerStep = 5;
     
-    
-    
     private EscapeProgressManager escapeProgressManager;
     private ScrollManager scrollManager;
     private Animator animator;
+    
+    public GameObject aquariumParent;
 
     public override void Awake()
     {
         base.Awake();
-
+        
+        locationInAquarium = LocationInAquarium.Out;
+        
         if (!escapeProgressManager)
             escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
 
@@ -22,13 +24,15 @@ public class Leg : OrganBase
 
         if (!scrollManager)
             scrollManager = FindFirstObjectByType<ScrollManager>();
+        
+        if (!aquariumParent) aquariumParent = GameObject.FindWithTag("AquariumParent");
     }
 
     public override void Action()
     {
         base.Action();
 
-        escapeProgressManager.ChangeXP(XPPerStep);
+        
 
         // Start animation only
         animator.Play("LegStep1");
@@ -37,13 +41,28 @@ public class Leg : OrganBase
     // This will be called from Animation Event
     public void OnLegStep2()
     {
-        // h.Out(XPPerStep, Preferences.distancePerXP);
         float distance = XPPerStep * Preferences.distancePerXP;
         float currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         float speed = distance / currentAnimationLength;
         
-        h.Out(distance, currentAnimationLength, speed);
+        escapeProgressManager.ChangeXP(XPPerStep);
+        escapeProgressManager.ChangeBarFillTime(currentAnimationLength);
         
         scrollManager.Scroll(distance, speed);
+    }
+
+    public void OnIdle()
+    {
+        Animator otherAnimator = aquariumParent.GetComponent<Animator>();
+
+        float normalizedTime =
+            otherAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f;
+
+        animator.CrossFade(
+            "LegIdle",
+            0f,
+            0,
+            normalizedTime
+        );
     }
 }

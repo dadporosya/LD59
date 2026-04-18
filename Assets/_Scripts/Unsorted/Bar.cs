@@ -44,7 +44,7 @@ public class Bar : MonoBehaviour
         }
     }
     
-    [SerializeField] private float _drainDuration = 0.25f;
+    public float drainDuration = 0.25f;
     private Coroutine _drainCoroutine;
 
     public void Init(float targetValueIn, float maxValueIn, float startFillIn=-1, bool enableStartFillIn=false)
@@ -91,7 +91,7 @@ public class Bar : MonoBehaviour
     private void UpdateBar()
     {
         // h.Out(targetValue, currentMaxValue);
-        SetValueSmooth(targetValue, _drainDuration);
+        SetValueSmooth(targetValue, drainDuration);
     }
 
     public void SetValueSmooth(float target, float duration)

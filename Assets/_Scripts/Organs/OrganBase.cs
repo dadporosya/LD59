@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class OrganBase : MonoBehaviour, IAction
 {
+    public enum LocationInAquarium
+    {
+        In, Out
+    }
+    public LocationInAquarium locationInAquarium = LocationInAquarium.In;
+    
     [SerializeField] private Sprite _actionIcon;
     public Sprite actionIcon
     {

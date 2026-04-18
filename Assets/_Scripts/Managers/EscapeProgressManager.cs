@@ -41,4 +41,9 @@ public class EscapeProgressManager : MonoBehaviour
         
     }
 
+    public void ChangeBarFillTime(float duration)
+    {
+        progressBar.drainDuration = duration;
+    }
+
 }
