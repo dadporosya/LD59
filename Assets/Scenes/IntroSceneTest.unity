@@ -3514,8 +3514,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PurchaseManager
   shopWindow: {fileID: 812559938}
   purchaseItemWindowPrefab: {fileID: 8487888313864905570, guid: 8eff50346e100af409d74ebda0d37209, type: 3}
-  organsContainer: {fileID: 11400000, guid: 41c56254cfe4561439e3d5111666c247, type: 2}
-  upgradesContainer: {fileID: 11400000, guid: 1537b712befc7394e95c25e67a2b9013, type: 2}
+  organsContainer: {fileID: 11400000, guid: ef2db53d1be1d1d45a6b86ac5117df5b, type: 2}
+  upgradesContainer: {fileID: 11400000, guid: 2e4ffd3d794ac0c48be0d893341a9d5c, type: 2}
 --- !u!1001 &251885326317600818
 PrefabInstance:
   m_ObjectHideFlags: 0
