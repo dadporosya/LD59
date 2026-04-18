@@ -21,7 +21,7 @@ public class Leg : OrganBase
     {
         base.Action();
         escapeProgressManager.ChangeXP(XPPerStep);
-        animator.Play("LegStep");
+        animator.Play("LegStep1");
         
         scrollManager.Scroll(2, 2);
     }

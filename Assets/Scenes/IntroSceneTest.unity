@@ -1651,6 +1651,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1218083986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &767130350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 767130351}
+  m_Layer: 0
+  m_Name: ScrollingParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &767130351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767130350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613494987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769264422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1837,6 @@ GameObject:
   m_Component:
   - component: {fileID: 856554246}
   - component: {fileID: 856554248}
-  - component: {fileID: 856554247}
   m_Layer: 0
   m_Name: BG2
   m_TagString: Untagged
@@ -1829,21 +1859,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676477848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856554247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856554245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189bc45fc3c1d1f4db0ce6b7d4afb2f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BackgroundScroller
-  backgroundParent: {fileID: 0}
-  borderX: 0
-  scrolling: 0
 --- !u!212 &856554248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1912,7 +1927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 869877476}
   - component: {fileID: 869877475}
-  - component: {fileID: 869877477}
   m_Layer: 0
   m_Name: BG1
   m_TagString: Untagged
@@ -1993,21 +2007,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676477848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &869877477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869877474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189bc45fc3c1d1f4db0ce6b7d4afb2f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BackgroundScroller
-  backgroundParent: {fileID: 0}
-  borderX: 0
-  scrolling: 0
 --- !u!1 &918546571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,6 +2408,7 @@ Transform:
   - {fileID: 76896766}
   - {fileID: 1234458886}
   - {fileID: 1659053164}
+  - {fileID: 1927305350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1198766567
@@ -3101,6 +3101,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1676477848}
+  - {fileID: 767130351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1613494988
@@ -3118,6 +3119,8 @@ MonoBehaviour:
   backgroundParent: {fileID: 1676477848}
   borderX: 0
   scrolling: 0
+  remainingDistance: 0
+  currentSpeed: 0
 --- !u!1 &1639338823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
@@ -3444,6 +3447,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1182929481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1927305349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927305350}
+  - component: {fileID: 1927305351}
+  m_Layer: 0
+  m_Name: ScrollManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1927305350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927305349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1182929481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927305351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927305349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89dd582e9c06d14a837e25bf0d192a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrollManager
+  backgroundScroller: {fileID: 1613494988}
+  scrollingParent: {fileID: 767130351}
+  remainingDistance: 0
+  currentSpeed: 0
 --- !u!1001 &2019127866
 PrefabInstance:
   m_ObjectHideFlags: 0

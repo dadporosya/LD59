@@ -7,8 +7,8 @@ public class ScrollManager : MonoBehaviour
     public BackgroundScroller backgroundScroller;
     public Transform scrollingParent;
     
-    public float remainingDistance=0;
-    public float currentSpeed=0;
+    [HideInInspector] public float remainingDistance=0;
+    [HideInInspector] public float currentSpeed=0;
     
 
     private Coroutine scrollCoroutine;
