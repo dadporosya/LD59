@@ -32,11 +32,7 @@ public class Neuron : MonoBehaviour
     
     private void OnEnable()
     {
-        GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
-        if (m.actionLabels.Contains(actionLabel))
-        {
-            actionTrigger = m.actionContainer[actionLabel];
-        };
+        
         if (actionTrigger != null)
             actionTrigger.action.Enable();
     }
@@ -72,6 +68,13 @@ public class Neuron : MonoBehaviour
             lineRenderer.SetPosition(1, topPoint.position);
             // TODO dynamic size and scale, so it always suit
         }
+        
+        GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
+        if (m.actionLabels.Contains(actionLabel))
+        {
+            actionTrigger = m.actionContainer[actionLabel];
+            OnEnable();
+        };
     }
 
     private void Update()
