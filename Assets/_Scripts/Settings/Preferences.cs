@@ -9,4 +9,6 @@ public static class Preferences
     public static float floatingSpeed = 0.1f;
     
     public static float distancePerXP = 2f/5f;
+
+    public static int maxOrganCount=10;
 }

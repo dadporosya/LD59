@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7937fad02ade4994185068606c597ce3, type: 3}
+  m_Name: HeartPurchase
+  m_EditorClassIdentifier: Assembly-CSharp::OrganPurchaseItem
+  sprite: {fileID: -3304001502211479783, guid: 5fc354575fc8a4f47b24a7e9c06acd72, type: 3}
+  itemName: Heart
+  itemDescription: 'Pushes blood.
+
+    It stops = <color=#FF0000><b>U DIE</b> ^_^'
+  content: {fileID: 4814087643053107426, guid: 28d01660a0158fd43ba7ae07be894b25, type: 3}
