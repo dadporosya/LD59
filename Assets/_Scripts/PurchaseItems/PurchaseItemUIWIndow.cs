@@ -14,20 +14,32 @@ public class PurchaseItemUIWindow : MonoBehaviour
     
     public PurchaseItemBase content;
 
-    private void Start()
+    public void Init(PurchaseItemBase contentIn=null)
     {
-        if (!purchaseManager) purchaseManager = FindFirstObjectByType<PurchaseManager>();
-        if (!content)
+        if (!contentIn)
         {
-            content = purchaseManager.GetRandomItem();
+            contentIn = purchaseManager.GetRandomItem();
         }
+
+        content = contentIn;
         
         if (!content) return;
         purchaseItemIcon.sprite = content.sprite;
         titleText.SetText(content.name);
         descriptionText.SetText(content.itemDescription);
-        
-        
     }
+    private void Start()
+    {
+        if (!purchaseManager) purchaseManager = FindFirstObjectByType<PurchaseManager>();
+        
+        Init(content);
+        
+        purchaseButton.onClick.AddListener(() =>
+        {
+            purchaseManager.BuyItem(content);
+        });
+    }
+    
+    
     
 }

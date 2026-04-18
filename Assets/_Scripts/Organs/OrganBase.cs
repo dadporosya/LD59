@@ -32,4 +32,9 @@ public class OrganBase : MonoBehaviour, IAction
     {
         
     }
+
+    public bool IsIn()
+    {
+        return  locationInAquarium == LocationInAquarium.In;
+    }
 }

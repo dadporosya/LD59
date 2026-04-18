@@ -13,6 +13,10 @@ public class FloatingObject : MonoBehaviour
 
     private void Start()
     {
+        if (!movementArea)
+        {
+            movementArea = GameObject.FindGameObjectWithTag("OrganBound").GetComponent<Collider2D>();
+        }
         if (defaultSpeed) floatingSpeed = Preferences.floatingSpeed;
         objectCollider = GetComponent<Collider2D>();
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class PurchaseManager : MonoBehaviour
 {
     public GameObject shopWindow;
-    [SerializeField] private GameObject purchaseItemWindowPrefab;
-    private List<GameObject> currentPurchaseItems = new List<GameObject>();
+    [SerializeField] private PurchaseItemUIWindow purchaseItemWindowPrefab;
+    private List<PurchaseItemUIWindow> currentPurchaseItems = new List<PurchaseItemUIWindow>();
 
     public ObjectsKindsContainer<OrganPurchaseItem> organsContainer;
     public ObjectsKindsContainer<UpgradePurchaseItem> upgradesContainer;
@@ -39,8 +39,31 @@ public class PurchaseManager : MonoBehaviour
         return h.RandChoice(choices);
     }
 
-    public void ApplyItem(PurchaseItemBase item)
+    public void OpenShopWindow(int itemCount=3)
+    {
+        shopWindow.SetActive(true);
+        for (int i = 0; i < itemCount; i++)
+        {
+            PurchaseItemUIWindow window = Instantiate(purchaseItemWindowPrefab, parent:shopWindow.transform);
+            if (!window.content) window.Init();
+            currentPurchaseItems.Add(window);
+        }
+
+    }
+
+    public void CloseShopWindow()
+    {
+        shopWindow.SetActive(false);
+        currentPurchaseItems.Clear();
+    }
+    
+    public void BuyItem(PurchaseItemBase item)
     {
         
+    }
+    
+    public void BuyItem(OrganPurchaseItem item)
+    {
+        upgradeManager
     }
 }
