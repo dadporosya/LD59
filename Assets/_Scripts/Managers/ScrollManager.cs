@@ -87,7 +87,7 @@ public class ScrollManager : MonoBehaviour
         remainingDistance = 0;
         currentSpeed = 0;
         escapeProgressManager.onChangeTempXP = 0;
-        escapeProgressManager.initialTempXp = float.MaxValue;
+        escapeProgressManager.initialTempXp = escapeProgressManager.currentXP;
     }
     
     public void ScrollParent(float distance, float speed)

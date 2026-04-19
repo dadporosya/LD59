@@ -8,12 +8,13 @@ public class EscapeProgressManager : MonoBehaviour
     public Bar progressBar;
     
     public float onChangeTempXP=0;
-    public float initialTempXp=float.MaxValue;
+    [HideInInspector] public float initialTempXp=float.MaxValue;
 
     public EnemiesSpawnManager enemiesSpawnManager;
 
     private void Start()
     {
+        initialTempXp = float.MaxValue;
         if (!progressBar) progressBar = GameObject.Find("EscapeProgressBar").GetComponent<Bar>();
         enemiesSpawnManager = FindFirstObjectByType<EnemiesSpawnManager>();
         UpdateBar();
