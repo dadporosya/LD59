@@ -76,19 +76,22 @@ public class EnemiesSpawnManager : MonoBehaviour
                 enemyPrefab.transform.rotation,
                 GameObject.FindGameObjectWithTag("ScrollingParent").transform);
         
-        if (TryGetComponent(out EnemyBase enemyComp)) enemies.Add(enemyComp);
+        if (enemy && enemy.TryGetComponent(out EnemyBase enemyComp)) enemies.Add(enemyComp);
         
         return enemy;
     }
 
     public void CheckDeath()
     {
+        
         List<EnemyBase> toRemove = new List<EnemyBase>();
-
+        h.Out("2");
         foreach (EnemyBase enemy in enemies)
         {
+            h.Out("checking");
             if (enemy.transform.position.x <= deathPoint.position.x)
             {
+                h.Out("checkinвввввввввввввввввg");
                 enemy.Death();
                 toRemove.Add(enemy);
             }
