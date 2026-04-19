@@ -59,7 +59,8 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs.objects.Values.ToList());
         GameObject enemy = null;
-        if (enemyPrefab)
+        Transform spawnPoint = h.RandChoice(spawnPoints);
+        if (enemyPrefab && spawnPoint)
             enemy = Instantiate(
                 enemyPrefab, 
                 spawnPoint.position,

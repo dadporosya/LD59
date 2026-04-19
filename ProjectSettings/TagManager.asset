@@ -16,6 +16,7 @@ TagManager:
   - ScrollingParent
   - BlindSpot
   - BloodVesselPoint
+  - EnemiesSpawnPoint
   layers:
   - Default
   - TransparentFX

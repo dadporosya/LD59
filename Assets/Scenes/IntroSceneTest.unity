@@ -1488,6 +1488,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &649440261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 649440262}
+  - component: {fileID: 649440263}
+  m_Layer: 0
+  m_Name: EnemiesSpawnerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &649440262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649440261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2100411386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &649440263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649440261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b842c59ad9f3995418ab43463666e3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemiesSpawnManager
+  enemyPrefabs: {fileID: 11400000, guid: c6d2bf04178f2774d9538080292e744c, type: 2}
+  threatLevel: 1
+  spawnPoint: {fileID: 0}
+  baseXpValue: 20
+  stepXP: 5
+  XPPerEnemy: 20
+  XPQuota: 0
+  gainedXP: 0
 --- !u!4 &657270118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5700282073558784875, guid: 2e8d1b85aef015c4b8355431b2b20aa5, type: 3}
@@ -3486,6 +3538,7 @@ Transform:
   m_Children:
   - {fileID: 1676477848}
   - {fileID: 767130351}
+  - {fileID: 1849617289}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1613494988
@@ -3563,6 +3616,7 @@ MonoBehaviour:
   maxXP: 500
   progressBar: {fileID: 0}
   tempXP: 0
+  enemiesSpawnManager: {fileID: 0}
 --- !u!1 &1676477847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,6 +3857,37 @@ MonoBehaviour:
   currentCutScenePath: IntroCutscene
   pathLabel: Cutscenes/
   runOnStart: 0
+--- !u!1 &1849617288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849617289}
+  m_Layer: 0
+  m_Name: EnemiesSpawnPoint
+  m_TagString: EnemiesSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1849617289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849617288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.46, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613494987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862823510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,6 +4357,7 @@ Transform:
   - {fileID: 1659053164}
   - {fileID: 1234458886}
   - {fileID: 911443157}
+  - {fileID: 649440262}
   m_Father: {fileID: 1182929481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136085245
