@@ -52,6 +52,8 @@ public class Leg : OrganBase
         escapeProgressManager.onChangeTempXP += XPPerStep;
         escapeProgressManager.ChangeXP(XPPerStep, currentAnimationLength);
         
+        h.Out(escapeProgressManager.initialTempXp, escapeProgressManager.currentXP);
+        
         scrollManager.Scroll(distance, speed);
         
         h.Out(scrollManager.currentSpeed);
