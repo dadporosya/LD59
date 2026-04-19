@@ -54,6 +54,7 @@ public class PoliceEnemy : EnemyBase,IBlindable
     {
         blinded = true;
         h.InvokeAfterTime(this, duration, () => { blinded = false; });
+        h.Out("negro");
     }
     
 }

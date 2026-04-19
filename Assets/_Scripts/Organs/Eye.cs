@@ -4,11 +4,14 @@ using UnityEngine;
 public class Eye : OrganBase
 {
     public Transform scrollingParent;
-    public Transform closestTarget;
+
+    public float flashDuration;
+    public float maxDistance;
 
     public override void Awake()
     {
         if (!scrollingParent) scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").GetComponent<Transform>();
+        if (maxDistance <= 0) maxDistance = h.GetCameraWidth()*0.95f;
     }
 
     public override void Action()
@@ -17,6 +20,7 @@ public class Eye : OrganBase
         
         // Find all IBlindable objects in scrolling parent
         IBlindable[] blindableObjects = scrollingParent.GetComponentsInChildren<IBlindable>();
+        h.Out(blindableObjects);
         
         if (blindableObjects.Length == 0)
         {
@@ -25,7 +29,7 @@ public class Eye : OrganBase
         }
         
         // Find the closest one to this transform
-        closestTarget = null;
+        IBlindable closestTarget = null;
         float closestDistance = float.MaxValue;
         
         foreach (IBlindable blindable in blindableObjects)
@@ -36,16 +40,12 @@ public class Eye : OrganBase
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                closestTarget = blindableTransform;
+                closestTarget = blindable;
             }
         }
-        
+        h.Out(closestTarget);
         // make trail
-        if (closestTarget 
-            && closestTarget.TryGetComponent<IOnDestroy>(out IOnDestroy onDestroyComponent))
-        {
-            onDestroyComponent.OnDestroy();
-        }
+        if (closestTarget != null) closestTarget.Blind();
     }
 }
 
