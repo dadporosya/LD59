@@ -1034,7 +1034,6 @@ Transform:
   - {fileID: 1104496253}
   - {fileID: 1864327083}
   - {fileID: 1137833715}
-  - {fileID: 1927305350}
   m_Father: {fileID: 1182929481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &539970432
@@ -1451,13 +1450,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 657270117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2be0c4b66209b48b52a415e6445690, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee245440716bfa458635a11e1451bb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
+  m_EditorClassIdentifier: Assembly-CSharp::PoliceEnemy
   durability: 1
   damageTaken: 0
   playerDamageManager: {fileID: 0}
   scrollManager: {fileID: 0}
+  damage: 2.5
+  playerBumped: 0
+  blinded: 0
 --- !u!4 &675539429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5521168843020995337, guid: 2ea264467d130e54fb181c6574e69e57, type: 3}
@@ -1580,6 +1582,38 @@ MonoBehaviour:
   - {fileID: 4992631446306092256, guid: c284d427257df1b42befa4656b8a9a2c, type: 3}
   defaultPeriod: 1
   period: 0.15
+--- !u!1 &701314193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701314194}
+  m_Layer: 0
+  m_Name: -------SCROLL---------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &701314194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701314193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1927305350}
+  m_Father: {fileID: 1182929481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725158714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,6 +2597,7 @@ Transform:
   m_Children:
   - {fileID: 536678994}
   - {fileID: 2100411386}
+  - {fileID: 701314194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218083985
@@ -3536,7 +3571,7 @@ GameObject:
   - component: {fileID: 1708069196}
   - component: {fileID: 1708069197}
   m_Layer: 0
-  m_Name: PunchCollider
+  m_Name: PlayerPunchCollider
   m_TagString: Punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3798,7 +3833,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 536678994}
+  m_Father: {fileID: 701314194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1927305351
 MonoBehaviour:

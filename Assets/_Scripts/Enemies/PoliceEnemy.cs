@@ -25,8 +25,6 @@ public class PoliceEnemy : EnemyBase
         h.Out("bump");
         if (blinded) return;
         
-        scrollManager.StopScroll();
-        
         float distance = collision != null ? Vector2.Distance(transform.position, collision.transform.position) : 0f;
         
         scrollManager.StopScroll();
@@ -41,8 +39,6 @@ public class PoliceEnemy : EnemyBase
             return;
         }
         h.Out("damage");
-
-        
         //anim
         playerDamageManager.TakeDamage((int)damage);
     }

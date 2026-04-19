@@ -34,15 +34,12 @@ public class ScrollManager : MonoBehaviour
 
     public void ProcessCollision(GameObject collision)
     {
-        h.Out("smart collisionb");
         EnemyBase enemy = collision.GetComponent<EnemyBase>();
-        h.Out(enemy);
 
         if (!enemy) return;
         
         if (enemy is PoliceEnemy policeEnemy)
         {
-            h.Out("police");
             policeEnemy.OnPlayerCollision(playerSmartCollider.collider);
         }
     }
