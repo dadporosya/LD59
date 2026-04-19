@@ -373,15 +373,25 @@ public static class h
 
     public static GameObject FindChildrenWithTag(Transform parent, string tag)
     {
-        GameObject result=null;
-        foreach (Transform child in parent)
+        try
         {
-            
-            if (child.CompareTag(tag)) return child.gameObject;
-            result = FindChildrenWithTag(child, tag);
-            if (result != null) return result;
+            GameObject result = null;
+            foreach (Transform child in parent)
+            {
+
+                if (child.CompareTag(tag)) return child.gameObject;
+                result = FindChildrenWithTag(child, tag);
+                if (result != null) return result;
+            }
+
+            return result;
         }
-        return result;
+        catch (Exception e)
+        {
+            h.Out(e.Message);
+            return null;
+        }
+        
     }
     
     

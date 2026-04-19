@@ -129,5 +129,7 @@ MonoBehaviour:
   _actionIcon: {fileID: 0}
   scrollingParent: {fileID: 0}
   flashDuration: 2
+  flashVFXDuration: 0.5
   maxDistance: 0
+  sparkPrefab: {fileID: 7715541909288812568, guid: 36820bac02f64554eb5124bbd381abd5, type: 3}
   linePrefab: {fileID: 7399853311439979957, guid: 510dd6ce975710e4a807ee70666c8682, type: 3}
