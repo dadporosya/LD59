@@ -27,6 +27,8 @@ public class Missile : MonoBehaviour, IBlindable
         reactTime = reactTimeValue;
         missileSpeed = missileSpeedValue;
         
+        
+        
         Launch();
     }
 
@@ -40,19 +42,19 @@ public class Missile : MonoBehaviour, IBlindable
 
     public void Launch()
     {
+        currentAim= Instantiate(aimPrefab, target.position, aimPrefab.transform.rotation);
+        currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
+        
+        target = currentAim.transform;
+        
         StartCoroutine(LaunchCoroutine());
     }
 
     public IEnumerator LaunchCoroutine()
     {
-        if (aimPrefab)
-        {
-            currentAim= Instantiate(aimPrefab, target.position, aimPrefab.transform.rotation);
-            currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
-        }
         
         // Phase 1: Rotate to look at target for reactTime * 0.8
-        float timeCoof = 1f;
+        float timeCoof = 0.98f;
         
         float rotationDuration = reactTime * timeCoof;
         float rotationElapsed = 0f;
