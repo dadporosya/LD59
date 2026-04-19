@@ -66,7 +66,10 @@ public class PurchaseManager : MonoBehaviour
         RectTransform shopWindowRect = shopWindow.GetComponent<RectTransform>();
         RectTransform itemRect = purchaseItemWindowPrefab.GetComponent<RectTransform>();
         
-        float gap = 0.8f * (shopWindowRect.rect.width - itemRect.rect.width * itemCount) / itemCount;
+        float gap = 0.8f * (shopWindowRect.rect.width - itemRect.rect.width * itemCount) / (itemCount+2);
+        
+        float itemWidth = itemRect.rect.width;
+        float startX = -((itemCount - 1) * (itemWidth + gap)) / 2;
         
         for (int i = 0; i < itemCount; i++)
         {
@@ -74,7 +77,8 @@ public class PurchaseManager : MonoBehaviour
             if (!window.content) window.Init(this);
             
             RectTransform windowRect = window.GetComponent<RectTransform>();
-            windowRect.anchoredPosition = new Vector2(gap / 2 + i * (itemRect.rect.width + gap), 0);
+            windowRect.anchoredPosition = new Vector2(startX + i * (itemWidth + gap), 0);
+            
             
             currentPurchaseItems.Add(window);
         }
