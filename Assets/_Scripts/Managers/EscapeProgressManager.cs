@@ -8,7 +8,7 @@ public class EscapeProgressManager : MonoBehaviour
     public Bar progressBar;
     
     public float onChangeTempXP=0;
-    public float initialTempXp=0;
+    public float initialTempXp=float.MaxValue;
 
     public EnemiesSpawnManager enemiesSpawnManager;
 
