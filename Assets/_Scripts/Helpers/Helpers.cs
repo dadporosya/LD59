@@ -678,6 +678,20 @@ public static class h
 
         return new Vector2(bottomRight.x, bottomRight.y);
     }
+
+    public static float GetCameraWidth()
+    {
+        Vector2 topLeft = GetCameraTopLeftCorner();
+        Vector2 bottomRight = GetCameraBottomRightCorner();
+        return bottomRight.x - topLeft.x;
+    }
+
+    public static float GetCameraHeight()
+    {
+        Vector2 topLeft = GetCameraTopLeftCorner();
+        Vector2 bottomRight = GetCameraBottomRightCorner();
+        return topLeft.y - bottomRight.y;
+    }
     
     
     // PHYSICS
@@ -692,6 +706,8 @@ public static class h
             linearVelocityMultOnStart
         ));
     }
+    
+    
 
     static IEnumerator BrakeWithFrictionCoroutine(Rigidbody2D rb, float frictionCoefficient, float linearVelocityMultOnStart=1)
     {

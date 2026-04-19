@@ -12,6 +12,7 @@ TagManager:
   - PoliceEnemy
   - Punch
   - Enemy
+  - PlayerDamageCollider
   layers:
   - Default
   - TransparentFX

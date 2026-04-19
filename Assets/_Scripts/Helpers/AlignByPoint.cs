@@ -3,7 +3,7 @@ using UnityEngine;
 public class AlignByBorder : MonoBehaviour
 {
     [SerializeField] private bool alignByCameraTopBound;
-    [SerializeField] private Vector3 offset =  new Vector3(0f, -0.3f, 0f);
+    [SerializeField] private Vector3 offset =  new Vector3(0f, 0.3f, 0f);
 
     private void Awake()
     {
