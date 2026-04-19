@@ -1,13 +1,15 @@
 using UnityEngine;
 
-public class BarierEnemy : EnemyBase
+public class BarrierEnemy : EnemyBase
 {
     [Header("Barier Enemy")]
     private Collider2D collider2D;
-    public float damage = 2.5f;
+    // public float damage = 2.5f;
     
     private EscapeProgressManager escapeProgressManager;
     private ScrollManager scrollManager;
+
+    public float ramValuePerHit = 1.5f / 1;
     private void Awake()
     {
         collider2D = GetComponent<Collider2D>();
@@ -25,6 +27,20 @@ public class BarierEnemy : EnemyBase
     public void OnPlayerCollision(Collider2D collision=null)
     {
         h.Out("bump");
+
+        float playerSpeed = scrollManager.currentSpeed;
+
+        int ramValue = (int)(scrollManager.currentSpeed / Preferences.defaultLegSpeed * ramValuePerHit);
+
+        if (ramValue > 0)
+        {
+            TakeDamage(ramValue);
+            h.ShakeOnce(3, 10, 0, 0.3f);
+            if (damageTaken >= durability)
+            {
+                return;
+            }
+        }
         
         scrollManager.StopScroll();
         // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;

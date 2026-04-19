@@ -41,6 +41,9 @@ public class ScrollManager : MonoBehaviour
         if (enemy is PoliceEnemy policeEnemy)
         {
             policeEnemy.OnPlayerCollision(playerSmartCollider.collider);
+        } else if (enemy is BarrierEnemy barrierEnemy)
+        {
+            barrierEnemy.OnPlayerCollision(playerSmartCollider.collider);
         }
     }
     
@@ -76,7 +79,7 @@ public class ScrollManager : MonoBehaviour
 
     private IEnumerator ScrollCoroutine()
     {
-        h.Out(remainingDistance);
+        // h.Out(remainingDistance);
         while (remainingDistance > 0)
         {
             float moveAmount = currentSpeed * Time.deltaTime;
