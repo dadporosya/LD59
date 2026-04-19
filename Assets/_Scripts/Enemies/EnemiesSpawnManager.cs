@@ -22,6 +22,8 @@ public class EnemiesSpawnManager : MonoBehaviour
     public float gainedXP = 0;
 
     public List<EnemyBase> enemies;
+
+    public bool finalReached = false;
     private void Start()
     {
         if (!scrollingParent) scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
@@ -64,10 +66,23 @@ public class EnemiesSpawnManager : MonoBehaviour
         threatLevel = (int)escapeProgressManager.currentXP / 100 + 1;
         XPPerEnemy = baseXpValue - stepXP * (threatLevel - 1);
         // update enemies mb
+        if (escapeProgressManager.currentXP >= escapeProgressManager.maxXP)
+        {
+            finalReached = true;
+            Finale();
+        }
+    }
+
+    public void Finale()
+    {
+        h.Out("FINALe");
+        //TODO
     }
 
     public GameObject SpawnEnemy(GameObject enemyPrefab = null)
     {
+        if (finalReached) return default;
+        
         if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs.objects.Values.ToList());
         GameObject enemy = null;
         Transform spawnPoint = h.RandChoice(spawnPoints);
