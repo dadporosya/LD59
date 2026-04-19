@@ -9,9 +9,12 @@ public class EscapeProgressManager : MonoBehaviour
     
     public float tempXP=0;
 
+    public EnemiesSpawnManager enemiesSpawnManager;
+
     private void Start()
     {
         if (!progressBar) progressBar = GameObject.Find("EscapeProgressBar").GetComponent<Bar>();
+        enemiesSpawnManager = FindFirstObjectByType<EnemiesSpawnManager>();
         UpdateBar();
     }
 
@@ -22,6 +25,7 @@ public class EscapeProgressManager : MonoBehaviour
 
     public void SetXP(float value)
     {
+        enemiesSpawnManager.ProcessXP(value - currentXP);
         currentXP = value;
         UpdateBar();
         CheckOverflow();
@@ -29,6 +33,7 @@ public class EscapeProgressManager : MonoBehaviour
 
     public void ChangeXP(float value, float newTimeToFadeFill = -1f)
     {
+        enemiesSpawnManager.ProcessXP(value);
         currentXP += value;
         if (newTimeToFadeFill >= 0f)
         {
