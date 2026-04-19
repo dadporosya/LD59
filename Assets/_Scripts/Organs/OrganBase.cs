@@ -5,8 +5,11 @@ public class OrganBase : MonoBehaviour, IAction
 {
     public enum LocationInAquarium
     {
-        In, Out
+        In, Out, OutIn
     }
+    // in - floatin in aqua
+    // out - completely outside
+    // outin - outside, but in the same parent
     public LocationInAquarium locationInAquarium = LocationInAquarium.In;
     
     [SerializeField] private Sprite _actionIcon;
