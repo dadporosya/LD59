@@ -66,7 +66,8 @@ public class Arm : OrganBase
     {
         EnemyBase enemy = target.GetComponent<EnemyBase>();
         if (enemy == null) return;
-        
+
+        h.ShakeOnce(1, 10, 0, 0.2f);
         enemy.TakeDamage((int)damage);
     }
 
