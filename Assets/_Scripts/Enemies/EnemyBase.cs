@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,6 +23,11 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
         {
             Death();
         }
+    }
+
+    public void OnDestroy()
+    {
+        Death();
     }
 
     public void Death()

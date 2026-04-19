@@ -27,6 +27,7 @@ public interface IOnMove
 
 public interface IOnDestroy
 {
+    public void OnDestroy();
     public IEnumerator BeforeDestroyCoroutine()
     {
         yield return null;
