@@ -85,7 +85,7 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     public void CheckDeath()
     {
-        
+            
         List<EnemyBase> toRemove = new List<EnemyBase>();
         foreach (EnemyBase enemy in enemies)
         {

@@ -110,8 +110,17 @@ public class ScrollManager : MonoBehaviour
             scrollingParent.Translate(new Vector3(-moveAmount, 0f, 0f));
             
             remainingDistance -= Mathf.Abs(moveAmount);
+
+            try
+            {
+                enemiesSpawnManager.CheckDeath();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
             
-            enemiesSpawnManager.CheckDeath();
             
             yield return null;
         }
