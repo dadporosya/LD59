@@ -54,7 +54,6 @@ public class BackgroundScroller : MonoBehaviour
             foreach (Transform backgroundObject in backgroundObjects)
             {
                 backgroundObject.Translate(new Vector3(-moveAmount, 0f, 0f));
-                // backgroundObject.position = new Vector3(backgroundObject.position.x, 0, 0);
             }
             
             remainingDistance -= Mathf.Abs(moveAmount);

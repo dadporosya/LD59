@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2927417848237281047}
   - component: {fileID: 5559419097627625017}
   - component: {fileID: 9019843229202065893}
+  - component: {fileID: 8387250621905643985}
   m_Layer: 0
   m_Name: Aim
   m_TagString: Untagged
@@ -107,3 +108,15 @@ MonoBehaviour:
   reverse: 0
   randReverse: 0
   direction: 0
+--- !u!114 &8387250621905643985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050853523417149969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bc7c9b32544971b5a8e70a1eb12cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Perspective

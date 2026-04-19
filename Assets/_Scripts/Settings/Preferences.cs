@@ -11,9 +11,9 @@ public static class Preferences
     public static float distancePerXP = 2f/5f; // distance / xp
 
     public static int maxOrganCount=10;
-    
-    
-    
-    
-    
+
+
+    public static Vector3 perspectiveRotation = new Vector3(66.271f, 0f, 0f);
+
+    // public static float defaultLegSpeed = ;
 }

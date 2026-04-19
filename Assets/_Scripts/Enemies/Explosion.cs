@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
     public float damage = 2.5f;
     public float radiusMult = 1f;
 
-    public float fadeTime=0.25f;
+    public float fadeTime=0.4f;
 
     public SmartCollider smartCollider;
     public List<string> targetTags = new List<string>();

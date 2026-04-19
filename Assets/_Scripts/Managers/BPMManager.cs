@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class BPMManager : MonoBehaviour
 {
     [SerializeField] private int bpm=90;
-    [SerializeField] private int fatalBPM = 10;
+    [SerializeField] private int fatalBPM = 0;
     [SerializeField] private TextMeshProUGUI bpmText;
     public float baseBPMReduction = 2;
     public float currentBPMReduction = 2;
