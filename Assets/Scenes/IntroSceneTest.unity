@@ -1456,6 +1456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
   durability: 1
   damageTaken: 0
+  playerDamageManager: {fileID: 0}
+  scrollManager: {fileID: 0}
 --- !u!4 &675539429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5521168843020995337, guid: 2ea264467d130e54fb181c6574e69e57, type: 3}
@@ -2166,7 +2168,7 @@ MonoBehaviour:
   damageTaken: 0
   recoverySpeed: 0.1
   bpmManager: {fileID: 0}
-  playerPunchCollider: {fileID: 1708069197}
+  playerSmartCollider: {fileID: 1708069197}
 --- !u!1 &918546571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2998,6 +3000,7 @@ GameObject:
   - component: {fileID: 1301305421}
   - component: {fileID: 1301305422}
   - component: {fileID: 1301305423}
+  - component: {fileID: 1301305424}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerParent
@@ -3107,6 +3110,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1301305424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301305419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6eefc481f06b5f4c955fb5533d7e937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PunchCollider
+  collider: {fileID: 1301305422}
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  targetTags: []
 --- !u!1001 &1479368554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3623,7 +3643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PunchCollider
   collider: {fileID: 1708069195}
-  onPunch:
+  onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
   targetTags: []
@@ -3796,6 +3816,9 @@ MonoBehaviour:
   scrollingParent: {fileID: 767130351}
   remainingDistance: 0
   currentSpeed: 0
+  playerSmartCollider: {fileID: 0}
+  collisionTags:
+  - Enemy
 --- !u!1 &1978503082
 GameObject:
   m_ObjectHideFlags: 0

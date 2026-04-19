@@ -33,6 +33,17 @@ public class BackgroundScroller : MonoBehaviour
         StartCoroutine(ScrollCoroutine());
     }
 
+    public void StopScroll()
+    {
+        if (scrollCoroutine != null)
+        {
+            StopCoroutine(scrollCoroutine);
+            scrollCoroutine = null;
+        }
+        remainingDistance = 0;
+        currentSpeed = 0;
+    }
+
     private IEnumerator ScrollCoroutine()
     {
         while (remainingDistance > 0)

@@ -75,6 +75,7 @@ public class ObjectsKindsContainer : ScriptableObject
             keys.Add(rawKeys[i]);
             Debug.Log(rawKeys[i]);
         }
+        h.Out(objects);
     }
 
     void OnDisable()

@@ -11,16 +11,23 @@ public class PlayerDamageManager : MonoBehaviour
     private Coroutine BPMReductionCoroutineInst;
     [HideInInspector] public BPMManager bpmManager;
 
-    public PunchCollider playerPunchCollider;
+    public SmartCollider playerSmartCollider;
 
     private void Awake()
     {
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
-        if (!playerPunchCollider) playerPunchCollider = FindFirstObjectByType<PunchCollider>();
-        playerPunchCollider.collider.enabled = false;
+        if (!playerSmartCollider) FindPlayerCollider();
+        playerSmartCollider.collider.enabled = false;
     }
 
-    public void TakeDamage(int value)
+    public void FindPlayerCollider()
+    {
+        playerSmartCollider = GameObject.Find("PlayerPunchCollider").GetComponent<SmartCollider>();
+    }
+
+    
+
+    public void TakeDamage(float value)
     {
         damageTaken += value;
         if (BPMReductionCoroutineInst == null)

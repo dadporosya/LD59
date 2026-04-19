@@ -6,6 +6,14 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
     public int durability = 1;
     public int damageTaken = 0;
 
+    public PlayerDamageManager playerDamageManager;
+    public ScrollManager scrollManager;
+    
+    public virtual void Start()
+    {
+        if (!playerDamageManager) playerDamageManager = FindFirstObjectByType<PlayerDamageManager>();
+        if (!scrollManager) scrollManager = FindFirstObjectByType<ScrollManager>();
+    }
     public void TakeDamage(int damage)
     {
         damageTaken += damage;
@@ -26,7 +34,7 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
         Destroy(gameObject);
     }
 
-    public void Blind()
+    public void Blind(float duration)
     {
         
     }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PunchCollider : MonoBehaviour
+public class SmartCollider : MonoBehaviour
 {
     public Collider2D collider;
     
-    public UnityEvent<GameObject> onPunch;
+    public UnityEvent<GameObject> onTriggerEnter;
     public List<string> targetTags;
 
     private void Awake()
     {
-        collider = GetComponent<Collider2D>();
+        if (!collider) collider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,7 +20,7 @@ public class PunchCollider : MonoBehaviour
         h.Out(other.tag);
         if (targetTags.Contains(other.tag))
         {
-            onPunch.Invoke(other.gameObject);
+            onTriggerEnter.Invoke(other.gameObject);
         }
     }
 }

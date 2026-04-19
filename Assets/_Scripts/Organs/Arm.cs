@@ -5,38 +5,47 @@ public class Arm : OrganBase
     public float damage = 1;
     
     //dmg man
-    private Animator animator;
-    private PlayerDamageManager playerDamageManager;
-    private PunchCollider punchCollider;
+    [SerializeField] private Animator animator;
+    [SerializeField] private PlayerDamageManager playerDamageManager;
+    [SerializeField] private SmartCollider smartCollider;
     
     public GameObject aquariumParent;
 
     public override void Awake()
     {
+        if (!aquariumParent) aquariumParent = GameObject.FindWithTag("AquariumParent");
+        
         base.Awake();
         
         playerDamageManager = FindFirstObjectByType<PlayerDamageManager>();
-        punchCollider = Instantiate(
-            playerDamageManager.playerPunchCollider,
-            playerDamageManager.playerPunchCollider.transform.position,
+        if (playerDamageManager.playerSmartCollider == null)
+        {
+            playerDamageManager.FindPlayerCollider();
+        }
+        smartCollider = Instantiate(
+            playerDamageManager.playerSmartCollider,
+            playerDamageManager.playerSmartCollider.transform.position,
             Quaternion.identity,
             transform
             );
-        punchCollider.collider.enabled = false;
-        punchCollider.targetTags.Add("Enemy");
-        punchCollider.onPunch.AddListener(Punch);
+        
+        smartCollider.collider.enabled = false;
+        smartCollider.targetTags.Add("Enemy");
+        smartCollider.onTriggerEnter.AddListener(Punch);
         
         locationInAquarium = LocationInAquarium.OutIn; // ?
         
         if (!animator)
             animator = GetComponent<Animator>();
         
-        if (!aquariumParent) aquariumParent = GameObject.FindWithTag("AquariumParent");
+        
     }
 
     public override void Action()
     {
         base.Action();
+        
+        if (!animator) return;
 
         // Start animation only
         animator.Play("ArmPunchStart");
@@ -45,12 +54,12 @@ public class Arm : OrganBase
     // This will be called from Animation Event
     public void StartPunch()
     {
-        punchCollider.collider.enabled = true;
+        smartCollider.collider.enabled = true;
     }
 
     public void EndPunch()
     {
-        punchCollider.collider.enabled = false;
+        smartCollider.collider.enabled = false;
     }
 
     public void Punch(GameObject target)
@@ -63,6 +72,8 @@ public class Arm : OrganBase
 
     public void OnIdle()
     {
+        if (!aquariumParent || !animator) return;
+        
         Animator otherAnimator = aquariumParent.GetComponent<Animator>();
 
         float normalizedTime =
