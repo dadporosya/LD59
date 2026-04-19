@@ -8,6 +8,10 @@ TagManager:
   - FloatingObject
   - OrganBound
   - AquariumParent
+  - PlayerParent
+  - PoliceEnemy
+  - Punch
+  - Enemy
   layers:
   - Default
   - TransparentFX

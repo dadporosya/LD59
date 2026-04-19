@@ -2,16 +2,29 @@ using UnityEngine;
 
 public class Arm : OrganBase
 {
-    public float damage = 5;
+    public float damage = 1;
     
     //dmg man
     private Animator animator;
+    private PlayerDamageManager playerDamageManager;
+    private PunchCollider punchCollider;
     
     public GameObject aquariumParent;
 
     public override void Awake()
     {
         base.Awake();
+        
+        playerDamageManager = FindFirstObjectByType<PlayerDamageManager>();
+        punchCollider = Instantiate(
+            playerDamageManager.playerPunchCollider,
+            playerDamageManager.playerPunchCollider.transform.position,
+            Quaternion.identity,
+            transform
+            );
+        punchCollider.collider.enabled = false;
+        punchCollider.targetTags.Add("Enemy");
+        punchCollider.onPunch.AddListener(Punch);
         
         locationInAquarium = LocationInAquarium.OutIn; // ?
         
@@ -30,10 +43,22 @@ public class Arm : OrganBase
     }
 
     // This will be called from Animation Event
-    public void Punch()
+    public void StartPunch()
     {
-        // damage
+        punchCollider.collider.enabled = true;
+    }
 
+    public void EndPunch()
+    {
+        punchCollider.collider.enabled = false;
+    }
+
+    public void Punch(GameObject target)
+    {
+        EnemyBase enemy = target.GetComponent<EnemyBase>();
+        if (enemy == null) return;
+        
+        enemy.TakeDamage((int)damage);
     }
 
     public void OnIdle()

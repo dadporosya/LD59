@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class BPMManager : MonoBehaviour
 {
     [SerializeField] private int bpm=90;
+    [SerializeField] private int fatalBPM = 10;
     [SerializeField] private TextMeshProUGUI bpmText;
-    public int bpmReduction = 2;
+    public float baseBPMReduction = 2;
+    public float currentBPMReduction = 2;
 
     private Coroutine bpmCoroutine;
     private Coroutine beatCoroutine;
@@ -20,17 +22,19 @@ public class BPMManager : MonoBehaviour
 
     private void Start()
     {
+        currentBPMReduction = baseBPMReduction;
         if (!bpmText) bpmText = GameObject.Find("BPMNumberTextTMP").GetComponent<TextMeshProUGUI>();
+        SetBPM(bpm);
         StartHeartBeat();
     }
     
-    public void SetBMP(int value)
+    public void SetBPM(int value)
     {
         bpm = value;
         ProcessBeat(true);
     }
     
-    public void ChangeBMP(int delta)
+    public void ChangeBPM(int delta)
     {
         bpm += delta;
         ProcessBeat(true);
@@ -45,6 +49,8 @@ public class BPMManager : MonoBehaviour
 
     public void StopHeartBeat()
     {
+        SetBPM(0);
+        h.Out("stop heart");
         if (bpmCoroutine != null)
         {
             StopCoroutine(bpmCoroutine);
@@ -62,6 +68,10 @@ public class BPMManager : MonoBehaviour
         while (true)
         {
             ProcessBeat();
+            if (bpm <= fatalBPM)
+            {
+                StopHeartBeat();
+            }
             yield return new WaitForSeconds(1);
         }
         
@@ -88,10 +98,11 @@ public class BPMManager : MonoBehaviour
     {
         if (!newValue)
         {
-            int reduction = (int)h.RangeWithCoof(bpmReduction, 0.5f);
-            bpm -= reduction;
+            int reduction = -1 * (int)h.RangeWithCoof(currentBPMReduction, 0.5f);
+            ChangeBPM(reduction);
         }
-
+        
         bpmText.text = bpm.ToString();
     }
+    
 }

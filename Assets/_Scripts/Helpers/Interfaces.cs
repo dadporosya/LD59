@@ -24,3 +24,11 @@ public interface IOnMove
     public void OnMove();
     public void EndMove();
 }
+
+public interface IOnDestroy
+{
+    public IEnumerator BeforeDestroyCoroutine()
+    {
+        yield return null;
+    }
+}

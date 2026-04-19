@@ -19,7 +19,7 @@ public class Heart : OrganBase
     {
         base.Action();
         h.ShakeOnce(2f, 5f, 0, 0.2f);
-        bpmManager.ChangeBMP(BMPPerBeat);
+        bpmManager.ChangeBPM(BMPPerBeat);
         StartCoroutine(BeatSize(beatPower));
     }
     

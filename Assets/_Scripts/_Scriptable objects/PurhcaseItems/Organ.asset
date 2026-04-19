@@ -16,8 +16,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8fddbd705caf3174f8ded0932fc6ab94, type: 2}
   - {fileID: 11400000, guid: 90e92fd9f3e01c045b73bb7a03ba1263, type: 2}
   - {fileID: 11400000, guid: 341684edd4b5ecc4a8b07218dd33cd1b, type: 2}
+  - {fileID: 11400000, guid: f623b285391d48f41bdf20bfcda8eb2b, type: 2}
   rawKeys:
   - Brain
   - Heart
   - Leg
-  keys: []
+  - Arm
+  keys:
+  - Brain
+  - Heart
+  - Leg

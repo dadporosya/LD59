@@ -88,6 +88,46 @@ public static class h
         return s;
     }
 
+    public static float Min(params float[] args)
+    {
+        float result=args[0];
+        for (int i = 1; i<args.Length; i++)
+        {
+            result = M.Min(result, args[i]);
+        }
+        return result;
+    }
+
+    public static int Min(params int[] args)
+    {
+        int result=args[0];
+        for (int i = 1; i<args.Length; i++)
+        {
+            result = M.Min(result, args[i]);
+        }
+        return result;
+    }
+
+    public static float Min(List<float> args)
+    {
+        float result=args[0];
+        for (int i = 1; i<args.Count; i++)
+        {
+            result = M.Min(result, args[i]);
+        }
+        return result;
+    }
+
+    public static int Min(List<int> args)
+    {
+        int result=args[0];
+        for (int i = 1; i<args.Count; i++)
+        {
+            result = M.Min(result, args[i]);
+        }
+        return result;
+    }
+    
     // OUTPUT & DEBUG
     public static void Out(params object[] args)
     {

@@ -4,7 +4,8 @@ public class FloatingObject : MonoBehaviour
 {
     [SerializeField] private Collider2D movementArea; // Green collider (allowed area)
     [SerializeField] private bool defaultSpeed = true;
-    [SerializeField] private float floatingSpeed = 2f;
+    [SerializeField] private float baseFloatingSpeed = 2f;
+    private float floatingSpeed = 2f;
     [SerializeField] private float ignoreDuration = 0.1f;
 
     private Collider2D objectCollider;
@@ -17,7 +18,8 @@ public class FloatingObject : MonoBehaviour
         {
             movementArea = GameObject.FindGameObjectWithTag("OrganBound").GetComponent<Collider2D>();
         }
-        if (defaultSpeed) floatingSpeed = Preferences.floatingSpeed;
+        if (defaultSpeed) baseFloatingSpeed = Preferences.floatingSpeed;
+        floatingSpeed = baseFloatingSpeed;
         objectCollider = GetComponent<Collider2D>();
 
         // Random start direction
@@ -66,6 +68,8 @@ public class FloatingObject : MonoBehaviour
 
         // Reset ignore timer
         ignoreTimer = ignoreDuration;
+        
+        floatingSpeed = h.RangeWithCoof(baseFloatingSpeed, 0.05f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
