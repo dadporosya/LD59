@@ -658,6 +658,26 @@ public static class h
         
         return isVisible;
     }
+
+    public static Vector2 GetCameraTopLeftCorner()
+    {
+        Camera cam = Camera.main;
+        Vector3 topLeft = cam.ViewportToWorldPoint(
+            new Vector3(0f, 1f, cam.nearClipPlane)
+        );
+
+        return new Vector2(topLeft.x, topLeft.y);
+    }
+
+    public static Vector2 GetCameraBottomRightCorner()
+    {
+        Camera cam = Camera.main;
+        Vector3 bottomRight = cam.ViewportToWorldPoint(
+            new Vector3(1f, 0f, cam.nearClipPlane)
+        );
+
+        return new Vector2(bottomRight.x, bottomRight.y);
+    }
     
     
     // PHYSICS
@@ -899,5 +919,8 @@ public static class h
     {
         return Resources.Load<T>(path);
     }
+    
+    
+    
     
 }

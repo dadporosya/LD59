@@ -50,7 +50,7 @@ ScriptedImporter:
     flipbookColumns: 0
     ignorePngGamma: 0
     cookieMode: 0
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -83,7 +83,7 @@ ScriptedImporter:
       y: 0
       width: 0
       height: 0
-    spriteID: 27cac03dffd058744bd5f78c191b13fd
+    spriteID: 8c9c21db877ff41489dba87908c53813
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -95,28 +95,6 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Layer 38 copy 5
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 254
-      y: 4
-      width: 200
-      height: 204
-    spriteID: e41c59e880c64d747884fa9541511bff
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 254, y: 4}
-    spritePosition: {x: 0, y: 0}
   - name: Layer 36 copy
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -125,11 +103,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
-      y: 216
-      width: 182
-      height: 253
-    spriteID: 3b51aa1d41d59f643a802f6fcff7b8fa
+      x: 496
+      y: 4
+      width: 364
+      height: 506
+    spriteID: d657d01d285c8754ba552f1e8a33dc9a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -137,9 +115,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 216}
-    spritePosition: {x: 41, y: 137}
-  - name: Layer 33 copy 2
+    uvTransform: {x: 496, y: 4}
+    spritePosition: {x: 82, y: 274}
+  - name: Layer 38 copy 5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -149,9 +127,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 242
-      height: 204
-    spriteID: 575d86c1105c9eb4ab76e4c1a96f8fef
+      width: 484
+      height: 512
+    spriteID: 028438656403eca4cb4194ff2914a011
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +138,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 0, y: 52}
+    spritePosition: {x: 0, y: 0}
   - name: Layer 37 copy
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -169,11 +147,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 194
-      y: 216
-      width: 51
-      height: 149
-    spriteID: 431025208ab8d9a40ac65ca96102f38c
+      x: 496
+      y: 518
+      width: 102
+      height: 298
+    spriteID: d88180cb0b0abf84ba7e214a4caa3cb2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,8 +159,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 194, y: 216}
-    spritePosition: {x: 39, y: 167}
+    uvTransform: {x: 496, y: 518}
+    spritePosition: {x: 78, y: 334}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
@@ -201,7 +179,55 @@ ScriptedImporter:
     characterGroups: []
     pivot: {x: 0, y: 0}
     boneReadOnly: 0
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: iPhone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0, y: 0}
@@ -230,32 +256,22 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: Layer 38 copy 5
-    spriteName: Layer 38 copy 5
-    isGroup: 0
-    parentIndex: -1
-    spriteID: e41c59e880c64d747884fa9541511bff
-    layerID: 9
-    mosaicPosition: {x: 254, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Layer 36 copy
     spriteName: Layer 36 copy
     isGroup: 0
     parentIndex: -1
-    spriteID: 3b51aa1d41d59f643a802f6fcff7b8fa
+    spriteID: d657d01d285c8754ba552f1e8a33dc9a
     layerID: 4
-    mosaicPosition: {x: 4, y: 216}
+    mosaicPosition: {x: 496, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 33 copy 2
-    spriteName: Layer 33 copy 2
+  - name: Layer 38 copy 5
+    spriteName: Layer 38 copy 5
     isGroup: 0
     parentIndex: -1
-    spriteID: 575d86c1105c9eb4ab76e4c1a96f8fef
-    layerID: 3
+    spriteID: 028438656403eca4cb4194ff2914a011
+    layerID: 9
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
@@ -264,9 +280,9 @@ ScriptedImporter:
     spriteName: Layer 37 copy
     isGroup: 0
     parentIndex: -1
-    spriteID: 431025208ab8d9a40ac65ca96102f38c
+    spriteID: d88180cb0b0abf84ba7e214a4caa3cb2
     layerID: 2
-    mosaicPosition: {x: 194, y: 216}
+    mosaicPosition: {x: 496, y: 518}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -274,7 +290,7 @@ ScriptedImporter:
   rigPSDLayers: []
   sharedRigPSDLayers: []
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 639122009890048651
   spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
