@@ -28,7 +28,9 @@ public class MissileLauncherEnemy : EnemyBase
     public bool off = false;
     public Transform target;
     public bool targetPlayer;
-
+    
+    public List<Transform> missileSpawnPoints;
+    
     private void Start()
     {
         if (!off)
@@ -42,7 +44,7 @@ public class MissileLauncherEnemy : EnemyBase
     {
         if (!off) return;
         off = false;
-        if (targetPlayer) target = GameObject.FindGameObjectWithTag("PlayerDamageCollider").transform;
+        if (targetPlayer) target = GameObject.FindGameObjectWithTag("PlayerShadow").transform; // "PlayerDamageCollider"
         StartTargeting(target);
     }
 
@@ -52,17 +54,17 @@ public class MissileLauncherEnemy : EnemyBase
         if (targetingCoroutine != null) StopCoroutine(targetingCoroutine);
     }
     
-    public void StartTargeting(Transform target)
+    public void StartTargeting(Transform targetIn)
     {
-        if (!target) target = GameObject.FindGameObjectWithTag("PlayerDamageCollider").transform;
+        if (!targetIn) targetIn = GameObject.FindGameObjectWithTag("PlayerDamageCollider").transform;
         cameraW = h.GetCameraWidth();
-        targetingCoroutine = StartCoroutine(StartTargetingCoroutine(target));
+        targetingCoroutine = StartCoroutine(StartTargetingCoroutine(targetIn));
     }
-    public IEnumerator StartTargetingCoroutine(Transform target)
+    public IEnumerator StartTargetingCoroutine(Transform targetIn)
     {
         while (true)
         {
-            if (Vector2.Distance(transform.position, target.position) > cameraW * distanceCoof
+            if (Vector2.Distance(transform.position, targetIn.position) > cameraW * distanceCoof
                 || missiles.Count > maxMissileCount)
             {
                 yield return new WaitForEndOfFrame();
@@ -70,17 +72,20 @@ public class MissileLauncherEnemy : EnemyBase
             }
             
             // shoot
-            Shoot(target);
+            Shoot(targetIn);
             
             yield return  new WaitForSeconds(coolDown);
         }
     }
 
-    public void Shoot(Transform target)
+    public void Shoot(Transform targetIn)
     {
         Transform scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
-        Missile missile = Instantiate(missilePrefab, scrollingParent).GetComponent<Missile>();
+        Missile missile = Instantiate(missilePrefab, h.RandChoice(missileSpawnPoints).position, Quaternion.identity, scrollingParent).GetComponent<Missile>();
         
-        missile.Init(target, damage, radiusMult, reactTime, missileSpeed, scrollingParent);
+        Vector3 targetPos = targetIn.position;
+        targetPos.x += h.Range(0f, h.GetCameraWidth() * 0.5f);
+        
+        missile.Init(targetPos, damage, radiusMult, reactTime, missileSpeed);
     }
 }

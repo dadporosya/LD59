@@ -15,6 +15,8 @@ public class Leg : OrganBase
     public override void Awake()
     {
         base.Awake();
+
+        if (XPPerStep <= 0) XPPerStep = Preferences.defaultLegSpeed;
         
         locationInAquarium = LocationInAquarium.Out;
         

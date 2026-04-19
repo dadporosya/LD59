@@ -5,7 +5,7 @@ public class Eye : OrganBase
 {
     public Transform scrollingParent;
 
-    public float flashDuration=3f;
+    public float flashDuration=5f;
     public float flashVFXDuration = 0.5f;
     public float maxDistance;
     

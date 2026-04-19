@@ -15,5 +15,5 @@ public static class Preferences
 
     public static Vector3 perspectiveRotation = new Vector3(66.271f, 0f, 0f);
 
-    public static float defaultLegSpeed = 6f;
+    public static float defaultLegSpeed = 3f;
 }

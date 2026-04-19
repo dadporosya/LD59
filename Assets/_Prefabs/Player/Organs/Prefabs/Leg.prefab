@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Leg
   locationInAquarium: 0
   _actionIcon: {fileID: 0}
-  XPPerStep: 20
+  XPPerStep: 0
   aquariumParent: {fileID: 0}
 --- !u!1 &6519161667865337870
 GameObject:
