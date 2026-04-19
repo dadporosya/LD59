@@ -110,5 +110,5 @@ MonoBehaviour:
   missileSpeed: 10
   aimPrefab: {fileID: 6050853523417149969, guid: a59b41ff5f0bb424984a8426ca4c00de, type: 3}
   explosionPrefab: {fileID: 3674265961787812128, guid: 6c1a358022f01b84193e58ec7536b4ef, type: 3}
-  initOnStart: 1
+  initOnStart: 0
   accelerationCoof: 30

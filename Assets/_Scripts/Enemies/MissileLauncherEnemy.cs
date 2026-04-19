@@ -78,8 +78,9 @@ public class MissileLauncherEnemy : EnemyBase
 
     public void Shoot(Transform target)
     {
-        Missile missile = Instantiate(missilePrefab).GetComponent<Missile>();
+        Transform scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
+        Missile missile = Instantiate(missilePrefab, scrollingParent).GetComponent<Missile>();
         
-        missile.Init(target, damage, radiusMult, reactTime, missileSpeed);
+        missile.Init(target, damage, radiusMult, reactTime, missileSpeed, scrollingParent);
     }
 }

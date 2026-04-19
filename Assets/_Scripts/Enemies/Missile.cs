@@ -14,12 +14,14 @@ public class Missile : MonoBehaviour, IBlindable
     public GameObject explosionPrefab;
 
     private GameObject currentAim;
+
+    public Transform parent;
     
     [SerializeField] private bool initOnStart = false;
 
     [SerializeField] public float accelerationCoof = 2f;
     
-    public void Init(Transform targetIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue)
+    public void Init(Transform targetIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue, Transform parentIn=null)
     {
         target = targetIn;
         damage = damageValue;
@@ -27,6 +29,8 @@ public class Missile : MonoBehaviour, IBlindable
         reactTime = reactTimeValue;
         missileSpeed = missileSpeedValue;
         
+        if (parentIn) parent = parentIn;
+        transform.SetParent(parent);
         
         
         Launch();
@@ -36,13 +40,13 @@ public class Missile : MonoBehaviour, IBlindable
     {
         if (initOnStart)
         {
-            Init(target, damage,radiusMult,reactTime,missileSpeed);
+            Init(target, damage,radiusMult,reactTime,missileSpeed, transform);
         }
     }
 
     public void Launch()
     {
-        currentAim= Instantiate(aimPrefab, target.position, aimPrefab.transform.rotation);
+        currentAim= Instantiate(aimPrefab, target.position, aimPrefab.transform.rotation, parent);
         currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
         
         target = currentAim.transform;

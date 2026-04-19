@@ -13,6 +13,7 @@ TagManager:
   - Punch
   - Enemy
   - PlayerDamageCollider
+  - ScrollingParent
   layers:
   - Default
   - TransparentFX
