@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     public int threatLevel = 1;
 
-    public Transform spawnPoint;
+    public List<Transform> spawnPoints;
 
     [SerializeField] private float baseXpValue = 20f;
     [SerializeField] private float stepXP = 5f;
@@ -19,6 +20,13 @@ public class EnemiesSpawnManager : MonoBehaviour
     public float gainedXP = 0;
     private void Start()
     {
+        // Find all objects with tag EnemiesSpawnPoint and add to spawnPoints list
+        GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("EnemiesSpawnPoint");
+        foreach (GameObject obj in spawnPointObjects)
+        {
+            spawnPoints.Add(obj.transform);
+        }
+        
         escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
         UpdateThreatLevel();
     }
