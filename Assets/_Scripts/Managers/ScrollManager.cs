@@ -76,7 +76,7 @@ public class ScrollManager : MonoBehaviour
 
     private IEnumerator ScrollCoroutine()
     {
-        while (remainingDistance > 0)
+        while (Mathf.Abs(remainingDistance) >= 0.0001f)
         {
             float moveAmount = currentSpeed * Time.deltaTime;
             if (moveAmount > remainingDistance) moveAmount = remainingDistance;
