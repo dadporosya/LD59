@@ -45,7 +45,7 @@ public class Eye : OrganBase
         }
         h.Out(closestTarget);
         // make trail
-        if (closestTarget != null) closestTarget.Blind();
+        if (closestTarget != null) closestTarget.Blind(2f);
     }
 }
 

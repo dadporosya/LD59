@@ -130,7 +130,7 @@ public class Missile : MonoBehaviour, IBlindable
         Destroy(gameObject);
     }
 
-    public void Blind()
+    public void Blind(float duration)
     {
         Explode(false);
     }
