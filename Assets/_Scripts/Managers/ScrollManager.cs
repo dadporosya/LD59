@@ -58,17 +58,17 @@ public class ScrollManager : MonoBehaviour
     
     public void Scroll(float distance, float speed)
     {
-        try
-        {
+        // try
+        // {
             backgroundScroller.Scroll(distance, speed);
             if (!scrollingParent) return;
             ScrollParent(distance, speed);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        // }
+        // catch (Exception e)
+        // {
+            // Console.WriteLine(e);
+            // throw;
+        // }
     }
 
     public void StopScroll()
@@ -112,15 +112,15 @@ public class ScrollManager : MonoBehaviour
             
             remainingDistance -= Mathf.Abs(moveAmount);
 
-            try
-            {
+            // try
+            // {
                 enemiesSpawnManager.CheckDeath();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                continue;
-            }
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e);
+            //     continue;
+            // }
 
             
             

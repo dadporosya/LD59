@@ -89,6 +89,12 @@ public class EnemiesSpawnManager : MonoBehaviour
         List<EnemyBase> toRemove = new List<EnemyBase>();
         foreach (EnemyBase enemy in enemies)
         {
+            if (!enemy)
+            {
+                toRemove.Add(enemy);
+                continue;
+            }
+            
             if (enemy.transform.position.x <= deathPoint.position.x)
             {
                 enemy.Death();
