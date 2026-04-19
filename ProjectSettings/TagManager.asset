@@ -15,6 +15,7 @@ TagManager:
   - PlayerDamageCollider
   - ScrollingParent
   - BlindSpot
+  - BloodVesselPoint
   layers:
   - Default
   - TransparentFX

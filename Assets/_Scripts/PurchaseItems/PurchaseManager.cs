@@ -8,8 +8,8 @@ public class PurchaseManager : MonoBehaviour
     [SerializeField] private PurchaseItemUIWindow purchaseItemWindowPrefab;
     private List<PurchaseItemUIWindow> currentPurchaseItems = new List<PurchaseItemUIWindow>();
 
-    public ObjectsKindsContainer organsContainer;
-    public ObjectsKindsContainer upgradesContainer;
+    public ScriptableObjectsKindsContainer organsContainer;
+    public ScriptableObjectsKindsContainer upgradesContainer;
     
     private UpgradeManager upgradeManager;
     

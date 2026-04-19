@@ -5,7 +5,7 @@ public class Eye : OrganBase
 {
     public Transform scrollingParent;
 
-    public float flashDuration;
+    public float flashDuration=3f;
     public float flashVFXDuration = 0.5f;
     public float maxDistance;
     
@@ -66,14 +66,14 @@ public class Eye : OrganBase
             laserLine.SetPosition(1, blindSpot.position);
 
             GameObject spark = Instantiate(sparkPrefab, blindSpot.position, Quaternion.identity, parent:scrollingParent);
-            
+            spark.transform.localScale *= 0.5f;
             h.InvokeAfterTime(this, flashVFXDuration, () => { Destroy(laserLine); });
             h.InvokeAfterTime(this, flashVFXDuration, () => { Destroy(spark); });
         }
         
         
         
-        if (closestTarget != null) closestTarget.Blind(2f);
+        if (closestTarget != null) closestTarget.Blind(flashDuration);
     }
 }
 

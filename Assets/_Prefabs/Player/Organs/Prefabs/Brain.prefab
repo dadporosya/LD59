@@ -48,9 +48,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+      propertyPath: vesselPrefab
+      value: 
+      objectReference: {fileID: 4161439489676004461, guid: 8160b826e9cc3504f9308bc8e0e9f13a, type: 3}
+    - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+      propertyPath: vesselPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+      propertyPath: 'vesselPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4161439489676004461, guid: 8160b826e9cc3504f9308bc8e0e9f13a, type: 3}
+    - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+      propertyPath: 'vesselPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4161439489676004461, guid: 6553555f87618ff489ec4a8653bb62d7, type: 3}
     - target: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_Name
-      value: Brain Variant
+      value: Brain
       objectReference: {fileID: 0}
     - target: {fileID: 9012250521801294949, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_Sprite
@@ -61,13 +77,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5538126582401860897, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9073197330605373046}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4736005896824792586}
   m_SourcePrefab: {fileID: 100100000, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+--- !u!4 &3753844166948456159 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
+  m_PrefabInstance: {fileID: 2384425165090466966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8227258964828168276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
@@ -85,5 +110,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9526fac33f1774a97b91f69a558b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Brain
+  locationInAquarium: 0
   _actionIcon: {fileID: 0}
   cellsPerTap: 10
+--- !u!1001 &9167402157761925162
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3753844166948456159}
+    m_Modifications:
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.736
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.979
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066234842352382200, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+      propertyPath: m_Name
+      value: BloodVesselPoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+--- !u!4 &9073197330605373046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 203611237530855004, guid: c1e769cb13aa76f4fb78d9ee7a67453a, type: 3}
+  m_PrefabInstance: {fileID: 9167402157761925162}
+  m_PrefabAsset: {fileID: 0}

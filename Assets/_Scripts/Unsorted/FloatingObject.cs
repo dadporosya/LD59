@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FloatingObject : MonoBehaviour
@@ -12,6 +13,9 @@ public class FloatingObject : MonoBehaviour
     private Vector2 direction;
     private float ignoreTimer = 0f;
 
+    public List<Transform> vesselPoints;
+    public List<Connection> vesselPrefabs;
+
     private void Start()
     {
         if (!movementArea)
@@ -22,8 +26,66 @@ public class FloatingObject : MonoBehaviour
         floatingSpeed = baseFloatingSpeed;
         objectCollider = GetComponent<Collider2D>();
 
-        // Random start direction
         direction = Random.insideUnitCircle.normalized;
+        
+        // Find all BloodVesselPoint children in self and add them to vesselPoints
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("BloodVesselPoint"))
+            {
+                if (!vesselPoints.Contains(child))
+                {
+                    vesselPoints.Add(child);
+                }
+            }
+        }
+        
+        GenerateVessels();
+        
+        
+    }
+
+    private void GenerateVessels()
+    {
+        // Find all objects with tag BloodVesselPoint
+        GameObject[] allVesselPointObjects = GameObject.FindGameObjectsWithTag("BloodVesselPoint");
+        List<Transform> availablePoints = new List<Transform>();
+        
+        // Add points that are not already in vesselPoints
+        foreach (GameObject obj in allVesselPointObjects)
+        {
+            if (!vesselPoints.Contains(obj.transform))
+            {
+                availablePoints.Add(obj.transform);
+            }
+        }
+        
+        if (availablePoints.Count == 0 || vesselPoints.Count == 0)
+        {
+            h.Out("No available vessel points");
+            return;
+        }
+        
+        List<Transform> availableThisVessels = new List<Transform>();
+        availableThisVessels.AddRange(vesselPoints);
+        
+        int vesselCount = h.Range(1, vesselPoints.Count);
+
+        for (int i = 0; i < vesselCount; i++)
+        {
+            Transform point1 = h.RandChoice(availablePoints);
+            if (!point1) return;
+            availablePoints.Remove(point1);
+            
+            Transform point2 = h.RandChoice(availableThisVessels);
+            availableThisVessels.Remove(point2);
+            
+            Connection vessel = Instantiate(h.RandChoice(vesselPrefabs), point2.position, Quaternion.identity, transform);
+            vessel.points.Add(point1);
+            vessel.points.Add(point2);
+            
+            
+        }
     }
 
     private void Update()
