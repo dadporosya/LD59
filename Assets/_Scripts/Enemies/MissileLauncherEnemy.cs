@@ -35,7 +35,7 @@ public class MissileLauncherEnemy : EnemyBase
     {
         if (!off)
         {
-            if (targetPlayer) target = GameObject.FindGameObjectWithTag("PlayerDamageCollider").transform;
+            if (targetPlayer) target = GameObject.FindGameObjectWithTag("PlayerShadow").transform;
             StartTargeting(target);
         }
     }

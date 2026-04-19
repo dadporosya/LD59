@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9137065739043241180}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.16848946, w: 0.98570347}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 4.057, y: 0.013, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -19.4}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!212 &5832000939132394921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,12 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a25acd3e5e7d43b07143e5576b117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
-  target: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
   damage: 2.5
   radiusMult: 1
   reactTime: 1
   missileSpeed: 10
   aimPrefab: {fileID: 6050853523417149969, guid: a59b41ff5f0bb424984a8426ca4c00de, type: 3}
   explosionPrefab: {fileID: 3674265961787812128, guid: 6c1a358022f01b84193e58ec7536b4ef, type: 3}
+  parent: {fileID: 0}
   initOnStart: 0
   accelerationCoof: 30
+  _blinded: 0
