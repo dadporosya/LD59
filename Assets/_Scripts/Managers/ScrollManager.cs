@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,10 +58,17 @@ public class ScrollManager : MonoBehaviour
     
     public void Scroll(float distance, float speed)
     {
-        backgroundScroller.Scroll(distance, speed);
-        if (!scrollingParent) return;
-        ScrollParent(distance, speed);
-        
+        try
+        {
+            backgroundScroller.Scroll(distance, speed);
+            if (!scrollingParent) return;
+            ScrollParent(distance, speed);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public void StopScroll()
@@ -78,7 +86,8 @@ public class ScrollManager : MonoBehaviour
         
         remainingDistance = 0;
         currentSpeed = 0;
-        escapeProgressManager.tempXP = 0;
+        escapeProgressManager.onChangeTempXP = 0;
+        escapeProgressManager.initialTempXp = float.MaxValue;
     }
     
     public void ScrollParent(float distance, float speed)

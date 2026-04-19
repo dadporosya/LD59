@@ -7,7 +7,8 @@ public class EscapeProgressManager : MonoBehaviour
     
     public Bar progressBar;
     
-    public float tempXP=0;
+    public float onChangeTempXP=0;
+    public float initialTempXp=0;
 
     public EnemiesSpawnManager enemiesSpawnManager;
 
@@ -23,10 +24,14 @@ public class EscapeProgressManager : MonoBehaviour
         progressBar.Init(currentXP, maxXP);
     }
 
-    public void SetXP(float value)
+    public void SetXP(float value, float newTimeToFadeFill = -1f)
     {
         enemiesSpawnManager.ProcessXP(value - currentXP);
         currentXP = value;
+        if (newTimeToFadeFill >= 0f)
+        {
+            ChangeBarFillTime(newTimeToFadeFill);
+        }
         UpdateBar();
         CheckOverflow();
     }

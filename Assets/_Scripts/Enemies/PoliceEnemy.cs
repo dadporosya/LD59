@@ -36,7 +36,7 @@ public class PoliceEnemy : EnemyBase,IBlindable
         
         float speed = -5f;
         float distance = 0.2f;
-        escapeProgressManager.ChangeXP(-(distance+escapeProgressManager.tempXP), distance/Mathf.Abs(speed));
+        escapeProgressManager.SetXP(escapeProgressManager.initialTempXp - distance / Preferences.distancePerXP, distance/Mathf.Abs(speed));
         
         scrollManager.StopScroll();
         // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;

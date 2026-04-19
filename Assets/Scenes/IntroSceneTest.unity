@@ -1535,11 +1535,13 @@ MonoBehaviour:
   enemyPrefabs: {fileID: 11400000, guid: c6d2bf04178f2774d9538080292e744c, type: 2}
   threatLevel: 1
   spawnPoints: []
+  deathPoint: {fileID: 0}
   baseXpValue: 30
   stepXP: 2
   XPPerEnemy: 30
   XPQuota: 0
   gainedXP: 0
+  enemies: []
 --- !u!4 &657270118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5700282073558784875, guid: 2e8d1b85aef015c4b8355431b2b20aa5, type: 3}
@@ -2665,7 +2667,7 @@ Transform:
   m_GameObject: {fileID: 1067297370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.9, y: 0, z: 0}
+  m_LocalPosition: {x: 3.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

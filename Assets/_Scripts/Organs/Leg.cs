@@ -48,8 +48,8 @@ public class Leg : OrganBase
         float speed = distance / currentAnimationLength;
         
         // h.Out(speed, "speed");
-
-        escapeProgressManager.tempXP += XPPerStep;
+        escapeProgressManager.initialTempXp = h.Min(escapeProgressManager.initialTempXp, escapeProgressManager.currentXP);
+        escapeProgressManager.onChangeTempXP += XPPerStep;
         escapeProgressManager.ChangeXP(XPPerStep, currentAnimationLength);
         
         scrollManager.Scroll(distance, speed);
