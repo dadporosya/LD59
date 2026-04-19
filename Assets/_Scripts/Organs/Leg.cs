@@ -10,6 +10,8 @@ public class Leg : OrganBase
     
     public GameObject aquariumParent;
 
+    
+
     public override void Awake()
     {
         base.Awake();
@@ -46,10 +48,13 @@ public class Leg : OrganBase
         float speed = distance / currentAnimationLength;
         
         // h.Out(speed, "speed");
-        
+
+        escapeProgressManager.tempXP += XPPerStep;
         escapeProgressManager.ChangeXP(XPPerStep, currentAnimationLength);
         
         scrollManager.Scroll(distance, speed);
+        
+        h.Out(scrollManager.currentSpeed);
     }
 
     public void OnIdle()

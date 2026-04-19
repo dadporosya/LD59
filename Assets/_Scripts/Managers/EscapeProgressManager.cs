@@ -6,6 +6,8 @@ public class EscapeProgressManager : MonoBehaviour
     public float maxXP=100;
     
     public Bar progressBar;
+    
+    public float tempXP=0;
 
     private void Start()
     {

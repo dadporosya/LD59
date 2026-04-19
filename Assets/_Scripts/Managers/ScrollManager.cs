@@ -16,10 +16,13 @@ public class ScrollManager : MonoBehaviour
         "Enemy"
     };
 
-    private Coroutine scrollCoroutine;
+    public List<Coroutine> scrollCoroutines = new List<Coroutine>();
+    
+    private EscapeProgressManager  escapeProgressManager;
 
     private void Start()
     {
+        escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
         if (!backgroundScroller) backgroundScroller = FindFirstObjectByType<BackgroundScroller>();
         if (!playerSmartCollider) playerSmartCollider = GameObject.FindWithTag("PlayerParent").GetComponent<SmartCollider>();
         if (playerSmartCollider)
@@ -38,11 +41,14 @@ public class ScrollManager : MonoBehaviour
 
         if (!enemy) return;
         
+        
+        
         if (enemy is PoliceEnemy policeEnemy)
         {
             policeEnemy.OnPlayerCollision(playerSmartCollider.collider);
         } else if (enemy is BarrierEnemy barrierEnemy)
         {
+            h.Out("niggamoo");
             barrierEnemy.OnPlayerCollision(playerSmartCollider.collider);
         }
     }
@@ -59,13 +65,18 @@ public class ScrollManager : MonoBehaviour
     {
         backgroundScroller.StopScroll();
         
-        if (scrollCoroutine != null)
+        foreach (Coroutine coroutine in scrollCoroutines)
         {
-            StopCoroutine(scrollCoroutine);
-            scrollCoroutine = null;
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
         }
+        scrollCoroutines.Clear();
+        
         remainingDistance = 0;
         currentSpeed = 0;
+        escapeProgressManager.tempXP = 0;
     }
     
     public void ScrollParent(float distance, float speed)
@@ -73,8 +84,8 @@ public class ScrollManager : MonoBehaviour
         remainingDistance += distance;
         currentSpeed = speed;
 
-        if (scrollCoroutine != null) return;
-        StartCoroutine(ScrollCoroutine());
+        Coroutine newCoroutine = StartCoroutine(ScrollCoroutine());
+        scrollCoroutines.Add(newCoroutine);
     }
 
     private IEnumerator ScrollCoroutine()
@@ -91,6 +102,14 @@ public class ScrollManager : MonoBehaviour
             
             yield return null;
         }
-        remainingDistance = 0;
+        
+        // Remove this coroutine from the list when it completes
+        Coroutine current = null;
+        foreach (Coroutine c in scrollCoroutines)
+        {
+            if (c != null) current = c;
+        }
+        if (current != null) scrollCoroutines.Remove(current);
     }
+
 }

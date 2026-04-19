@@ -28,14 +28,13 @@ public class PoliceEnemy : EnemyBase,IBlindable
         h.Out("bump");
         if (blinded) return;
         
+        float speed = -5f;
+        float distance = 0.2f;
+        escapeProgressManager.ChangeXP(-(distance+escapeProgressManager.tempXP), distance/Mathf.Abs(speed));
+        
         scrollManager.StopScroll();
         // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;
-        float distance = 0.2f;
-        h.Out(distance, name, collision.gameObject.name);
-
-        float speed = -5f;
         scrollManager.Scroll(distance, speed); // to polish
-        escapeProgressManager.ChangeXP(-(distance / Preferences.distancePerXP), distance/Mathf.Abs(speed));
         
         h.ShakeOnce(2, 10, 0, 0.25f);
         

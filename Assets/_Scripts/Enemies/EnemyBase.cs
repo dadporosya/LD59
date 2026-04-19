@@ -35,11 +35,6 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
         Destroy(gameObject);
     }
 
-    public void Blind(float duration)
-    {
-        
-    }
-
     
     public IEnumerator BeforeDestroyCoroutine()
     {

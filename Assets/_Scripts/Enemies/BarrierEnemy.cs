@@ -30,11 +30,15 @@ public class BarrierEnemy : EnemyBase
 
         float playerSpeed = scrollManager.currentSpeed;
 
-        int ramValue = (int)(scrollManager.currentSpeed / Preferences.defaultLegSpeed * ramValuePerHit);
-
-        if (ramValue > 0)
+        // int ramValue = (int)(scrollManager.currentSpeed / Preferences.defaultLegSpeed * ramValuePerHit);
+        int ramValue = scrollManager.scrollCoroutines.Count;
+        
+        h.Out(ramValue,(scrollManager.currentSpeed / Preferences.defaultLegSpeed * ramValuePerHit));
+        
+        if (ramValue > 1)
         {
-            TakeDamage(ramValue);
+            TakeDamage(ramValue-1);
+            // or dead insted;
             h.ShakeOnce(3, 10, 0, 0.3f);
             if (damageTaken >= durability)
             {
@@ -42,14 +46,19 @@ public class BarrierEnemy : EnemyBase
             }
         }
         
-        scrollManager.StopScroll();
+        
         // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;
         float distance = 0.2f;
-        h.Out(distance, name, collision.gameObject.name);
+        // h.Out(distance, name, collision.gameObject.name);
 
         float speed = -5f;
+        escapeProgressManager.ChangeXP(-(escapeProgressManager.tempXP/2), distance/Mathf.Abs(speed));
+        
+        scrollManager.StopScroll();
         scrollManager.Scroll(distance, speed); // to polish
-        escapeProgressManager.ChangeXP(-(distance / Preferences.distancePerXP), distance/Mathf.Abs(speed));
+        // h.Out(-(distance / Preferences.distancePerXP));
+        
+        
         
         h.ShakeOnce(2, 10, 0, 0.25f);
         
