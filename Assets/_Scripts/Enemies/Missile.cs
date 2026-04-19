@@ -14,7 +14,9 @@ public class Missile : MonoBehaviour, IBlindable
     public GameObject explosionPrefab;
 
     private GameObject currentAim;
-
+    
+    [SerializeField] private bool initOnStart = false;
+    
     public void Init(Transform targetIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue)
     {
         target = targetIn;
@@ -24,6 +26,14 @@ public class Missile : MonoBehaviour, IBlindable
         missileSpeed = missileSpeedValue;
         
         Launch();
+    }
+
+    private void Start()
+    {
+        if (initOnStart)
+        {
+            Init(target, damage,radiusMult,reactTime,missileSpeed);
+        }
     }
 
     public void Launch()

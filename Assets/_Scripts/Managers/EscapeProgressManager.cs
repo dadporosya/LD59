@@ -25,9 +25,13 @@ public class EscapeProgressManager : MonoBehaviour
         CheckOverflow();
     }
 
-    public void ChangeXP(float value)
+    public void ChangeXP(float value, float newTimeToFadeFill = -1f)
     {
         currentXP += value;
+        if (newTimeToFadeFill >= 0f)
+        {
+            ChangeBarFillTime(newTimeToFadeFill);
+        }
         UpdateBar();
         CheckOverflow();
     }

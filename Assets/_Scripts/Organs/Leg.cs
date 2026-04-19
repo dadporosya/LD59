@@ -45,8 +45,7 @@ public class Leg : OrganBase
         float currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         float speed = distance / currentAnimationLength;
         
-        escapeProgressManager.ChangeXP(XPPerStep);
-        escapeProgressManager.ChangeBarFillTime(currentAnimationLength);
+        escapeProgressManager.ChangeXP(XPPerStep, currentAnimationLength);
         
         scrollManager.Scroll(distance, speed);
     }

@@ -39,6 +39,6 @@ public class Explosion : MonoBehaviour
         h.FadeOut(gameObject, fadeTime);
         h.InvokeAfterTime(this, fadeTime, () => { Destroy(gameObject); });
         
-        
+        //TODO create animator for it
     }
 }

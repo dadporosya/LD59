@@ -3,16 +3,19 @@ using UnityEngine;
 
 public class PoliceEnemy : EnemyBase,IBlindable
 {
+    [Header("Police Enemy")]
     private Collider2D collider2D;
     public float damage = 2.5f;
 
     public bool playerBumped = false;
-
-    public bool blinded = false;
     
+    public bool blinded = false;
+
+    private EscapeProgressManager escapeProgressManager;
     private void Awake()
     {
         collider2D = GetComponent<Collider2D>();
+        escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
     }
 
     // public override void Start()
@@ -29,9 +32,11 @@ public class PoliceEnemy : EnemyBase,IBlindable
         // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;
         float distance = 0.2f;
         h.Out(distance, name, collision.gameObject.name);
+
+        float speed = -5f;
+        scrollManager.Scroll(distance, speed); // to polish
+        escapeProgressManager.ChangeXP(-(distance / Preferences.distancePerXP), distance/Mathf.Abs(speed));
         
-        
-        scrollManager.Scroll(distance, -5f); // to polish
         h.ShakeOnce(2, 10, 0, 0.25f);
         
         if (!playerBumped)

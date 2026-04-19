@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IOnDestroy
 {
+    public bool immortal=false;
     public int durability = 1;
     public int damageTaken = 0;
 
