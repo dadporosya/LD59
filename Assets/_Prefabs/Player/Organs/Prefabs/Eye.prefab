@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_Name
-      value: Eye Variant
+      value: Eye
       objectReference: {fileID: 0}
     - target: {fileID: 8385939517124021706, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_Size.x
@@ -128,5 +128,6 @@ MonoBehaviour:
   locationInAquarium: 0
   _actionIcon: {fileID: 0}
   scrollingParent: {fileID: 0}
-  flashDuration: 0
+  flashDuration: 2
   maxDistance: 0
+  linePrefab: {fileID: 7399853311439979957, guid: 510dd6ce975710e4a807ee70666c8682, type: 3}

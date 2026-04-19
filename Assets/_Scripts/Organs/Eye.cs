@@ -37,10 +37,12 @@ public class Eye : OrganBase
         
         foreach (IBlindable blindable in blindableObjects)
         {
+            if (blindable.blinded) continue;
+            
             Transform blindableTransform = (blindable as MonoBehaviour).transform;
             float distance = Vector3.Distance(transform.position, blindableTransform.position);
             
-            if (distance < closestDistance)
+            if (distance < closestDistance &&  distance <= maxDistance)
             {
                 closestDistance = distance;
                 closestTarget = blindable;
@@ -49,30 +51,18 @@ public class Eye : OrganBase
         }
         h.Out(closestTarget);
         
-        if (blindSpot != null)
-        {
-            Transform blindSpotChild = null;
-            foreach (Transform child in blindSpot)
-            {
-                if (child.CompareTag("BlindSpot"))
-                {
-                    blindSpotChild = child;
-                    break;
-                }
-            }
-            if (blindSpotChild != null)
-            {
-                blindSpot = blindSpotChild;
-            }
-        }
-        
+        GameObject temp = h.FindChildrenWithTag(blindSpot, "BlindSpot");
+        if (temp) blindSpot = temp.transform;
+
         if (linePrefab && blindSpot!=null)
         {
-            LineRenderer trail = Instantiate(linePrefab, parent:transform);
+            LineRenderer laserLine = Instantiate(linePrefab, parent:transform);
             
-            trail.positionCount = 2;
-            trail.SetPosition(0, transform.position);
-            trail.SetPosition(1, blindSpot.position);
+            laserLine.positionCount = 2;
+            laserLine.SetPosition(0, transform.position);
+            laserLine.SetPosition(1, blindSpot.position);
+            
+            h.InvokeAfterTime(this, 0.5f, () => { Destroy(laserLine); });
         }
         
         

@@ -8,8 +8,14 @@ public class PoliceEnemy : EnemyBase,IBlindable
     public float damage = 2.5f;
 
     public bool playerBumped = false;
-    
-    public bool blinded = false;
+
+    [SerializeField] private bool _blinded = false;
+
+    public bool blinded
+    {
+        get { return _blinded; }
+        set { _blinded = value; }
+    }
 
     private EscapeProgressManager escapeProgressManager;
     private void Awake()

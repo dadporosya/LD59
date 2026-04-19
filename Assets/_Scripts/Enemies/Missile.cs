@@ -21,6 +21,13 @@ public class Missile : MonoBehaviour, IBlindable
 
     [SerializeField] public float accelerationCoof = 2f;
     
+    [SerializeField] private bool _blinded = false;
+
+    public bool blinded
+    {
+        get { return _blinded; }
+        set { _blinded = value; }
+    }
     public void Init(Transform targetIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue, Transform parentIn=null)
     {
         target = targetIn;

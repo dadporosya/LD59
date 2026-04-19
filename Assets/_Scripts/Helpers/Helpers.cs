@@ -373,12 +373,18 @@ public static class h
 
     public static GameObject FindChildrenWithTag(Transform parent, string tag)
     {
+        GameObject result=null;
         foreach (Transform child in parent)
         {
+            
             if (child.CompareTag(tag)) return child.gameObject;
+            result = FindChildrenWithTag(child, tag);
+            if (result != null) return result;
         }
-        return null;
+        return result;
     }
+    
+    
 
     public static Transform GetRndChildFromParents(List<Transform> parentsOfPossibleTargets)
     {

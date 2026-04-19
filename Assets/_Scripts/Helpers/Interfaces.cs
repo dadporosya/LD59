@@ -36,5 +36,6 @@ public interface IOnDestroy
 
 public interface IBlindable
 {
+    public bool blinded { get; set; }
     public void Blind(float duration);
 }
