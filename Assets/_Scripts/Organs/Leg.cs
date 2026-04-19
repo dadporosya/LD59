@@ -50,6 +50,7 @@ public class Leg : OrganBase
         // h.Out(speed, "speed");
         escapeProgressManager.initialTempXp = h.Min(escapeProgressManager.initialTempXp, escapeProgressManager.currentXP);
         escapeProgressManager.onChangeTempXP += XPPerStep;
+        
         escapeProgressManager.ChangeXP(XPPerStep, currentAnimationLength);
         
         h.Out(escapeProgressManager.initialTempXp, escapeProgressManager.currentXP);

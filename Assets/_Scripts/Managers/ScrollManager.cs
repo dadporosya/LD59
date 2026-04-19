@@ -87,7 +87,7 @@ public class ScrollManager : MonoBehaviour
         remainingDistance = 0;
         currentSpeed = 0;
         escapeProgressManager.onChangeTempXP = 0;
-        h.Out("nigamooo", escapeProgressManager.currentXP);
+        // h.Out("nigamooo", escapeProgressManager.currentXP);
         escapeProgressManager.initialTempXp = escapeProgressManager.currentXP;
     }
     

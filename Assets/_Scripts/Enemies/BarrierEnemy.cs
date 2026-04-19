@@ -52,12 +52,24 @@ public class BarrierEnemy : EnemyBase
         // h.Out(distance, name, collision.gameObject.name);
 
         float speed = -5f;
-        escapeProgressManager.SetXP(escapeProgressManager.initialTempXp - distance / Preferences.distancePerXP, distance/Mathf.Abs(speed));
+        // escapeProgressManager.SetXP(escapeProgressManager.initialTempXp - distance / Preferences.distancePerXP, distance/Mathf.Abs(speed));
+
+        h.Out((distance / Preferences.distancePerXP
+                    + (scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed -
+                       escapeProgressManager.onChangeTempXP)),
+            scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed,
+            escapeProgressManager.onChangeTempXP);
+        
+        escapeProgressManager.ChangeXP(
+            (distance/Preferences.distancePerXP
+              + (scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed - escapeProgressManager.onChangeTempXP)),
+            distance/Mathf.Abs(speed));
+        
         
         scrollManager.StopScroll();
         scrollManager.Scroll(distance, speed); // to polish
         // h.Out(-(distance / Preferences.distancePerXP));
-        
+        //
         
         
         h.ShakeOnce(2, 10, 0, 0.25f);

@@ -31,12 +31,23 @@ public class PoliceEnemy : EnemyBase,IBlindable
 
     public void OnPlayerCollision(Collider2D collision=null)
     {
-        h.Out("bump");
+        // h.Out("bump");
         if (blinded) return;
         
         float speed = -5f;
         float distance = 0.2f;
-        escapeProgressManager.SetXP(escapeProgressManager.initialTempXp - distance / Preferences.distancePerXP, distance/Mathf.Abs(speed));
+        // escapeProgressManager.SetXP(escapeProgressManager.initialTempXp - distance / Preferences.distancePerXP, distance/Mathf.Abs(speed));
+        h.Out( (distance / Preferences.distancePerXP
+                    + (scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed -
+                       escapeProgressManager.onChangeTempXP)),
+            scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed,
+            escapeProgressManager.onChangeTempXP);
+        
+        escapeProgressManager.ChangeXP(
+            (distance/Preferences.distancePerXP
+              + (scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed - escapeProgressManager.onChangeTempXP)),
+            distance/Mathf.Abs(speed));
+
         
         scrollManager.StopScroll();
         // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;
@@ -46,12 +57,12 @@ public class PoliceEnemy : EnemyBase,IBlindable
         
         if (!playerBumped)
         {
-            h.Out("bumped 1st");
+            // h.Out("bumped 1st");
 
             playerBumped = true;
             return;
         }
-        h.Out("damage");
+        // h.Out("damage");
         //anim
         playerDamageManager.TakeDamage((int)damage);
     }
@@ -60,7 +71,7 @@ public class PoliceEnemy : EnemyBase,IBlindable
     {
         blinded = true;
         h.InvokeAfterTime(this, duration, () => { blinded = false; });
-        h.Out("negro");
+        // h.Out("negro");
     }
     
 }

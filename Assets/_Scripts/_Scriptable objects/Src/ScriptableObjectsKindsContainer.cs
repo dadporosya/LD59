@@ -68,8 +68,8 @@ public class ScriptableObjectsKindsContainer : ScriptableObject
         objects.Clear();
         keys.Clear();
 
-        if (rawKeys.Count != rawKeys.Count) throw new System.Exception($"Missing values or keys for {name}");
-        for (int i = 0; i < rawKeys.Count; i++)
+        // if (rawKeys.Count != rawKeys.Count) throw new System.Exception($"Missing values or keys for {name}");
+        for (int i = 0; i < h.Min(rawKeys.Count, rawObject.Count); i++)
         {
             objects.Add(rawKeys[i], rawObject[i]);
             keys.Add(rawKeys[i]);
@@ -100,8 +100,8 @@ public class GameObjectObjectsKindsContainer : ScriptableObject
         objects.Clear();
         keys.Clear();
 
-        if (rawKeys.Count != rawKeys.Count) throw new System.Exception($"Missing values or keys for {name}");
-        for (int i = 0; i < rawKeys.Count; i++)
+        // if (rawKeys.Count != rawKeys.Count) throw new System.Exception($"Missing values or keys for {name}");
+        for (int i = 0; i < h.Min(rawKeys.Count, rawObject.Count); i++)
         {
             objects.Add(rawKeys[i], rawObject[i]);
             keys.Add(rawKeys[i]);
