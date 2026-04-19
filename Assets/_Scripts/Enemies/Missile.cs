@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+public class Missile : MonoBehaviour, IBlindable
 {
     public Transform target;
     
@@ -97,5 +97,10 @@ public class Missile : MonoBehaviour
         
         if (currentAim) Destroy(currentAim);
         Destroy(gameObject);
+    }
+
+    public void Blind()
+    {
+        Explode(false);
     }
 }

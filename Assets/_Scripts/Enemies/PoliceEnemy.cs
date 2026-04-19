@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PoliceEnemy : EnemyBase
+public class PoliceEnemy : EnemyBase,IBlindable
 {
     private Collider2D collider2D;
     public float damage = 2.5f;

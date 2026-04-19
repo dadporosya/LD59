@@ -32,3 +32,11 @@ public interface IOnDestroy
         yield return null;
     }
 }
+
+public interface IBlindable
+{
+    public void Blind()
+    {
+        
+    }
+}
