@@ -6,7 +6,8 @@ public class EnemiesSpawnManager : MonoBehaviour
 {
     public GameObjectObjectsKindsContainer enemyPrefabs;
     private EscapeProgressManager escapeProgressManager;
-    
+
+    private Transform scrollingParent;
 
     public int threatLevel = 1;
 
@@ -23,6 +24,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     public List<EnemyBase> enemies;
     private void Start()
     {
+        if (!scrollingParent) scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
         // Find all objects with tag EnemiesSpawnPoint and add to spawnPoints list
         GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("EnemiesSpawnPoint");
         foreach (GameObject obj in spawnPointObjects)
@@ -74,7 +76,7 @@ public class EnemiesSpawnManager : MonoBehaviour
                 enemyPrefab, 
                 spawnPoint.position,
                 enemyPrefab.transform.rotation,
-                GameObject.FindGameObjectWithTag("ScrollingParent").transform);
+                scrollingParent);
         
         if (enemy && enemy.TryGetComponent(out EnemyBase enemyComp)) enemies.Add(enemyComp);
         
