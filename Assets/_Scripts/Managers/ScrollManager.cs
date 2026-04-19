@@ -76,14 +76,15 @@ public class ScrollManager : MonoBehaviour
 
     private IEnumerator ScrollCoroutine()
     {
-        while (Mathf.Abs(remainingDistance) >= 0.0001f)
+        h.Out(remainingDistance);
+        while (remainingDistance > 0)
         {
             float moveAmount = currentSpeed * Time.deltaTime;
             if (moveAmount > remainingDistance) moveAmount = remainingDistance;
             
             scrollingParent.Translate(new Vector3(-moveAmount, 0f, 0f));
             
-            remainingDistance -= moveAmount;
+            remainingDistance -= Mathf.Abs(moveAmount);
             
             yield return null;
         }

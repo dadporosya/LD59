@@ -56,7 +56,7 @@ public class BackgroundScroller : MonoBehaviour
                 backgroundObject.Translate(new Vector3(-moveAmount, 0f, 0f));
             }
             
-            remainingDistance -= moveAmount;
+            remainingDistance -= Mathf.Abs(moveAmount);
             
             if (backgroundObjects.Count > 0 && backgroundObjects.Peek().position.x < borderX)
             {

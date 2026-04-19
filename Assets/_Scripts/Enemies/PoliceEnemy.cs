@@ -25,11 +25,13 @@ public class PoliceEnemy : EnemyBase
         h.Out("bump");
         if (blinded) return;
         
-        float distance = collision != null ? Vector2.Distance(transform.position, collision.transform.position) : 0f;
-        h.Out(distance);
-        
         scrollManager.StopScroll();
-        scrollManager.Scroll(-distance*1.1f, 1f); // to polish
+        // float distance = collision != null ? Mathf.Abs(transform.position.x - collision.transform.position.x) : 0f;
+        float distance = 0.1f;
+        h.Out(distance, name, collision.gameObject.name);
+        
+        
+        scrollManager.Scroll(distance, -1f); // to polish
         h.ShakeOnce(2, 10, 0, 0.25f);
         
         if (!playerBumped)
