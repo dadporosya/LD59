@@ -1,16 +1,44 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float damage = 2.5f;
+    public float radiusMult = 1f;
+
+    public float fadeTime=0.25f;
+
+    public SmartCollider smartCollider;
+    public List<string> targetTags = new List<string>();
+
+    public void Init(int damageIn, int radiusMultIn, bool explodeWithCollider=true)
     {
+        damage = damageIn;
+        radiusMult = radiusMultIn;
         
+        if (!smartCollider) smartCollider = GetComponent<SmartCollider>();
+        smartCollider.targetTags = targetTags;
+        
+        Explode(explodeWithCollider);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Explode(bool explodeWithCollider=true)
     {
+        if (!explodeWithCollider) smartCollider.enabled = false;
+        else
+        {
+            smartCollider.enabled = true;
+            smartCollider.onTriggerEnter.AddListener((GameObject go) =>
+            {
+                FindFirstObjectByType<PlayerDamageManager>().TakeDamage(damage);
+            });
+        }
+        
+        transform.localScale *= radiusMult;
+        
+        h.FadeOut(gameObject, fadeTime);
+        h.InvokeAfterTime(this, fadeTime, () => { Destroy(gameObject); });
+        
         
     }
 }

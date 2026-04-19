@@ -17,7 +17,7 @@ public class SmartCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        h.Out(other.tag);
+        // h.Out(other.tag);
         if (targetTags.Contains(other.tag))
         {
             onTriggerEnter.Invoke(other.gameObject);

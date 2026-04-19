@@ -13,6 +13,8 @@ public class Missile : MonoBehaviour
     public GameObject aimPrefab;
     public GameObject explosionPrefab;
 
+    private GameObject currentAim;
+
     public void Init(Transform targetIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue)
     {
         target = targetIn;
@@ -31,7 +33,11 @@ public class Missile : MonoBehaviour
 
     public IEnumerator LaunchCoroutine()
     {
-        if (aimPrefab) Instantiate(aimPrefab, target.position, Quaternion.identity);
+        if (aimPrefab)
+        {
+            currentAim= Instantiate(aimPrefab, target.position, Quaternion.identity);
+            currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
+        }
         
         // Phase 1: Rotate to look at target for reactTime
         float rotationElapsed = 0f;
@@ -89,6 +95,7 @@ public class Missile : MonoBehaviour
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         
+        if (currentAim) Destroy(currentAim);
         Destroy(gameObject);
     }
 }
