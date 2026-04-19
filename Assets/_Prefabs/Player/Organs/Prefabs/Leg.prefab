@@ -69,8 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6db7d2292853c54f8f7c104e7699cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Leg
+  locationInAquarium: 0
   _actionIcon: {fileID: 0}
-  XPPerStep: 5
+  XPPerStep: 20
+  aquariumParent: {fileID: 0}
 --- !u!1 &6519161667865337870
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,6 +87,7 @@ public class ScrollManager : MonoBehaviour
         remainingDistance = 0;
         currentSpeed = 0;
         escapeProgressManager.onChangeTempXP = 0;
+        h.Out("nigamooo", escapeProgressManager.currentXP);
         escapeProgressManager.initialTempXp = escapeProgressManager.currentXP;
     }
     
@@ -118,8 +119,9 @@ public class ScrollManager : MonoBehaviour
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                continue;
             }
+
             
             
             yield return null;
@@ -132,6 +134,8 @@ public class ScrollManager : MonoBehaviour
             if (c != null) current = c;
         }
         if (current != null) scrollCoroutines.Remove(current);
+        
+        StopScroll();
     }
 
 }

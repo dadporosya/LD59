@@ -32,7 +32,16 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
 
     public void Death()
     {
-        StartCoroutine(DeathCoroutine());
+        try
+        {
+            StartCoroutine(DeathCoroutine());
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
     }
 
     public IEnumerator DeathCoroutine()
