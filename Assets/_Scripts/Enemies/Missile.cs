@@ -16,6 +16,8 @@ public class Missile : MonoBehaviour, IBlindable
     private GameObject currentAim;
     
     [SerializeField] private bool initOnStart = false;
+
+    [SerializeField] public float accelerationCoof = 2f;
     
     public void Init(Transform targetIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue)
     {
@@ -45,20 +47,26 @@ public class Missile : MonoBehaviour, IBlindable
     {
         if (aimPrefab)
         {
-            currentAim= Instantiate(aimPrefab, target.position, Quaternion.identity);
+            currentAim= Instantiate(aimPrefab, target.position, aimPrefab.transform.rotation);
             currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
         }
         
-        // Phase 1: Rotate to look at target for reactTime
+        // Phase 1: Rotate to look at target for reactTime * 0.8
+        float timeCoof = 1f;
+        
+        float rotationDuration = reactTime * timeCoof;
         float rotationElapsed = 0f;
         Vector3 startRotation = transform.eulerAngles;
         
-        while (rotationElapsed < reactTime)
+        // Calculate target angle based on x distance / y distance
+        Vector3 directionToTarget = target.position - transform.position;
+        float xDistance = directionToTarget.x;
+        float yDistance = directionToTarget.y;
+        float targetAngle = Mathf.Atan(xDistance / yDistance) * Mathf.Rad2Deg;
+        
+        while (rotationElapsed < rotationDuration)
         {
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
-            float targetAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-            
-            float t = rotationElapsed / reactTime;
+            float t = rotationElapsed / rotationDuration;
             float currentAngle = Mathf.LerpAngle(startRotation.z, targetAngle, t);
             transform.eulerAngles = new Vector3(0, 0, currentAngle);
             
@@ -66,31 +74,38 @@ public class Missile : MonoBehaviour, IBlindable
             yield return null;
         }
         
-        // Ensure we're looking directly at target
-        Vector3 finalDirection = (target.position - transform.position).normalized;
-        float finalAngle = Mathf.Atan2(finalDirection.y, finalDirection.x) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3(0, 0, finalAngle);
+        yield return new  WaitForSeconds(reactTime * (1-timeCoof));
         
-        // Phase 2: Move towards target with parabolic trajectory
+        // Ensure we're looking directly at target
+        transform.eulerAngles = new Vector3(0, 0, targetAngle);
+        
+        // ...existing code...
+        // Phase 2: Move towards target with acceleration
         Vector3 startPosition = transform.position;
         Vector3 endPosition = target.position;
+        Vector3 direction = (endPosition - startPosition).normalized;
         float distance = Vector3.Distance(startPosition, endPosition);
-        float travelTime = distance / missileSpeed;
         
-        float travelElapsed = 0f;
-        while (travelElapsed < travelTime)
+        // Calculate flight time using kinematic equation: distance = velocity * t + 0.5 * a * t^2
+        float acceleration = missileSpeed * accelerationCoof;
+        float initialVelocity = -2 * missileSpeed;
+        
+        // Solve quadratic equation: 0.5 * a * t^2 + v * t - distance = 0
+        float discriminant = initialVelocity * initialVelocity + 2 * acceleration * distance;
+        float flightTime = (-initialVelocity + Mathf.Sqrt(discriminant)) / acceleration;
+        
+        float flightElapsed = 0f;
+        float velocity = initialVelocity;
+        
+        while (flightElapsed < flightTime)
         {
-            float progress = travelElapsed / travelTime;
+            // Update velocity with acceleration
+            velocity += acceleration * Time.deltaTime;
             
-            // Linear horizontal movement
-            Vector3 horizontalPos = Vector3.Lerp(startPosition, endPosition, progress);
+            // Move in the direction based on velocity
+            transform.position += direction * velocity * Time.deltaTime;
             
-            // Parabolic vertical movement (quad curve)
-            float parabolicHeight = Mathf.Sin(progress * Mathf.PI) * distance * 0.3f;
-            
-            transform.position = horizontalPos + Vector3.up * parabolicHeight;
-            
-            travelElapsed += Time.deltaTime;
+            flightElapsed += Time.deltaTime;
             yield return null;
         }
         
@@ -103,7 +118,7 @@ public class Missile : MonoBehaviour, IBlindable
 
     public void Explode(bool enableCollider = true)
     {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<Explosion>().Init(damage, radiusMult, enableCollider);
         
         if (currentAim) Destroy(currentAim);
         Destroy(gameObject);

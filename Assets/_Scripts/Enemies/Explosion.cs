@@ -11,7 +11,7 @@ public class Explosion : MonoBehaviour
     public SmartCollider smartCollider;
     public List<string> targetTags = new List<string>();
 
-    public void Init(int damageIn, int radiusMultIn, bool explodeWithCollider=true)
+    public void Init(float damageIn, float radiusMultIn, bool explodeWithCollider=true)
     {
         damage = damageIn;
         radiusMult = radiusMultIn;
