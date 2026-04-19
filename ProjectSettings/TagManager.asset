@@ -17,6 +17,7 @@ TagManager:
   - BlindSpot
   - BloodVesselPoint
   - EnemiesSpawnPoint
+  - EnemiesDeathPoint
   layers:
   - Default
   - TransparentFX

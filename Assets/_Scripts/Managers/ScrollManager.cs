@@ -19,10 +19,12 @@ public class ScrollManager : MonoBehaviour
     public List<Coroutine> scrollCoroutines = new List<Coroutine>();
     
     private EscapeProgressManager  escapeProgressManager;
+    private EnemiesSpawnManager enemiesSpawnManager;
 
     private void Start()
     {
         escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
+        enemiesSpawnManager = FindFirstObjectByType<EnemiesSpawnManager>();
         if (!backgroundScroller) backgroundScroller = FindFirstObjectByType<BackgroundScroller>();
         if (!playerSmartCollider) playerSmartCollider = GameObject.FindWithTag("PlayerParent").GetComponent<SmartCollider>();
         if (playerSmartCollider)
@@ -99,6 +101,8 @@ public class ScrollManager : MonoBehaviour
             scrollingParent.Translate(new Vector3(-moveAmount, 0f, 0f));
             
             remainingDistance -= Mathf.Abs(moveAmount);
+            
+            enemiesSpawnManager.CheckDeath();
             
             yield return null;
         }
