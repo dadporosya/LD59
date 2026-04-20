@@ -70,15 +70,42 @@ public class GameFlowManager : MonoBehaviour
         playerParent.SetActive(false);
         
         GameObject damageScreen = GameObject.Find("DamageScreen");
-        Color lossColor = damageScreen.GetComponent<Image>().color;
-        lossColor.a = 1f;
-        damageScreen.GetComponent<Image>().color = lossColor;
+        FadeDamageScreen(damageScreen.GetComponent<Image>().color.a, 0.99f, 0.5f);
         
         h.Out(restartWindow);
         if (restartWindow)
         {
             restartWindow.SetActive(true);
         }
+    }
+
+    private void FadeDamageScreen(float fromAlpha, float toAlpha, float duration)
+    {
+        GameObject damageScreen = GameObject.Find("DamageScreen");
+        if (!damageScreen) return;
+        
+        Image damageImage = damageScreen.GetComponent<Image>();
+        if (!damageImage) return;
+        
+        StartCoroutine(FadeDamageScreenCoroutine(damageImage, fromAlpha, toAlpha, duration));
+    }
+
+    private IEnumerator FadeDamageScreenCoroutine(Image damageImage, float fromAlpha, float toAlpha, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(fromAlpha, toAlpha, elapsed / duration);
+            Color color = damageImage.color;
+            color.a = alpha;
+            damageImage.color = color;
+            yield return null;
+        }
+
+        Color finalColor = damageImage.color;
+        finalColor.a = toAlpha;
+        damageImage.color = finalColor;
     }
 
     public void Restart()

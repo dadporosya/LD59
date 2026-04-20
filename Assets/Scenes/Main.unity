@@ -5017,7 +5017,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75885c2a3c7b5ab4cb0d56212a4fd7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameFlowManager
-  organsOnStart: []
+  organsOnStart:
+  - {fileID: 4736005896824792586, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
+  - {fileID: 4814087643053107426, guid: 28d01660a0158fd43ba7ae07be894b25, type: 3}
+  - {fileID: 2014305852749447437, guid: cf8169140b292ee498973a8a2007c11c, type: 3}
+  restartWindow: {fileID: 323798160}
+  playerParent: {fileID: 0}
   restartDuration: 2
   state: 0
 --- !u!1 &1676477847
@@ -5309,7 +5314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1851581842
 RectTransform:
   m_ObjectHideFlags: 0
