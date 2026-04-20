@@ -34,9 +34,13 @@ public class Neuron : MonoBehaviour
     [SerializeField] private TextMeshProUGUI numberText;
     
     public NeuronManager neuronManager;
+
+    private GameFlowManager gameFlowManager;
     
     private void OnEnable()
     {
+        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
+        
         GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
         if (m.actionContainer.ContainsKey(actionLabel))
         {
@@ -104,6 +108,8 @@ public class Neuron : MonoBehaviour
 
     private void Update()
     {
+        if (gameFlowManager.IsPaused()) return;
+        
         if (actionTrigger != null && actionTrigger.action.triggered)
         {
             Triggered();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -28,6 +29,8 @@ public class DialogueManager : MonoBehaviour
     private DialogueNode paragraph;
     
     [SerializeField] private const float MAX_TYPE_SPEED = 0.1f;
+
+    public UnityEvent onDialogueEnd;
     
     private void Start()
     {
@@ -254,5 +257,7 @@ public class DialogueManager : MonoBehaviour
         dialogueWindow.SetActive(false);
         dialogue = null;
         currentParagraphs.Clear();
+        
+        onDialogueEnd?.Invoke();
     }
 }

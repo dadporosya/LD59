@@ -21,8 +21,12 @@ public class PlayerDamageManager : MonoBehaviour
 
     public Transform aquariumParent;
     
+    private GameFlowManager gameFlowManager;
+    
     private void Awake()
     {
+        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
+        
         if (!aquariumParent) aquariumParent = GameObject.Find("AquariumParent").transform;
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!playerSmartCollider) FindPlayerCollider();
@@ -40,6 +44,8 @@ public class PlayerDamageManager : MonoBehaviour
 
     public void TakeDamage(float value)
     {
+        if (gameFlowManager.IsPaused()) return;
+        
         h.Out("TakeDamag");
         damageTaken += value;
         UpdateDamageScreen();
@@ -68,6 +74,12 @@ public class PlayerDamageManager : MonoBehaviour
     {
         while (damageTaken > 0)
         {
+            if (gameFlowManager.IsPaused())
+            {
+                yield return new WaitForSeconds(0.5f);
+                continue;
+            }
+            
             damageTaken -= recoverySpeed * Time.deltaTime;
 
             bpmManager.currentBPMReduction = h.Max(

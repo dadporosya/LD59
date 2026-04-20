@@ -41,8 +41,12 @@ public class MissileLauncherEnemy : EnemyBase
 
     [SerializeField] private float missileTranslation = 0.1f;
     
+    private GameFlowManager gameFlowManager;
+    
     private void Start()
     {
+        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
+        
         if (!off)
         {
             if (targetPlayer) target = GameObject.FindGameObjectWithTag("PlayerShadow").transform;
@@ -91,6 +95,8 @@ public class MissileLauncherEnemy : EnemyBase
 
     public void Shoot(Transform targetIn)
     {
+        if (gameFlowManager.IsPaused()) return;
+        
         h.Out(playerDamageManager.aquariumParent, playerDamageManager);
         if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return; // temp?
         

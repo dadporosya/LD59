@@ -5,7 +5,9 @@ using UnityEngine.Audio;
 
 public class Talkable : MonoBehaviour
 {
-     
+    
+    private GameFlowManager gameFlowManager;
+    
     public string name;
 
     public string Name
@@ -40,6 +42,8 @@ public class Talkable : MonoBehaviour
         
     private void Awake()
     {
+        gameFlowManager =  FindFirstObjectByType<GameFlowManager>();
+        
         if (name == default)
             name = gameObject.name;
         if (portrait == null)
@@ -87,9 +91,14 @@ public class Talkable : MonoBehaviour
         });
     }
 
-    public void Talk()
+    public void Talk(int i = -1)
     {
-        dialogueManager.StartDialogue(h.RandChoice(dialogues));
+        DialogueContainer dialogue;
+        if (i >= 0 && i < dialogues.Count)  dialogue =  dialogues[i];
+        else dialogue = h.RandChoice(dialogues);
+        dialogueManager.StartDialogue(dialogue);
+        
+        gameFlowManager.SetOnPause();
     }
 
 }

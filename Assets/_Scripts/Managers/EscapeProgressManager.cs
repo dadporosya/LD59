@@ -3,7 +3,9 @@ using UnityEngine;
 public class EscapeProgressManager : MonoBehaviour
 {
     public float currentXP=0;
-    public float maxXP=100;
+    // public float maxXP=500;
+    public int level=0;
+    public int xpPperLeve
     
     public Bar progressBar;
     
@@ -12,6 +14,8 @@ public class EscapeProgressManager : MonoBehaviour
 
     public EnemiesSpawnManager enemiesSpawnManager;
 
+    public int checkPointCount = 5;
+    
     private void Start()
     {
         initialTempXp = float.MaxValue;
