@@ -75,6 +75,10 @@ public class UpgradeManager : MonoBehaviour
             {
                 organ.UpdateOverlap(true);
             }
+            else
+            {
+                organ.transform.localScale *= 0.9f;
+            }
             
             spawnPoints.Remove(spawnPoint);
         }
