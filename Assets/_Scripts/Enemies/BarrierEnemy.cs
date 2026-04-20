@@ -160,6 +160,8 @@ public class BarrierEnemy : EnemyBase
 
     public void Shoot(Transform target)
     {
+        if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return;
+        
         if (target)
         {
             Connection laserLine = Instantiate(laser, parent:transform);

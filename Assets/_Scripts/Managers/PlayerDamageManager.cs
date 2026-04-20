@@ -17,9 +17,12 @@ public class PlayerDamageManager : MonoBehaviour
     public SmartCollider playerSmartCollider;
     
     public TextMeshProUGUI tempDamageLabel;
+
+    public Transform aquariumParent;
     
     private void Awake()
     {
+        if (!aquariumParent) aquariumParent = GameObject.Find("AquariumParent").transform;
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!playerSmartCollider) FindPlayerCollider();
         playerSmartCollider.collider.enabled = false;
