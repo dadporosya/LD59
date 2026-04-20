@@ -343,7 +343,7 @@ MonoBehaviour:
   gunPoint: {fileID: 7392169054478397639}
   attackRange: -1
   damage: 2
-  linePrefab: {fileID: 7399853311439979957, guid: 510dd6ce975710e4a807ee70666c8682, type: 3}
+  laser: {fileID: 4161439489676004461, guid: 120c5c34628e05e43b19d9df69feb213, type: 3}
   explosionPrefab: {fileID: 3674265961787812128, guid: 6c1a358022f01b84193e58ec7536b4ef, type: 3}
   explosionDuration: 0.5
 --- !u!61 &2106013124401727842
@@ -513,7 +513,7 @@ Transform:
   m_GameObject: {fileID: 9170912447772555926}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17237, y: 0.56385005, z: 0}
+  m_LocalPosition: {x: -0.17237, y: 0.5638489, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []

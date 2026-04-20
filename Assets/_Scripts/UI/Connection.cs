@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Connection : MonoBehaviour
+public class Connection : MonoBehaviour, IOnDestroy
 {
     public LineRenderer lineRendererPrefab;
     [HideInInspector] public LineRenderer lineRenderer;
@@ -26,10 +26,17 @@ public class Connection : MonoBehaviour
 
     private void UpdateLineRenderer()
     {
+        lineRenderer.positionCount = points.Count;
         for (int i = 0; i < points.Count; i++)
         {
             if (points[i] == null) continue;
             lineRenderer.SetPosition(i, points[i].position);
         }
+    }
+
+    public void OnDestroy()
+    {
+        if (lineRenderer) Destroy(lineRenderer);
+        Destroy(gameObject);
     }
 }

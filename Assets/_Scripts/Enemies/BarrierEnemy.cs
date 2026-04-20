@@ -21,7 +21,7 @@ public class BarrierEnemy : EnemyBase
     public Transform gunPoint;
     public float attackRange = -1f;
     public float damage;
-    public LineRenderer linePrefab;
+    public Connection laser;
     public GameObject explosionPrefab;
     [SerializeField] private float explosionDuration = 0.5f;
     
@@ -147,16 +147,15 @@ public class BarrierEnemy : EnemyBase
     {
         if (target)
         {
-            LineRenderer laserLine = Instantiate(linePrefab, parent:transform);
+            Connection laserLine = Instantiate(laser, parent:transform);
             
-            laserLine.positionCount = 2;
-            laserLine.SetPosition(0, targetOrganIconHolder.transform.position);
-            laserLine.SetPosition(1, target.position);
+            laserLine.points.Add(targetOrganIconHolder.transform);
+            laserLine.points.Add(target);
 
             GameObject explosion = Instantiate(explosionPrefab, target.position, Quaternion.identity);
             
             explosion.transform.localScale *= 0.5f;
-            h.InvokeAfterTime(this, explosionDuration, () => { Destroy(laserLine); });
+            h.InvokeAfterTime(this, explosionDuration, () => { laserLine.OnDestroy(); });
             h.InvokeAfterTime(this, explosionDuration, () => { Destroy(explosion); });
         }
         

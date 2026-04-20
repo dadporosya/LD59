@@ -177,7 +177,7 @@ MonoBehaviour:
   flashVFXDuration: 0.5
   maxDistance: 0
   sparkPrefab: {fileID: 7715541909288812568, guid: 36820bac02f64554eb5124bbd381abd5, type: 3}
-  linePrefab: {fileID: 7399853311439979957, guid: 510dd6ce975710e4a807ee70666c8682, type: 3}
+  linePrefab: {fileID: 7399853311439979957, guid: 30250c3231adb9242ac2f227c6806538, type: 3}
 --- !u!1001 &3004202428505273352
 PrefabInstance:
   m_ObjectHideFlags: 0
