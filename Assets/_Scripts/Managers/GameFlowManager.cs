@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,6 +50,8 @@ public class GameFlowManager : MonoBehaviour
         playerParent =  GameObject.FindGameObjectWithTag("PlayerParent");
         
         cameraInitialPosition = Camera.main.transform.position;
+
+        StartGame();
     }
 
     private void Update()
@@ -61,6 +64,7 @@ public class GameFlowManager : MonoBehaviour
 
     public void StartGame(bool firstTime = true)
     {
+        cutSceneManager.RunCutscene("IntroCutscene");
         Restart();
     }
     
@@ -91,7 +95,6 @@ public class GameFlowManager : MonoBehaviour
     public void ProcessLoss()
     {
         state = States.Loss;
-        h.Out("loss");
         
         //change sprite
         playerParent.SetActive(false);
@@ -104,6 +107,8 @@ public class GameFlowManager : MonoBehaviour
         {
             restartWindow.SetActive(true);
         }
+
+        restartWindow.GetComponentInChildren<TextMeshProUGUI>().text = $"{currentDeathMessage}\nRestart?";
         
         h.Out("LOSS");
         if (currentLossScreen) Destroy(currentLossScreen);

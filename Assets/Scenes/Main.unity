@@ -3157,7 +3157,7 @@ MonoBehaviour:
   damageTaken: 0
   damageThreshold: 10
   damageScreenImage: {fileID: 0}
-  recoverySpeed: 0.4
+  recoverySpeed: 1
   bpmManager: {fileID: 0}
   playerSmartCollider: {fileID: 1708069197}
   punchStack: 0
