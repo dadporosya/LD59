@@ -93,6 +93,6 @@ public class MissileLauncherEnemy : EnemyBase
         currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
 
         
-        missile.Init(currentAim, damage, radiusMult, reactTime, missileSpeed);
+        missile.Init(currentAim.transform, damage, radiusMult, reactTime, missileSpeed);
     }
 }
