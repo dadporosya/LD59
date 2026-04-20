@@ -66,7 +66,9 @@ public class Arm : OrganBase
         
         playerDamageManager.playerSmartCollider.onTriggerEnter.AddListener(Punch);
         playerDamageManager.playerSmartCollider.collider.enabled = true;
-        yield return new WaitForSeconds(0.01f);
+        playerDamageManager.punchStack++;
+        h.Out(playerDamageManager.playerSmartCollider.collider.enabled);
+        yield return new WaitForSeconds(0.015f);
         EndPunch();
         yield return null;
     }
@@ -76,6 +78,12 @@ public class Arm : OrganBase
         // smartCollider.collider.enabled = false;
         playerDamageManager.playerSmartCollider.onTriggerEnter.RemoveListener(Punch);
         playerDamageManager.playerSmartCollider.collider.enabled = false;
+        
+        playerDamageManager.punchStack--;
+        if (playerDamageManager.punchStack > 0)
+        {
+            playerDamageManager.playerSmartCollider.collider.enabled = true;
+        }
     }
 
     public void Punch(GameObject target)

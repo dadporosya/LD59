@@ -15,6 +15,7 @@ public class PlayerDamageManager : MonoBehaviour
     [HideInInspector] public BPMManager bpmManager;
 
     public SmartCollider playerSmartCollider;
+    public int punchStack=0;
     
     public TextMeshProUGUI tempDamageLabel;
 

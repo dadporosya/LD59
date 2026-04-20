@@ -91,6 +91,7 @@ public class MissileLauncherEnemy : EnemyBase
 
     public void Shoot(Transform targetIn)
     {
+        h.Out(playerDamageManager.aquariumParent, playerDamageManager);
         if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return; // temp?
         
         h.ShakeObject(this, launcherBone, 0.1f, 1f, 0.5f);
