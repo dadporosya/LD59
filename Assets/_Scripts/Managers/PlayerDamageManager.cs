@@ -26,6 +26,7 @@ public class PlayerDamageManager : MonoBehaviour
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!playerSmartCollider) FindPlayerCollider();
         playerSmartCollider.collider.enabled = false;
+        playerSmartCollider.targetTags.Add("Enemy");
         if (!damageScreenImage) damageScreenImage = GameObject.Find("DamageScreen").GetComponent<Image>();
     }
 

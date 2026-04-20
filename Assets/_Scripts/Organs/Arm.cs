@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Arm : OrganBase
@@ -54,12 +56,26 @@ public class Arm : OrganBase
     // This will be called from Animation Event
     public void StartPunch()
     {
-        smartCollider.collider.enabled = true;
+        StartCoroutine(StartPunchCoroutine());
+
+    }
+
+    public IEnumerator StartPunchCoroutine()
+    {
+        // smartCollider.collider.enabled = true;
+        
+        playerDamageManager.playerSmartCollider.onTriggerEnter.AddListener(Punch);
+        playerDamageManager.playerSmartCollider.collider.enabled = true;
+        yield return new WaitForSeconds(0.01f);
+        EndPunch();
+        yield return null;
     }
 
     public void EndPunch()
     {
-        smartCollider.collider.enabled = false;
+        // smartCollider.collider.enabled = false;
+        playerDamageManager.playerSmartCollider.onTriggerEnter.RemoveListener(Punch);
+        playerDamageManager.playerSmartCollider.collider.enabled = false;
     }
 
     public void Punch(GameObject target)
