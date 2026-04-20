@@ -72,7 +72,7 @@ public class PoliceEnemy : EnemyBase,IBlindable
 
     public void AttackPlayerIndirectly()
     {
-        playerDamageManager.TakeDamage((int)damage);
+        playerDamageManager.TakeDamage(damage);
         animator.Play("PoliceEnemyAttack");
     }
 

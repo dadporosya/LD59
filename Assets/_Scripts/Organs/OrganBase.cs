@@ -29,7 +29,7 @@ public class OrganBase : MonoBehaviour, IAction
     }
 
     public Sprite targetIcon;
-
+    
     public virtual void Awake()
     {
         if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;

@@ -18,7 +18,11 @@ public class BarrierEnemy : EnemyBase
     public OrganBase targetOrgan;
     public SpriteRenderer targetOrganIcon;
     public Transform gunPoint;
-    public float disableRange = -1f;
+    public float attackRange = -1f;
+    public float damage;
+    public LineRenderer linePrefab;
+    public GameObject explosionPrefab;
+    [SerializeField] private float explosionDuration = 0.5f;
     
     private void Awake()
     {
@@ -43,9 +47,9 @@ public class BarrierEnemy : EnemyBase
         }
         
         if (!gunPoint) gunPoint = transform;
-        if (disableRange <= 0)
+        if (attackRange <= 0)
         {
-            disableRange = h.GetCameraWidth() * 0.8f;
+            attackRange = h.GetCameraWidth() * 0.8f;
         }
     }
 
@@ -132,5 +136,24 @@ public class BarrierEnemy : EnemyBase
                 ? transform.position
                 : h.RandChoice(crackSpawnPoints).position;
         }
+    }
+
+    public void Shoot(Transform target)
+    {
+        if (target)
+        {
+            LineRenderer laserLine = Instantiate(linePrefab, parent:transform);
+            
+            laserLine.positionCount = 2;
+            laserLine.SetPosition(0, targetOrganIcon.transform.position);
+            laserLine.SetPosition(1, target.position);
+
+            GameObject explosion = Instantiate(explosionPrefab, target.position, Quaternion.identity);
+            explosion.transform.localScale *= 0.5f;
+            h.InvokeAfterTime(this, explosionDuration, () => { Destroy(laserLine); });
+            h.InvokeAfterTime(this, explosionDuration, () => { Destroy(explosion); });
+        }
+        
+        playerDamageManager.TakeDamage(damage);
     }
 }
