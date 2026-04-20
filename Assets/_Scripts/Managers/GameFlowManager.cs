@@ -13,6 +13,7 @@ public class GameFlowManager : MonoBehaviour
     private EnemiesSpawnManager enemiesSpawnManager;
     
     [SerializeField] private GameObject restartWindow;
+    [SerializeField] private GameObject playerParent;
 
     [SerializeField] private float restartDuration = 2f;
     
@@ -30,6 +31,9 @@ public class GameFlowManager : MonoBehaviour
     {
         upgradeManager = GameObject.FindFirstObjectByType<UpgradeManager>();
         enemiesSpawnManager = GameObject.FindFirstObjectByType<EnemiesSpawnManager>();
+        restartWindow =  GameObject.Find("RestartWindow");
+        playerParent =  GameObject.FindGameObjectWithTag("PlayerParent");
+
     }
 
     private void Update()
@@ -63,7 +67,6 @@ public class GameFlowManager : MonoBehaviour
         h.Out("loss");
         
         //change sprite
-        GameObject playerParent = GameObject.FindGameObjectWithTag("PlayerParent");
         playerParent.SetActive(false);
         
         GameObject damageScreen = GameObject.Find("DamageScreen");
@@ -89,16 +92,12 @@ public class GameFlowManager : MonoBehaviour
         
         h.Out("restart");
         
-        GameObject restartWindow = GameObject.Find("RestartWindow");
         if (restartWindow)
         {
             restartWindow.SetActive(false);
         }
         
-        GameObject playerParent = GameObject.FindGameObjectWithTag("PlayerParent");
-        
         playerParent.SetActive(true);
-        
         
         enemiesSpawnManager.ClearEnemies();
         upgradeManager.ClearNeuronsAndOrgans();
