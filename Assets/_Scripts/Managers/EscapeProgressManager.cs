@@ -87,6 +87,7 @@ public class EscapeProgressManager : MonoBehaviour
         if  (nextLevel)
         {
             level++;
+            SetXP(maxXP / maxLevel * level);
             // Wait for progress bar to fill before talking
             h.InvokeAfterTime(this, progressBar.drainDuration, () =>
             {

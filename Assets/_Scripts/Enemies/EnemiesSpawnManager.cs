@@ -7,7 +7,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     [SerializeField] private bool useContainer = false;
     public GameObjectObjectsKindsContainer enemyPrefabsContainer;
     public List<GameObject> enemyPrefabs = new List<GameObject>();
-    
+
     private EscapeProgressManager escapeProgressManager;
 
     private Transform scrollingParent;
@@ -19,14 +19,15 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     [SerializeField] private float baseXpValue = 20f;
     [SerializeField] private float stepXP = 5f;
-    public float XPPerEnemy=20f;// ?
+    public float XPPerEnemy = 20f; // ?
 
-    public float XPQuota=0;
+    public float XPQuota = 0;
     public float gainedXP = 0;
 
     public List<EnemyBase> enemies;
 
     public bool finalReached = false;
+
     private void Start()
     {
         if (useContainer)
@@ -34,7 +35,7 @@ public class EnemiesSpawnManager : MonoBehaviour
             enemyPrefabs = new List<GameObject>();
             enemyPrefabs.AddRange(enemyPrefabsContainer.objects.Values.ToList());
         }
-        
+
         if (!scrollingParent) scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
         // Find all objects with tag EnemiesSpawnPoint and add to spawnPoints list
         GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("EnemiesSpawnPoint");
@@ -42,13 +43,13 @@ public class EnemiesSpawnManager : MonoBehaviour
         {
             spawnPoints.Add(obj.transform);
         }
-        
+
         if (!deathPoint) deathPoint = GameObject.FindGameObjectWithTag("EnemiesDeathPoint").transform;
-        
+
         // Find all enemies and add to list
         EnemyBase[] allEnemies = FindObjectsByType<EnemyBase>(FindObjectsSortMode.None);
         enemies.AddRange(allEnemies);
-        
+
         escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
         UpdateThreatLevel();
     }
@@ -57,6 +58,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         XPQuota = h.RangeWithCoof(XPPerEnemy, 0.6f);
     }
+
     public void ProcessXP(float XP)
     {
         gainedXP += XP;
@@ -69,7 +71,7 @@ public class EnemiesSpawnManager : MonoBehaviour
             ProcessXP(0);
         }
     }
-    
+
     public void UpdateThreatLevel()
     {
         threatLevel = (int)escapeProgressManager.currentXP / 100 + 1;
@@ -91,32 +93,33 @@ public class EnemiesSpawnManager : MonoBehaviour
     public GameObject SpawnEnemy(GameObject enemyPrefab = null)
     {
         if (finalReached) return default;
-        
+
         if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs);
         GameObject enemy = null;
         Transform spawnPoint = h.RandChoice(spawnPoints);
         if (enemyPrefab && spawnPoint)
         {
             enemy = Instantiate(
-                enemyPrefab, 
+                enemyPrefab,
                 spawnPoint.position,
                 enemyPrefab.transform.rotation,
                 scrollingParent);
-            
+
             //TEMP
             if (enemy.GetComponent<EnemyBase>() is PoliceEnemy policeEnemy)
-                policeEnemy.transform.localPosition = new Vector3(enemy.transform.localPosition.x, 0, enemy.transform.localPosition.z);
+                policeEnemy.transform.localPosition =
+                    new Vector3(enemy.transform.localPosition.x, 0, enemy.transform.localPosition.z);
         }
-            
-        
+
+
         if (enemy && enemy.TryGetComponent(out EnemyBase enemyComp)) enemies.Add(enemyComp);
-        
+
         return enemy;
     }
 
     public void CheckDeath()
     {
-            
+
         List<EnemyBase> toRemove = new List<EnemyBase>();
         foreach (EnemyBase enemy in enemies)
         {
@@ -125,18 +128,31 @@ public class EnemiesSpawnManager : MonoBehaviour
                 toRemove.Add(enemy);
                 continue;
             }
-            
+
             if (enemy.transform.position.x <= deathPoint.position.x)
             {
                 enemy.Death();
                 toRemove.Add(enemy);
             }
-            
+
         }
+
         foreach (var enemy in toRemove)
         {
             enemies.Remove(enemy);
         }
     }
-    
+
+    public void ClearEnemies()
+    {
+        foreach (EnemyBase enemy in enemies)
+        {
+            if (enemy)
+            {
+                Destroy(enemy.gameObject);
+            }
+        }
+
+        enemies.Clear();
+    }
 }

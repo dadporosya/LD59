@@ -143,8 +143,31 @@ public class UpgradeManager : MonoBehaviour
         }
         neuron.Init(organ.gameObject, actionKey);
         neurons.Add(neuron);
-        
-        
-        
     }
+    
+    public void ClearNeuronsAndOrgans()
+    {
+        // Destroy all organs
+        foreach (OrganBase organ in organs)
+        {
+            if (organ)
+            {
+                Destroy(organ.gameObject);
+            }
+        }
+        organs.Clear();
+        
+        // Destroy all neurons
+        foreach (Neuron neuron in neurons)
+        {
+            if (neuron)
+            {
+                Destroy(neuron.gameObject);
+            }
+        }
+        neurons.Clear();
+    }
+    
+    
+    
 }
