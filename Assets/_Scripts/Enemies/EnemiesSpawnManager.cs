@@ -57,6 +57,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     public void GenerateQuota()
     {
         XPQuota = h.RangeWithCoof(XPPerEnemy, 0.6f);
+        if (XPQuota <= 0) XPQuota = baseXpValue;
     }
 
     public void ProcessXP(float XP)
@@ -68,7 +69,7 @@ public class EnemiesSpawnManager : MonoBehaviour
             gainedXP = h.Min(0, gainedXP - XPQuota);
             SpawnEnemy();
             GenerateQuota();
-            ProcessXP(0);
+            // ProcessXP(0);
         }
     }
 
@@ -76,6 +77,7 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         threatLevel = (int)escapeProgressManager.currentXP / 100 + 1;
         XPPerEnemy = baseXpValue - stepXP * (threatLevel - 1);
+        if (XPQuota <= 0) XPQuota = baseXpValue;
         // update enemies mb
         if (escapeProgressManager.currentXP >= escapeProgressManager.maxXP)
         {

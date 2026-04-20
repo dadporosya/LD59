@@ -74,7 +74,7 @@ public class EscapeProgressManager : MonoBehaviour
             ChangeBarFillTime(newTimeToFadeFill);
         }
         UpdateBar();
-        CheckOverflow();
+        // CheckOverflow();
     }
 
     public void CheckOverflow()

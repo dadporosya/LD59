@@ -77,6 +77,8 @@ public class BPMManager : MonoBehaviour
         {
             StopCoroutine(beatCoroutine);
         }
+        
+        ProcessBeat(true);
     }
 
     private IEnumerator BPMCoroutine()
@@ -108,6 +110,11 @@ public class BPMManager : MonoBehaviour
             }
             
             HeartBeat();
+            if (bpm == 0)
+            {
+                StopHeartBeat();
+                yield break;
+            }
             yield return new WaitForSeconds((float)60/(float)bpm);
         }
         yield return null;
@@ -124,7 +131,7 @@ public class BPMManager : MonoBehaviour
         if (!newValue)
         {
             int reduction = -1 * (int)h.RangeWithCoof(currentBPMReduction, 0.5f);
-            ChangeBPM(reduction, false);
+            bpm += reduction;
         }
         
         h.Out(bpm);
