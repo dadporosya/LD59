@@ -42,7 +42,7 @@ public class PurchaseItemUIWindow : MonoBehaviour
         if (!purchaseButton) purchaseButton = GetComponent<Button>();
         
         if (!content) return;
-        h.Out("assignbtn");
+        // h.Out("assignbtn");
         if (purchaseButton) purchaseButton.onClick.AddListener(() =>
         {
             purchaseManager.BuyItem(content);

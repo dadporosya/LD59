@@ -20,7 +20,7 @@ public class BackgroundScroller : MonoBehaviour
         {
             backgroundObjects.Enqueue(backgroundObject);
         }
-        h.Out(backgroundObjects.Count);
+        // h.Out(backgroundObjects.Count);
         borderX = backgroundObjects.Peek().localPosition.x;
     }
 

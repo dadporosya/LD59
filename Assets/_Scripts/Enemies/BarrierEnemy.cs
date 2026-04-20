@@ -16,7 +16,7 @@ public class BarrierEnemy : EnemyBase
     [SerializeField] private List<Transform> crackSpawnPoints= new List<Transform>();
 
     public OrganBase targetOrgan;
-    public SpriteRenderer targetOrganIcon;
+    public SpriteRenderer targetOrganIconHolder;
     public Transform gunPoint;
     public float attackRange = -1f;
     public float damage;
@@ -42,8 +42,12 @@ public class BarrierEnemy : EnemyBase
 
         if (targetOrgan)
         {
-            if (targetOrgan.targetIcon) targetOrganIcon.sprite = targetOrgan.targetIcon;
-            else targetOrganIcon.sprite = targetOrgan.actionIcon;
+            if (targetOrgan.targetIcon) targetOrganIconHolder.sprite = targetOrgan.targetIcon;
+            else targetOrganIconHolder.sprite = targetOrgan.actionIcon;
+        }
+        else
+        {
+            Destroy(targetOrganIconHolder);
         }
         
         if (!gunPoint) gunPoint = transform;
@@ -145,7 +149,7 @@ public class BarrierEnemy : EnemyBase
             LineRenderer laserLine = Instantiate(linePrefab, parent:transform);
             
             laserLine.positionCount = 2;
-            laserLine.SetPosition(0, targetOrganIcon.transform.position);
+            laserLine.SetPosition(0, targetOrganIconHolder.transform.position);
             laserLine.SetPosition(1, target.position);
 
             GameObject explosion = Instantiate(explosionPrefab, target.position, Quaternion.identity);

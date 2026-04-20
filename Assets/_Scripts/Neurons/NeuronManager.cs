@@ -14,12 +14,13 @@ public class NeuronManager : MonoBehaviour
     public void OnNeuronActivation(OrganBase organ, Transform target)
     {
         if (!organ) return;
-        
+        h.Out(organ);
         // Find all BarrierEnemy in scrollingParent
         BarrierEnemy[] barriers = scrollingParent.GetComponentsInChildren<BarrierEnemy>();
         foreach (BarrierEnemy barrier in barriers)
         {
-            if (barrier.targetOrgan == null || barrier.targetOrgan.GetType() != organ.GetType())
+            if (barrier.targetOrgan == null
+                || barrier.targetOrgan.GetType() != organ.GetType())
             {
                 continue;
             }
