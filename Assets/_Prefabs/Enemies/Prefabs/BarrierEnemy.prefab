@@ -211,7 +211,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 2924337168605463369, guid: 482b9d164681fb2469f296c55e24e14d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   - {fileID: 8463564133939679734, guid: 245378978fa8723498ec264e60364033, type: 3}
   - {fileID: 6875332051640530347, guid: c122f55ac86fe8c43b4dae72a0f7e115, type: 3}
   - {fileID: 6365442535962660301, guid: 7ae0110558b461946bab34f208a5261e, type: 3}
+  crackSpawnPoints: []
 --- !u!61 &2106013124401727842
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -316,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 8908969881659328984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.416, y: -0.833, z: 0}
+  m_LocalPosition: {x: 0.655, y: -0.605, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
