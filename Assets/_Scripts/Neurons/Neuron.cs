@@ -125,6 +125,8 @@ public class Neuron : MonoBehaviour
         {
             neuronManager.OnNeuronActivation(organ, bottom.transform);
         }
+
+        
     }
 
     private IEnumerator ResetCooldown()
@@ -141,7 +143,13 @@ public class Neuron : MonoBehaviour
         sparks.Add(spark);
         if (actionPerformer != null)
         {
-            spark.onReachedTarget.AddListener(() => actionPerformer.Action());
+            spark.onReachedTarget.AddListener(() =>
+            {
+                actionPerformer.Action();
+                h.ShakeObject(this, top, 0.01f, 5, 0.3f);
+            });
         }
+        
+        h.ShakeObject(this, bottom, 0.01f, 5, spark.GetTimeToTarget());
     }
 }
