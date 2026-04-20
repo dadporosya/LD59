@@ -14,6 +14,7 @@ public class PurchaseManager : MonoBehaviour
     private UpgradeManager upgradeManager;
     
     private List<PurchaseItemBase> choicesForRandomItem = new List<PurchaseItemBase>();
+    private int choiceInitialSize = 0;
 
     private void Start()
     {
@@ -47,13 +48,18 @@ public class PurchaseManager : MonoBehaviour
                 choicesForRandomItem.Add(upgradeItem);
             }
         }
+        
+        choiceInitialSize =  choicesForRandomItem.Count;
     }
     public PurchaseItemBase GetRandomItem()
     {
         if (choicesForRandomItem == null || choicesForRandomItem.Count == 0) GenerateChoices();
-        h.Out(choicesForRandomItem);
         
-        return h.RandChoice(choicesForRandomItem);
+        h.Out(choicesForRandomItem);
+        var item = h.RandChoice(choicesForRandomItem);
+        if (choiceInitialSize > 3 && choicesForRandomItem != null)
+            choicesForRandomItem.Remove(item);
+        return item;
     }
 
     public void OpenShopWindow(int itemCount=3)
