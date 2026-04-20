@@ -126,8 +126,9 @@ public class PlayerDamageManager : MonoBehaviour
             StopCoroutine(BPMReductionCoroutineInst);
             h.Out("after stop", BPMReductionCoroutineInst);
         }
-        h.Out("after stop", BPMReductionCoroutineInst);
         BPMReductionCoroutineInst = null;
+        h.Out("after stop", BPMReductionCoroutineInst);
+        
         yield return null;
     }
 
