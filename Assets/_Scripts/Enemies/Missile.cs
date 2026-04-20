@@ -8,7 +8,7 @@ public class Missile : MonoBehaviour, IBlindable
     public float damage = 2.5f;
     public float radiusMult = 1f;
     public float reactTime=2f;
-    public float reactTimeCoof = 0.95f;
+    public float reactTimeCoof = 1f;
     public float missileSpeed = 10f;
 
     public GameObject aimPrefab;
@@ -72,11 +72,11 @@ public class Missile : MonoBehaviour, IBlindable
         h.Out(targetAngleZ);
 
         float elapsed = 0f;
-        while (elapsed < reactTime)
+        while (elapsed < reactTime * reactTimeCoof)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / reactTime;
-
+        
             float angleZ = Mathf.LerpAngle(startAngleZ, targetAngleZ, t);
             transform.rotation = Quaternion.Euler(0f, 0f, angleZ);
 
@@ -84,6 +84,8 @@ public class Missile : MonoBehaviour, IBlindable
         }
 
         transform.rotation = Quaternion.Euler(0f, 0f, targetAngleZ);
+
+        yield return new WaitForSeconds(reactTime * (1-reactTimeCoof));
 
         // --- Phase 2: Accelerate toward target and explode on arrival ---
         float velocity = -2f * missileSpeed; // starts negative (pulls back before launching)
