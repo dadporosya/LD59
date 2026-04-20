@@ -47,6 +47,7 @@ public class BPMManager : MonoBehaviour
     
     public void SetBPM(int value)
     {
+        if (bpm == value) return;
         bpm = value;
         ProcessBeat(true);
     }
@@ -78,7 +79,7 @@ public class BPMManager : MonoBehaviour
             StopCoroutine(beatCoroutine);
         }
         
-        ProcessBeat(true);
+        // ProcessBeat(true);
     }
 
     private IEnumerator BPMCoroutine()
