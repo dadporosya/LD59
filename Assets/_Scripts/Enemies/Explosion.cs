@@ -24,6 +24,8 @@ public class Explosion : MonoBehaviour
 
     public void Explode(bool explodeWithCollider=true)
     {
+        h.ShakeOnce(1.5f, 5, 0, 0.15f);
+        
         if (!explodeWithCollider) smartCollider.enabled = false;
         else
         {
