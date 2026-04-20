@@ -82,7 +82,7 @@ public class GameFlowManager : MonoBehaviour
         if (state == States.Loss) return;
         state = States.Loss;
         
-        h.Out("CURENT LOSSS!!!!!!!_--------------------------------------");
+        h.Out("CURENT LOSSS!!!!!!!_--------------------------------------", state);
         h.Out(currentDeathMessage);
         ProcessLoss();
     }
@@ -141,6 +141,22 @@ public class GameFlowManager : MonoBehaviour
     {
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(0, 1, restartDuration/2));
         playerParent.SetActive(true);
+        
+        // update cellmanager
+        FindFirstObjectByType<CellsManager>().Init();
+        
+        // update xpmanager
+        FindFirstObjectByType<EscapeProgressManager>().Init();
+        
+        // update bpm manager
+        FindFirstObjectByType<BPMManager>().Init();
+        
+        //update damage manager
+        FindFirstObjectByType<PlayerDamageManager>().Init();
+
+        upgradeManager.Init();
+        
+        
         h.Out("loss screen", currentLossScreen);
         if (currentLossScreen) Destroy(currentLossScreen);
         
@@ -171,19 +187,7 @@ public class GameFlowManager : MonoBehaviour
             upgradeManager.AddOrgan(organ);
         }
         
-        // update cellmanager
-        FindFirstObjectByType<CellsManager>().Init();
         
-        // update xpmanager
-        FindFirstObjectByType<EscapeProgressManager>().Init();
-        
-        // update bpm manager
-        FindFirstObjectByType<BPMManager>().Init();
-        
-        //update damage manager
-        FindFirstObjectByType<PlayerDamageManager>().Init();
-
-        upgradeManager.Init();
         
         h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
         damageScreen.GetComponent<Image>().color = lossColor;

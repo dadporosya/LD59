@@ -32,11 +32,20 @@ public class UpgradeManager : MonoBehaviour
     {
         armPrefab = null;
         legPrefab = null;
+
+        ClearNeuronsAndOrgans();
         
         neurons.Clear();
         organs.Clear();
         
-        Start();
+        armSpawnPoints.Clear();
+        legSpawnPoints.Clear();
+
+        armSpawnPoints.AddRange(h.FindAllTransformsWithTag("ArmSpawnPointIn"));
+        armSpawnPoints.AddRange(h.FindAllTransformsWithTag("ArmSpawnPointOut"));
+        legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointIn"));
+        legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointOut"));
+
     }
     
     private void Start()
@@ -50,6 +59,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (neuron.TryGetComponent<Neuron>(out Neuron neuronComponent))
                 {
+                    h.Out(neuron, "neuron");
                     neurons.Add(neuronComponent);
                 }
             }
