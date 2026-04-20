@@ -65,7 +65,9 @@ public class Spark : MonoBehaviour
             yield return null;
         }
         
-        onReachedTarget?.Invoke();
+        
+        if (FindFirstObjectByType<GameFlowManager>().IsPaused() == false)
+            onReachedTarget?.Invoke();
         Destroy(gameObject);
     }
 }

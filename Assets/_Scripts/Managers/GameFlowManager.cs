@@ -133,6 +133,7 @@ public class GameFlowManager : MonoBehaviour
     {
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(0, 1, restartDuration/2));
         
+        h.Out("loss screen", currentLossScreen);
         if (currentLossScreen) Destroy(currentLossScreen);
         
         GameObject damageScreen = GameObject.Find("DamageScreen");
