@@ -129,8 +129,8 @@ TextureImporter:
       name: Barier_0
       rect:
         serializedVersion: 2
-        x: 356
-        y: 172
+        x: 12
+        y: 285
         width: 439
         height: 450
       alignment: 0
@@ -143,6 +143,94 @@ TextureImporter:
       bones: []
       spriteID: 943433a3925559820800000000000000
       internalID: 2924337168605463369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barier_1
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 460
+        width: 244
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec0ff321cf27fe43a953aa1092f75c8
+      internalID: 300431620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barier_2
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 352
+        width: 151
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c13af969537197448dc55a7bdb51073
+      internalID: -1898447822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barier_5
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 389
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df07e7f797a5b0d488bba28e3991fc7b
+      internalID: -246638693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barier_6
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 69
+        width: 194
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd843843577b204f90b98d4ec55d94b
+      internalID: -834253135
       vertices: []
       indices: 
       edges: []
@@ -164,6 +252,13 @@ TextureImporter:
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Barier_0: 2924337168605463369
+      Barier_1: 300431620
+      Barier_2: -1898447822
+      Barier_3: 1155574736
+      Barier_4: 334122786
+      Barier_5: -246638693
+      Barier_6: -834253135
+      Barier_7: 965112020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

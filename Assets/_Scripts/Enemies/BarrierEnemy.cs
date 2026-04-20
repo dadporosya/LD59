@@ -34,9 +34,12 @@ public class BarrierEnemy : EnemyBase
         int ramValue = scrollManager.scrollCoroutines.Count;
         
         h.Out(ramValue,(scrollManager.currentSpeed / Preferences.defaultLegSpeed * ramValuePerHit));
+
+        float addionalXPReduction = -5f;
         
         if (ramValue > 1)
         {
+            addionalXPReduction = 0;
             TakeDamage(ramValue-1);
             // or dead insted;
             h.ShakeOnce(3, 10, 0, 0.3f);
@@ -62,7 +65,7 @@ public class BarrierEnemy : EnemyBase
         
         escapeProgressManager.ChangeXP(
             (distance/Preferences.distancePerXP
-              + (scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed - escapeProgressManager.onChangeTempXP)),
+              + (scrollManager.scrollCoroutines.Count * Preferences.defaultLegSpeed - escapeProgressManager.onChangeTempXP) + addionalXPReduction),
             distance/Mathf.Abs(speed));
         
         
