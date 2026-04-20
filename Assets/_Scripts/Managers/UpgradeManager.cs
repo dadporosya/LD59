@@ -59,7 +59,10 @@ public class UpgradeManager : MonoBehaviour
         h.Out(neuronBGWidth);
         float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f);
         Vector3 neuronPosition = neuronParent.position + neuronOffset;
-        neuronPosition.x = neuronParent.position.x + ((neurons.Count+1 - 5) * gap) - neuronBGWidth/2;
+        neuronPosition.x = neuronParent.position.x + ((neurons.Count+1) * gap) - neuronBGWidth/2;
+
+        neuronPosition.y += h.Range(-0.2f, 0f);
+        neuronPosition.x +=  h.Range(-0.1f, 0.1f);
         
         Neuron neuron = Instantiate(neuronPrefab, neuronPosition, Quaternion.identity, neuronParent);
         string actionKey;
