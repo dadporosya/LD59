@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDamageManager : MonoBehaviour
 {
-    // TODO потемнение экрана чем больше урона
     public float damageTaken=0;
-    public float recoverySpeed=0.01f;
+    public float damageThreshold = 5f;
+    public Image damageScreenImage;
+    public float recoverySpeed=0.5f; // TODO
     private Coroutine BPMReductionCoroutineInst;
     [HideInInspector] public BPMManager bpmManager;
 
@@ -21,6 +23,7 @@ public class PlayerDamageManager : MonoBehaviour
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!playerSmartCollider) FindPlayerCollider();
         playerSmartCollider.collider.enabled = false;
+        if (!damageScreenImage) damageScreenImage = GameObject.Find("DamageScreen").GetComponent<Image>();
     }
 
     public void FindPlayerCollider()
@@ -33,10 +36,26 @@ public class PlayerDamageManager : MonoBehaviour
     public void TakeDamage(float value)
     {
         damageTaken += value;
+        UpdateDamageScreen();
         if (BPMReductionCoroutineInst == null)
         {
             BPMReductionCoroutineInst = StartCoroutine(BPMReductionCoroutine());
         }
+    }
+
+    public void UpdateDamageScreen()
+    {
+        if (!damageScreenImage) return;
+        
+        if (!damageScreenImage) return;
+        
+        // float alpha = Mathf.Clamp01(damageTaken / damageThreshold);
+        float alpha = h.Min(damageTaken / damageThreshold, 0.97f);
+        h.Out(damageTaken, damageThreshold, damageTaken/damageThreshold, alpha);
+
+        Color damageColor = damageScreenImage.color;
+        damageColor.a = alpha;
+        damageScreenImage.color = damageColor;
     }
 
     private IEnumerator BPMReductionCoroutine()
@@ -50,6 +69,8 @@ public class PlayerDamageManager : MonoBehaviour
                 );
 
             tempDamageLabel.text = bpmManager.currentBPMReduction.ToString();
+            
+            UpdateDamageScreen();
             
             yield return null;
         }
