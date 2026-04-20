@@ -18,6 +18,7 @@ public class UpgradeManager : MonoBehaviour
 
     public GameObject neuronBG;
     public int maxNeuronCount = 10;
+    public Vector3 neuronOffset = new Vector3(0,0,0);
     
     private void Start()
     {
@@ -57,8 +58,8 @@ public class UpgradeManager : MonoBehaviour
         }
         h.Out(neuronBGWidth);
         float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f);
-        Vector3 neuronPosition = neuronParent.position;
-        neuronPosition.x = neuronParent.position.x + ((neurons.Count+1) * gap) - neuronBGWidth;
+        Vector3 neuronPosition = neuronParent.position + neuronOffset;
+        neuronPosition.x = neuronParent.position.x + ((neurons.Count+1 - 5) * gap) - neuronBGWidth/2;
         
         Neuron neuron = Instantiate(neuronPrefab, neuronPosition, Quaternion.identity, neuronParent);
         string actionKey;
