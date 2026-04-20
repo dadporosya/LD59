@@ -18,6 +18,8 @@ public class BPMManager : MonoBehaviour
     [SerializeField] private float sharpness = 7f;
     [SerializeField] private float beatDuration = 0.2f;
 
+    private GameFlowManager gameFlowManager;
+    
     public UnityEvent OnBeat;
 
     public void Init()
@@ -33,6 +35,7 @@ public class BPMManager : MonoBehaviour
     
     private void Start()
     {
+        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
         currentBPMReduction = baseBPMReduction;
         if (!bpmText) bpmText = GameObject.Find("BPMNumberTextTMP").GetComponent<TextMeshProUGUI>();
         SetBPM(bpm);
@@ -79,6 +82,12 @@ public class BPMManager : MonoBehaviour
         ProcessBeat(true);
         while (true)
         {
+            if (gameFlowManager.IsPaused())
+            {
+                yield return new WaitForSeconds(1);
+                continue;
+            }
+            
             ProcessBeat();
             if (bpm <= fatalBPM)
             {
@@ -94,6 +103,12 @@ public class BPMManager : MonoBehaviour
     {
         while (true)
         {
+            if (gameFlowManager.IsPaused())
+            {
+                yield return new WaitForSeconds(1);
+                continue;
+            }
+            
             HeartBeat();
             yield return new WaitForSeconds((float)60/(float)bpm);
         }

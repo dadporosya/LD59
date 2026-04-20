@@ -125,6 +125,6 @@ public class GameFlowManager : MonoBehaviour
 
     public bool IsPaused()
     {
-        return state == States.Pause;
+        return state != States.Game;
     }
 }
