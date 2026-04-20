@@ -67,9 +67,10 @@ public class Bar : MonoBehaviour
         UpdateBar();
         UpdateTrackerPosition();
     }
-
+    
     private void Awake()
     {
+        if (_spawnedTracker) Destroy(_spawnedTracker);
         if (!image) image = GetComponent<Image>();
         if (indicator && indicatorCount > 1) CreateSpreadIndicators(indicatorCount);
     }
