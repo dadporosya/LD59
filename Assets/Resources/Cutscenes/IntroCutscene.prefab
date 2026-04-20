@@ -45,5 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroCutscene
   runOnStart: 0
+  intro: 0
+  waitDuration: 0.2
   fadeDuration: 2
   introDuration: 5

@@ -22,26 +22,36 @@ public class IntroCutscene : CutSceneBase
 
         if (!intro)
         {
+            introUI.SetActive(false);
             waitDuration=0f;
             fadeDuration=0f;
             introDuration=0f;
+            rawSteps = new List<IEnumerator>();
+            {
+                BeginGame();
+            }
+            cutsceneSteps.Add(BeginGame());
+        }
+        else
+        {
+
+
+            rawSteps = new List<IEnumerator>()
+            {
+                FadeIn(0),
+                Wait(waitDuration),
+                Intro(),
+                FadeIn(fadeDuration),
+                RemoveIntroUI(),
+                Wait(waitDuration),
+                FadeOut(fadeDuration),
+                BeginGame()
+            };
         }
 
-        rawSteps = new List<IEnumerator>()
-        {
-            FadeIn(0),
-            Wait(waitDuration),
-            Intro(),
-            FadeIn(fadeDuration),
-            RemoveIntroUI(),
-            Wait(waitDuration),
-            FadeOut(fadeDuration),
-            BeginGame(),
-        };
-        
-        
-        
-        
+
+
+
 
         foreach (IEnumerator step in rawSteps)
         {
@@ -84,5 +94,6 @@ public class IntroCutscene : CutSceneBase
         
         gameFlowManager.SetOnPause();
         dialogueManager.GetComponent<Talkable>().Talk(0);
+        yield return new WaitForSeconds(0.1f);
     }
 }

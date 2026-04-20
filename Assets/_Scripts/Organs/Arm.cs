@@ -68,7 +68,7 @@ public class Arm : OrganBase
         playerDamageManager.playerSmartCollider.collider.enabled = true;
         playerDamageManager.punchStack++;
         h.Out(playerDamageManager.playerSmartCollider.collider.enabled);
-        yield return new WaitForSeconds(0.015f);
+        yield return new WaitForSeconds(0.01f);
         EndPunch();
         yield return null;
     }

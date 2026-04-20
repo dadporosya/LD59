@@ -87,7 +87,11 @@ public class EscapeProgressManager : MonoBehaviour
         if  (nextLevel)
         {
             level++;
-            dialogueManager.GetComponent<Talkable>().Talk(level);
+            // Wait for progress bar to fill before talking
+            h.InvokeAfterTime(this, progressBar.drainDuration, () =>
+            {
+                dialogueManager.GetComponent<Talkable>().Talk(level);
+            });
         }
         
         
