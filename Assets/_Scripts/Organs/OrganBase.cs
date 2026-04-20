@@ -7,6 +7,8 @@ public class OrganBase : MonoBehaviour, IAction
     {
         In, Out, OutIn
     }
+
+    public bool overlapAquarium = false;
     // in - floatin in aqua
     // out - completely outside
     // outin - outside, but in the same parent
@@ -29,6 +31,16 @@ public class OrganBase : MonoBehaviour, IAction
     public virtual void Awake()
     {
         if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;
+
+        if (overlapAquarium)
+        {
+            h.UpdateLayersRecursively(transform, Preferences.aquariumOrderInLayer);
+            h.SetSpriteMaskInteractionRecursively(transform, SpriteMaskInteraction.None);
+        }
+        else
+        {
+            h.SetSpriteMaskInteractionRecursively(transform, SpriteMaskInteraction.VisibleOutsideMask);
+        }
     }
 
     public virtual void Action()

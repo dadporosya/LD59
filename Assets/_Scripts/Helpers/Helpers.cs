@@ -951,6 +951,36 @@ public static class h
     {
         return Resources.Load<T>(path);
     }
+
+    public static void UpdateLayersRecursively(Transform t, int deltaLayer)
+    {
+        // Check if current transform has SpriteRenderer
+        if (t.TryGetComponent<SpriteRenderer>(out SpriteRenderer sr))
+        {
+            sr.gameObject.layer += deltaLayer;
+        }
+        
+        // Recursively process all children
+        foreach (Transform child in t)
+        {
+            UpdateLayersRecursively(child, deltaLayer);
+        }
+    }
+
+    public static void SetSpriteMaskInteractionRecursively(Transform t, SpriteMaskInteraction maskInteraction)
+    {
+        // Check if current transform has SpriteRenderer
+        if (t.TryGetComponent<SpriteRenderer>(out SpriteRenderer sr))
+        {
+            sr.maskInteraction = maskInteraction;
+        }
+        
+        // Recursively process all children
+        foreach (Transform child in t)
+        {
+            SetSpriteMaskInteractionRecursively(child, maskInteraction);
+        }
+    }
     
     
     
