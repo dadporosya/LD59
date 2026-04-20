@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class FinalMouthCutscene : CutSceneBase
 {
-    [SerializeField] float gapBetweenWords = 0.4f;
+    [SerializeField] float gapBetweenWords = 1f;
     private Mouth mouth;
     private GameObject finalCanvas;
     [SerializeField] private float translateDuration=3f;
@@ -19,6 +19,7 @@ public class FinalMouthCutscene : CutSceneBase
         {
             TranslateMouthToCenter(translateDuration),
             CutsceneStep(),
+            CloseGame(),
         };
         
         foreach (IEnumerator step in rawSteps)
@@ -61,7 +62,7 @@ public class FinalMouthCutscene : CutSceneBase
         mouth.transform.position = targetPosition;
         mouth.transform.localScale = targetScale;
         
-        yield return new  WaitForSeconds(0.5f);
+        yield return new  WaitForSeconds(2f);
     }
     public IEnumerator CutsceneStep()
     {
@@ -80,11 +81,22 @@ public class FinalMouthCutscene : CutSceneBase
         {
             text.text += word;
             mouth.Talk();
+            h.ShakeOnce(2, 2, 0, gapBetweenWords/2);
             yield return new WaitForSeconds(gapBetweenWords);
         }
         
-        yield return null;
+        yield return new  WaitForSeconds(10f);
+        
+        
     }
 
-    
+    public IEnumerator CloseGame()
+    {
+        yield return null;
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
 }

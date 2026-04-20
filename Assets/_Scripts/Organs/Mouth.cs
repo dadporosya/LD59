@@ -15,7 +15,7 @@ public class Mouth : MonoBehaviour
 
     public IEnumerator TalkCoroutine()
     {
-        SFXManager.Instance.PlayClip(clip);
+        if (clip) SFXManager.Instance.PlayClip(clip);
         foreach (var frame in frames)
         {
             GetComponent<SpriteRenderer>().sprite = frame;
