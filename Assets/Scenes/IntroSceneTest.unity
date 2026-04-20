@@ -1542,7 +1542,7 @@ MonoBehaviour:
   useContainer: 0
   enemyPrefabsContainer: {fileID: 0}
   enemyPrefabs:
-  - {fileID: 5855456799935929099, guid: 2e8d1b85aef015c4b8355431b2b20aa5, type: 3}
+  - {fileID: 5580267807220663651, guid: ad32b2cd61615664f8c37978664cd356, type: 3}
   threatLevel: 1
   spawnPoints: []
   deathPoint: {fileID: 0}

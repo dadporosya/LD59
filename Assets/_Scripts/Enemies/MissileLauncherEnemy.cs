@@ -111,7 +111,8 @@ public class MissileLauncherEnemy : EnemyBase
 
         missile.Init(currentAim.transform, damage, radiusMult, reactTime, missileSpeed);
 
-        h.SmoothTranslating(this, missile.transform, new Vector3(-missileTranslation, -missileTranslation, 0), reactTime/5);
+        float currentTranslation = h.RangeWithCoof(missileTranslation, 0.25f);
+        h.SmoothTranslating(this, missile.transform, new Vector3(-currentTranslation, -currentTranslation, 0), reactTime/5);
     }
 
     public IEnumerator ShakeLauncherBoneCoroutine(
