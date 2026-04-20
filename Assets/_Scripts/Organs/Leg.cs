@@ -25,6 +25,10 @@ public class Leg : OrganBase
 
         if (!animator)
             animator = GetComponent<Animator>();
+        if (!animator)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
 
         if (!scrollManager)
             scrollManager = FindFirstObjectByType<ScrollManager>();

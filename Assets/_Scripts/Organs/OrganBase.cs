@@ -8,12 +8,12 @@ public class OrganBase : MonoBehaviour, IAction
         In, Out, OutIn
     }
 
-    public bool overlapAquarium = false;
+    
     // in - floatin in aqua
     // out - completely outside
     // outin - outside, but in the same parent
     public LocationInAquarium locationInAquarium = LocationInAquarium.In;
-    
+    public bool overlapAquarium = false;
     [SerializeField] private Sprite _actionIcon;
     public Sprite actionIcon
     {
@@ -32,6 +32,14 @@ public class OrganBase : MonoBehaviour, IAction
     {
         if (!actionIcon)  actionIcon = GetComponent<SpriteRenderer>().sprite;
 
+        UpdateOverlap(overlapAquarium);
+    }
+
+    public void UpdateOverlap(bool overlap)
+    {
+        if (locationInAquarium == LocationInAquarium.In) return;
+        
+        overlapAquarium = overlap;
         if (overlapAquarium)
         {
             h.UpdateLayersRecursively(transform, Preferences.aquariumOrderInLayer);
