@@ -98,7 +98,8 @@ public class MissileLauncherEnemy : EnemyBase
         Vector3 targetPos = targetIn.position;
         targetPos.x += h.Range(0f, h.GetCameraWidth() * 0.5f);
 
-        GameObject currentAim = Instantiate(aimPrefab, targetPos, aimPrefab.transform.rotation, transform.parent);
+        GameObject currentAim = Instantiate(
+            aimPrefab, targetPos, aimPrefab.transform.rotation, transform.parent);
         currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
 
         missile.explosionPrefab = explosionPrefab;

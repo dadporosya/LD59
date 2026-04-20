@@ -118,12 +118,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128853286152186393}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 2.89, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.17237, y: 0.56385005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 8294303000589954529}
+  m_Father: {fileID: 7385843653210490519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &964256561626884812
 SpriteRenderer:
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 9bce509528c3ec6469dbfc44f7c7f3b4, type: 3}
+  m_Sprite: {fileID: -4746472984867862730, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -253,8 +253,7 @@ Transform:
   - {fileID: 5273572414264528221}
   - {fileID: 4525597937159854976}
   - {fileID: 5138339945224046954}
-  - {fileID: 7392169054478397639}
-  - {fileID: 144550895952996402}
+  - {fileID: 7385843653210490519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2884148746707859626
@@ -340,6 +339,7 @@ MonoBehaviour:
   crackSpawnPoints: []
   targetOrgan: {fileID: 4736005896824792586, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
   targetOrganIconHolder: {fileID: 964256561626884812}
+  blockSign: {fileID: 0}
   gunPoint: {fileID: 7392169054478397639}
   attackRange: -1
   damage: 2
@@ -392,6 +392,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7364188, y: 4.5}
   m_EdgeRadius: 0
+--- !u!1 &7250906626552524030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7385843653210490519}
+  m_Layer: 0
+  m_Name: Icons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7385843653210490519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7250906626552524030}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06624285, y: 2.676, z: 0}
+  m_LocalScale: {x: 0.69, y: 0.69, z: 0.69}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 7392169054478397639}
+  - {fileID: 144550895952996402}
+  m_Father: {fileID: 8294303000589954529}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8908969881659328984
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,12 +512,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9170912447772555926}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 2.89, z: 0}
-  m_LocalScale: {x: 0.455, y: 0.455, z: 0.455}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.17237, y: 0.56385005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 8294303000589954529}
+  m_Father: {fileID: 7385843653210490519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8587110212577766148
 SpriteRenderer:

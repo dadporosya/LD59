@@ -17,6 +17,7 @@ public class BarrierEnemy : EnemyBase
 
     public OrganBase targetOrgan;
     public SpriteRenderer targetOrganIconHolder;
+    public SpriteRenderer blockSign;
     public Transform gunPoint;
     public float attackRange = -1f;
     public float damage;
@@ -153,6 +154,7 @@ public class BarrierEnemy : EnemyBase
             laserLine.SetPosition(1, target.position);
 
             GameObject explosion = Instantiate(explosionPrefab, target.position, Quaternion.identity);
+            
             explosion.transform.localScale *= 0.5f;
             h.InvokeAfterTime(this, explosionDuration, () => { Destroy(laserLine); });
             h.InvokeAfterTime(this, explosionDuration, () => { Destroy(explosion); });
