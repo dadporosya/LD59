@@ -11,6 +11,8 @@ public class GameFlowManager : MonoBehaviour
 
     private UpgradeManager upgradeManager;
     private EnemiesSpawnManager enemiesSpawnManager;
+    
+    [SerializeField] private GameObject restartWindow;
 
     [SerializeField] private float restartDuration = 2f;
     
@@ -69,7 +71,7 @@ public class GameFlowManager : MonoBehaviour
         lossColor.a = 1f;
         damageScreen.GetComponent<Image>().color = lossColor;
         
-        GameObject restartWindow = GameObject.Find("RestartWindow");
+        h.Out(restartWindow);
         if (restartWindow)
         {
             restartWindow.SetActive(true);
