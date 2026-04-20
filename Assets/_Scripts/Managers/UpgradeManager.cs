@@ -69,6 +69,7 @@ public class UpgradeManager : MonoBehaviour
             
             spawnPoint = h.RandChoice(spawnPoints);
             organ.transform.position = spawnPoint.position;
+            organ.transform.rotation = spawnPoint.rotation;
             
             if (spawnPoint.tag.Contains("Out"))
             {
