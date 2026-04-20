@@ -2561,7 +2561,9 @@ MonoBehaviour:
   recoverySpeed: 0.4
   bpmManager: {fileID: 0}
   playerSmartCollider: {fileID: 1708069197}
+  punchStack: 0
   tempDamageLabel: {fileID: 519843424}
+  aquariumParent: {fileID: 0}
 --- !u!1 &918546571
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,7 +4725,7 @@ MonoBehaviour:
   sizeIncreasementForFirstAndLast: 1.25
   indicatorOffset: {x: 0, y: 0, z: 0}
   tracker: {fileID: 4539345098679224897, guid: 80a71892d7b0c3c45b6d078cca858a74, type: 3}
-  trackersOffset: {x: 0, y: 0, z: 0}
+  trackersOffset: {x: 0, y: 45, z: 0}
   indicatorCount: 5
   drainDuration: 0.25
 --- !u!1 &2054055029

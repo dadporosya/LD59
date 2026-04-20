@@ -57,7 +57,7 @@ public class PlayerDamageManager : MonoBehaviour
         
         // float alpha = Mathf.Clamp01(damageTaken / damageThreshold);
         float alpha = h.Min(damageTaken / damageThreshold, 0.97f);
-        h.Out(damageTaken, damageThreshold, damageTaken/damageThreshold, alpha);
+        // h.Out(damageTaken, damageThreshold, damageTaken/damageThreshold, alpha);
 
         Color damageColor = damageScreenImage.color;
         damageColor.a = alpha;
