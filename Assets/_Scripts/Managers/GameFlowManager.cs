@@ -12,10 +12,12 @@ public class GameFlowManager : MonoBehaviour
     private UpgradeManager upgradeManager;
     private EnemiesSpawnManager enemiesSpawnManager;
     
-    [SerializeField] private GameObject restartWindow;
-    [SerializeField] private GameObject playerParent;
+    [SerializeField] public GameObject restartWindow;
+    [SerializeField] public GameObject playerParent;
 
-    [SerializeField] private float restartDuration = 2f;
+    [SerializeField] public float restartDuration = 2f;
+    
+    public Vector3 cameraInitialPosition;
     
     public enum States
     {
@@ -33,7 +35,8 @@ public class GameFlowManager : MonoBehaviour
         enemiesSpawnManager = GameObject.FindFirstObjectByType<EnemiesSpawnManager>();
         restartWindow =  GameObject.Find("RestartWindow");
         playerParent =  GameObject.FindGameObjectWithTag("PlayerParent");
-
+        
+        cameraInitialPosition = Camera.main.transform.position;
     }
 
     private void Update()
@@ -62,6 +65,11 @@ public class GameFlowManager : MonoBehaviour
     }
 
     public void SetOnLoss()
+    {
+        // load cutscene
+    }
+
+    public void ProcessLoss()
     {
         state = States.Pause;
         h.Out("loss");

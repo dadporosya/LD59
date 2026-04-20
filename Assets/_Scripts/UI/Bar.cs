@@ -198,7 +198,7 @@ public class Bar : MonoBehaviour
         }
         
         // TEMP
-        if (tracker  /* && !_spawnedTracker */)
+        if (tracker  /* && !_spawnedTracker */ && !_spawnedTracker)
         {
             _spawnedTracker = Instantiate(tracker, image.rectTransform).GetComponent<BarTracker>();
         }
