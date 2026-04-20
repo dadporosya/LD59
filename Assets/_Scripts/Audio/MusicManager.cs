@@ -8,7 +8,7 @@ public class MusicManager : AudioManagerBase
     public static MusicManager Instance; // Instance
 
     [SerializeField] private AudioClip deafultBGMusic;
-    private string defaultBGMusicPath = "Audio/Music/bgMusicTest";
+    private string defaultBGMusicPath = "Audio/Music/bgMusic";
     
     private AudioSource musicSourceA;
     private AudioSource musicSourceB;

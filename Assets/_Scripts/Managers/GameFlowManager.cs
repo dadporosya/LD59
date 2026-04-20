@@ -78,18 +78,19 @@ public class GameFlowManager : MonoBehaviour
 
     public void SetOnLoss()
     {
+        h.Out("CURENT LOSSS!!!!!!!_--------------------------------------", state);
         // cutSceneManager.RunCutscene("LossCutscene");
         if (state == States.Loss) return;
         state = States.Loss;
+        h.Out("ANOTHER LOSSS!!!!!!!_--------------------------------------", state);
         
-        h.Out("CURENT LOSSS!!!!!!!_--------------------------------------", state);
         h.Out(currentDeathMessage);
         ProcessLoss();
     }
 
     public void ProcessLoss()
     {
-        state = States.Pause;
+        state = States.Loss;
         h.Out("loss");
         
         //change sprite
@@ -179,6 +180,7 @@ public class GameFlowManager : MonoBehaviour
         // Reset camera to initial position
         Camera.main.transform.position = cameraInitialPosition;
         
+        ClearAllConnections();
         enemiesSpawnManager.ClearEnemies();
         upgradeManager.ClearNeuronsAndOrgans();
 
@@ -192,6 +194,8 @@ public class GameFlowManager : MonoBehaviour
         h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
         damageScreen.GetComponent<Image>().color = lossColor;
         h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
+        
+        
         
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(1, 0, restartDuration/2));
         SetOnGame();
@@ -211,5 +215,14 @@ public class GameFlowManager : MonoBehaviour
         if (!damageImage) return;
         
         damageScreenFadeCoroutine = StartCoroutine(FadeDamageScreenCoroutine(damageImage, fromAlpha, toAlpha, duration));
+    }
+
+    public void ClearAllConnections()
+    {
+        Connection[] allConnections = FindObjectsOfType<Connection>();
+        foreach (Connection connection in allConnections)
+        {
+            connection.OnDestroy();
+        }
     }
 }

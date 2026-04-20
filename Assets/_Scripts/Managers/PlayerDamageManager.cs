@@ -38,13 +38,16 @@ public class PlayerDamageManager : MonoBehaviour
     
     private void Awake()
     {
-        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
+        if (BPMReductionCoroutineInst != null)  StopCoroutine(BPMReductionCoroutineInst);
+        BPMReductionCoroutineInst = null;
+        
+        if (!gameFlowManager) gameFlowManager = FindFirstObjectByType<GameFlowManager>();
         
         if (!aquariumParent) aquariumParent = GameObject.FindGameObjectWithTag("AquariumParent").transform;
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!playerSmartCollider) FindPlayerCollider();
         playerSmartCollider.collider.enabled = false;
-        playerSmartCollider.targetTags.Add("Enemy");
+        if (playerSmartCollider.targetTags.Contains("Enemy") == false) playerSmartCollider.targetTags.Add("Enemy");
         if (!damageScreenImage) damageScreenImage = GameObject.Find("DamageScreen").GetComponent<Image>();
     }
 
@@ -59,11 +62,12 @@ public class PlayerDamageManager : MonoBehaviour
     {
         if (gameFlowManager.IsPaused()) return;
         
-        h.Out("TakeDamag");
+        h.Out("-----------------TAKEDAMAG-----------------");
         damageTaken += value;
+        
         UpdateDamageScreen();
         h.Out(BPMReductionCoroutineInst);
-        if (BPMReductionCoroutineInst == null)
+        if (BPMReductionCoroutineInst == null || damageTaken == value)
         {
             BPMReductionCoroutineInst = StartCoroutine(BPMReductionCoroutine());
         }
@@ -76,6 +80,7 @@ public class PlayerDamageManager : MonoBehaviour
         if (!damageScreenImage) return;
         
         // float alpha = Mathf.Clamp01(damageTaken / damageThreshold);
+        h.Out("-----------------updateblood-----------------");
         float alpha = h.Min(damageTaken / damageThreshold, 0.97f);
         // h.Out(damageTaken, damageThreshold, damageTaken/damageThreshold, alpha);
 
@@ -106,9 +111,12 @@ public class PlayerDamageManager : MonoBehaviour
             
             yield return null;
         }
-
+        
+        h.Out("VIJTI IZ CIKLA", BPMReductionCoroutineInst);
+        // h.Out("");
         bpmManager.currentBPMReduction = bpmManager.baseBPMReduction;
         if (BPMReductionCoroutineInst!=null) StopCoroutine(BPMReductionCoroutineInst);
+        h.Out("after stop", BPMReductionCoroutineInst);
         yield return null;
     }
 
