@@ -33,6 +33,7 @@ public class Explosion : MonoBehaviour
             smartCollider.onTriggerEnter.AddListener((GameObject go) =>
             {
                 FindFirstObjectByType<PlayerDamageManager>().TakeDamage(damage);
+                smartCollider.enabled = false;
             });
         }
         
