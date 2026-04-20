@@ -66,8 +66,7 @@ public class Spark : MonoBehaviour
         }
         
         
-        if (FindFirstObjectByType<GameFlowManager>().IsPaused() == false)
-            onReachedTarget?.Invoke();
+        onReachedTarget?.Invoke();
         Destroy(gameObject);
     }
 }

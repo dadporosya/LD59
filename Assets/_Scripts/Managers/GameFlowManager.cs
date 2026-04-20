@@ -27,6 +27,8 @@ public class GameFlowManager : MonoBehaviour
 
     public GameObject lossScreenPrefab;
     private GameObject currentLossScreen;
+
+    private Coroutine damageScreenFadeCoroutine;
     
     public enum States
     {
@@ -77,6 +79,10 @@ public class GameFlowManager : MonoBehaviour
     public void SetOnLoss()
     {
         // cutSceneManager.RunCutscene("LossCutscene");
+        if (state == States.Loss) return;
+        state = States.Loss;
+        
+        h.Out("CURENT LOSSS!!!!!!!_--------------------------------------");
         h.Out(currentDeathMessage);
         ProcessLoss();
     }
@@ -98,6 +104,8 @@ public class GameFlowManager : MonoBehaviour
             restartWindow.SetActive(true);
         }
         
+        h.Out("LOSS");
+        if (currentLossScreen) Destroy(currentLossScreen);
         currentLossScreen = Instantiate(
             lossScreenPrefab, playerParent.transform.position,
             Quaternion.identity
@@ -136,12 +144,14 @@ public class GameFlowManager : MonoBehaviour
         h.Out("loss screen", currentLossScreen);
         if (currentLossScreen) Destroy(currentLossScreen);
         
+        if (damageScreenFadeCoroutine != null) StopCoroutine(damageScreenFadeCoroutine);
+        
         GameObject damageScreen = GameObject.Find("DamageScreen");
         Color lossColor = damageScreen.GetComponent<Image>().color;
         lossColor.a = 0f;
         damageScreen.GetComponent<Image>().color = lossColor;
         
-        h.Out("restart");
+        h.Out("restart", damageScreen, lossColor);
         
         if (restartWindow)
         {
@@ -191,6 +201,6 @@ public class GameFlowManager : MonoBehaviour
         Image damageImage = damageScreen.GetComponent<Image>();
         if (!damageImage) return;
         
-        StartCoroutine(FadeDamageScreenCoroutine(damageImage, fromAlpha, toAlpha, duration));
+        damageScreenFadeCoroutine = StartCoroutine(FadeDamageScreenCoroutine(damageImage, fromAlpha, toAlpha, duration));
     }
 }

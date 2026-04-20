@@ -151,7 +151,8 @@ public class Neuron : MonoBehaviour
         {
             spark.onReachedTarget.AddListener(() =>
             {
-                actionPerformer.Action();
+                if (FindFirstObjectByType<GameFlowManager>().IsPaused() == false)
+                    actionPerformer.Action();
                 h.ShakeObject(this, top, 0.01f, 5, 0.3f);
             });
         }

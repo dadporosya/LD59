@@ -340,7 +340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   bpm: 90
-  fatalBPM: 10
+  fatalMinBPM: 0
+  fatalMaxBPM: 200
   bpmText: {fileID: 0}
   baseBPMReduction: 2
   currentBPMReduction: 2
@@ -4914,8 +4915,9 @@ MonoBehaviour:
   restartDuration: 2
   cameraInitialPosition: {x: 0, y: 0, z: 0}
   currentDeathMessage: 
-  heartStopDeathMessage: 
-  toFarPushHeartDeathMessage: 
+  heartStopDeathMessage: Heart stop
+  tooFarPushHeartDeathMessage: 
+  lossScreenPrefab: {fileID: 5277129501300010443, guid: 9613a0adf931dba4f8840c3d30040323, type: 3}
   state: 0
 --- !u!1 &1676477847
 GameObject:
@@ -5202,7 +5204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1851581842
 RectTransform:
   m_ObjectHideFlags: 0
