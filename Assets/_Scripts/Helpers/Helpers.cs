@@ -523,7 +523,7 @@ public static class h
     
     public static void SmoothTranslating(MonoBehaviour runner, Transform tObj, Vector3 tPos, float duration) // t - target
     {
-        runner.StartCoroutine(SmoothTranslatingCoroutine(tObj, tPos - tObj.position, duration));
+        runner.StartCoroutine(SmoothTranslatingCoroutine(tObj,  tObj.position + tPos, duration));
     }
 
     static IEnumerator SmoothTranslatingCoroutine(Transform tObj, Vector3 tPos, float duration)

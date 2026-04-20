@@ -36,6 +36,8 @@ public class MissileLauncherEnemy : EnemyBase
 
     public GameObject launcherBone;
 
+    [SerializeField] private float missileTranslation = 0.1f;
+    
     private void Start()
     {
         if (!off)
@@ -104,10 +106,12 @@ public class MissileLauncherEnemy : EnemyBase
         GameObject currentAim = Instantiate(aimPrefab, targetPos, aimPrefab.transform.rotation, transform.parent);
         currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
 
+        missile.explosionPrefab = explosionPrefab;
+        missile.aimPrefab = aimPrefab;
 
         missile.Init(currentAim.transform, damage, radiusMult, reactTime, missileSpeed);
 
-        h.SmoothTranslating(this, missile.transform, new Vector3(0.01f, -0.01f, 0), reactTime/5);
+        h.SmoothTranslating(this, missile.transform, new Vector3(-missileTranslation, -missileTranslation, 0), reactTime/5);
     }
 
     public IEnumerator ShakeLauncherBoneCoroutine(
