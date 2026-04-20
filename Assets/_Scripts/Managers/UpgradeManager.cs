@@ -62,26 +62,29 @@ public class UpgradeManager : MonoBehaviour
             organ.transform.SetParent(organsOutParent);
         }
 
-        Transform spawnPoint;
+        void SetSpawnPoint(OrganBase organ, ref List<Transform> spawnPoints)
+        {
+            Transform spawnPoint;
+            if (spawnPoints.Count == 0) return;
+            
+            spawnPoint = h.RandChoice(spawnPoints);
+            organ.transform.position = spawnPoint.position;
+            
+            if (spawnPoint.tag.Contains("Out"))
+            {
+                organ.UpdateOverlap(true);
+            }
+            
+            spawnPoints.Remove(spawnPoint);
+        }
+        
         if (organ is Leg leg)
         {
-            spawnPoint = h.RandChoice(legSpawnPoints);
-            leg.transform.position = spawnPoint.position;
-            
-            if (spawnPoint.tag.Contains("Out"))
-            {
-                leg.UpdateOverlap(true);
-            }
-            
-        } else if (organ is Arm arm)
+            SetSpawnPoint(leg, ref legSpawnPoints);
+        }
+        else if (organ is Arm arm)
         {
-            spawnPoint = h.RandChoice(armSpawnPoints);
-            arm.transform.position = spawnPoint.position;
-            
-            if (spawnPoint.tag.Contains("Out"))
-            {
-                arm.UpdateOverlap(true);
-            }
+            SetSpawnPoint(arm, ref armSpawnPoints);
         }
         
         
