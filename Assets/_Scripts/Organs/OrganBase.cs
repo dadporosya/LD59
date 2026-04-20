@@ -42,7 +42,7 @@ public class OrganBase : MonoBehaviour, IAction
         overlapAquarium = overlap;
         if (overlapAquarium)
         {
-            h.UpdateLayersRecursively(transform, Preferences.aquariumOrderInLayer);
+            // h.UpdateLayersRecursively(transform, Preferences.aquariumOrderInLayer);
             h.SetSpriteMaskInteractionRecursively(transform, SpriteMaskInteraction.None);
         }
         else

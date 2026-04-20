@@ -47,8 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arm
   locationInAquarium: 0
+  overlapAquarium: 0
   _actionIcon: {fileID: 0}
   damage: 1
+  animator: {fileID: 0}
+  playerDamageManager: {fileID: 0}
+  smartCollider: {fileID: 0}
   aquariumParent: {fileID: 0}
 --- !u!95 &82469261558434634
 Animator:
@@ -80,6 +84,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2582913542391482210}
     m_Modifications:
+    - target: {fileID: -9156867838365188483, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -9156867838365188483, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
       propertyPath: m_MaskInteraction
       value: 2
@@ -145,12 +153,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4691381383639723871, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4691381383639723871, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
       propertyPath: m_MaskInteraction
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1092641441002539719, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092641441002539719, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
       propertyPath: m_MaskInteraction
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638863962959275187, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5638863962959275187, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
       propertyPath: m_MaskInteraction

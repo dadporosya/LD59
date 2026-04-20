@@ -981,8 +981,14 @@ public static class h
             SetSpriteMaskInteractionRecursively(child, maskInteraction);
         }
     }
-    
-    
-    
+
+
+    public static Transform[] FindAllTransformsWithTag(string tag)
+    {
+        return Array.ConvertAll(
+            GameObject.FindGameObjectsWithTag(tag),
+            go => go.transform
+        );
+    }
     
 }

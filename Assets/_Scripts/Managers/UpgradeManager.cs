@@ -20,6 +20,10 @@ public class UpgradeManager : MonoBehaviour
     public int maxNeuronCount = 10;
     public Vector3 neuronOffset = new Vector3(0,0,0);
     
+    // public 
+    public List<Transform> armSpawnPoints = new List<Transform>();
+    public List<Transform> legSpawnPoints = new List<Transform>();
+    
     private void Start()
     {
         if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
@@ -33,6 +37,15 @@ public class UpgradeManager : MonoBehaviour
                 }
             }
         }
+        
+        // Clear first to avoid duplicates if Start is called again
+        armSpawnPoints.Clear();
+        legSpawnPoints.Clear();
+
+        armSpawnPoints.AddRange(h.FindAllTransformsWithTag("ArmSpawnPointIn"));
+        armSpawnPoints.AddRange(h.FindAllTransformsWithTag("ArmSpawnPointOut"));
+        legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointIn"));
+        legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointOut"));
     }
 
     public void AddOrgan(OrganBase organPrefab)
@@ -48,6 +61,29 @@ public class UpgradeManager : MonoBehaviour
         {
             organ.transform.SetParent(organsOutParent);
         }
+
+        Transform spawnPoint;
+        if (organ is Leg leg)
+        {
+            spawnPoint = h.RandChoice(legSpawnPoints);
+            leg.transform.position = spawnPoint.position;
+            
+            if (spawnPoint.tag.Contains("Out"))
+            {
+                leg.UpdateOverlap(true);
+            }
+            
+        } else if (organ is Arm arm)
+        {
+            spawnPoint = h.RandChoice(armSpawnPoints);
+            arm.transform.position = spawnPoint.position;
+            
+            if (spawnPoint.tag.Contains("Out"))
+            {
+                arm.UpdateOverlap(true);
+            }
+        }
+        
         
         
         // Calculate neuron position with gap

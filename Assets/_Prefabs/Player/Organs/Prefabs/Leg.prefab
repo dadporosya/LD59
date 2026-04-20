@@ -189,6 +189,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3929535948579752691}
     m_Modifications:
     - target: {fileID: -9156867838365188483, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -9156867838365188483, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
       propertyPath: m_MaskInteraction
       value: 2
       objectReference: {fileID: 0}
@@ -235,6 +239,18 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4691381383639723871, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 683650805199822136, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638863962959275187, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

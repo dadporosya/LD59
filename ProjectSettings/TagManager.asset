@@ -19,6 +19,10 @@ TagManager:
   - EnemiesSpawnPoint
   - EnemiesDeathPoint
   - PlayerShadow
+  - LegSpawnPointIn
+  - LegSpawnPointOut
+  - ArmSpawnPointIn
+  - ArmSpawnPointOut
   layers:
   - Default
   - TransparentFX
