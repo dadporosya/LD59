@@ -27,10 +27,15 @@ public class PlayerDamageManager : MonoBehaviour
     {
         damageTaken = 0;
         punchStack = 0;
-        
-        
-        
-        if (BPMReductionCoroutineInst != null)  StopCoroutine(BPMReductionCoroutineInst);
+
+
+
+        if (BPMReductionCoroutineInst != null)
+        {
+            
+            StopCoroutine(BPMReductionCoroutineInst);
+        }
+        BPMReductionCoroutineInst = null;
         h.Out(BPMReductionCoroutineInst, "RESSEEEEEEEEEEEEEEEEET", BPMReductionCoroutineInst);
         
         Awake();
@@ -115,8 +120,14 @@ public class PlayerDamageManager : MonoBehaviour
         h.Out("VIJTI IZ CIKLA", BPMReductionCoroutineInst);
         // h.Out("");
         bpmManager.currentBPMReduction = bpmManager.baseBPMReduction;
-        if (BPMReductionCoroutineInst!=null) StopCoroutine(BPMReductionCoroutineInst);
+        if (BPMReductionCoroutineInst!=null)
+        {
+            h.Out("s");
+            StopCoroutine(BPMReductionCoroutineInst);
+            h.Out("after stop", BPMReductionCoroutineInst);
+        }
         h.Out("after stop", BPMReductionCoroutineInst);
+        BPMReductionCoroutineInst = null;
         yield return null;
     }
 
