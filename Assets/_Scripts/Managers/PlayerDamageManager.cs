@@ -35,6 +35,7 @@ public class PlayerDamageManager : MonoBehaviour
 
     public void TakeDamage(float value)
     {
+        h.Out("TakeDamag");
         damageTaken += value;
         UpdateDamageScreen();
         if (BPMReductionCoroutineInst == null)

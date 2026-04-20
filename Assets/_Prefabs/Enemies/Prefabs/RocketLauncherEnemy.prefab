@@ -147,7 +147,7 @@ MonoBehaviour:
   coolDown: 3
   cameraW: 0
   missilePrefab: {fileID: 9137065739043241180, guid: 43bf978da88f8eb408e03e5c50d74c9a, type: 3}
-  damage: 2.5
+  damage: 3
   radiusMult: 1
   reactTime: 2
   missileSpeed: 10

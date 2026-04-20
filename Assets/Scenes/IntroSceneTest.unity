@@ -2567,9 +2567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageManager
   damageTaken: 0
-  damageThreshold: 20
+  damageThreshold: 10
   damageScreenImage: {fileID: 0}
-  recoverySpeed: 0.1
+  recoverySpeed: 0.4
   bpmManager: {fileID: 0}
   playerSmartCollider: {fileID: 1708069197}
   tempDamageLabel: {fileID: 519843424}

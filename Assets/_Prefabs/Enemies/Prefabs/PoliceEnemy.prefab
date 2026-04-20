@@ -99,7 +99,7 @@ MonoBehaviour:
   damageTaken: 0
   playerDamageManager: {fileID: 0}
   scrollManager: {fileID: 0}
-  damage: 2.5
+  damage: 3.5
   playerBumped: 0
   _blinded: 0
 --- !u!95 &8329995102414540783
