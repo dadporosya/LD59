@@ -54,7 +54,7 @@ public class UpgradeManager : MonoBehaviour
 
         if (armPrefab)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4+1; i++)
             {
                 AddOrgan(armPrefab);
             }
@@ -62,7 +62,7 @@ public class UpgradeManager : MonoBehaviour
         
         if (legPrefab)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4+1; i++)
             {
                 AddOrgan(legPrefab);
             }
@@ -123,12 +123,13 @@ public class UpgradeManager : MonoBehaviour
             neuronBGWidth = spriteRenderer.sprite.bounds.size.x * neuronBG.transform.localScale.x;
         }
         h.Out(neuronBGWidth);
-        float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f);
+        float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f) + 0.3f;
         Vector3 neuronPosition = neuronParent.position + neuronOffset;
         neuronPosition.x = neuronParent.position.x + ((neurons.Count+1) * gap) - neuronBGWidth/2;
 
-        neuronPosition.y += h.Range(-0.2f, 0f);
-        neuronPosition.x +=  h.Range(-0.1f, 0.1f);
+        neuronPosition.y += h.Range(-0.3f, 0f);
+        neuronPosition.x +=  h.Range(-0.25f, 0.2f);
+        
         
         Neuron neuron = Instantiate(neuronPrefab, neuronPosition, Quaternion.identity, neuronParent);
         string actionKey;
