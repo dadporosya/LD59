@@ -102,6 +102,7 @@ public class PlayerDamageManager : MonoBehaviour
         }
 
         bpmManager.currentBPMReduction = bpmManager.baseBPMReduction;
+        if (BPMReductionCoroutineInst!=null) StopCoroutine(BPMReductionCoroutineInst);
         yield return null;
     }
 

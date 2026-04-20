@@ -14,10 +14,19 @@ public class GameFlowManager : MonoBehaviour
     
     [SerializeField] public GameObject restartWindow;
     [SerializeField] public GameObject playerParent;
+    
 
     [SerializeField] public float restartDuration = 2f;
     
     public Vector3 cameraInitialPosition;
+    private CutSceneManager cutSceneManager;
+
+    public string currentDeathMessage;
+    public string heartStopDeathMessage;
+    public string toFarPushHeartDeathMessage;
+
+    public GameObject lossScreenPrefab;
+    private GameObject currentLossScreen;
     
     public enum States
     {
@@ -31,6 +40,7 @@ public class GameFlowManager : MonoBehaviour
 
     private void Awake()
     {
+        cutSceneManager = FindFirstObjectByType<CutSceneManager>();
         upgradeManager = GameObject.FindFirstObjectByType<UpgradeManager>();
         enemiesSpawnManager = GameObject.FindFirstObjectByType<EnemiesSpawnManager>();
         restartWindow =  GameObject.Find("RestartWindow");
@@ -66,7 +76,8 @@ public class GameFlowManager : MonoBehaviour
 
     public void SetOnLoss()
     {
-        // load cutscene
+        // cutSceneManager.RunCutscene("LossCutscene");
+        ProcessLoss();
     }
 
     public void ProcessLoss()
@@ -78,13 +89,18 @@ public class GameFlowManager : MonoBehaviour
         playerParent.SetActive(false);
         
         GameObject damageScreen = GameObject.Find("DamageScreen");
-        FadeDamageScreen(damageScreen.GetComponent<Image>().color.a, 0.99f, 0.5f);
+        FadeDamageScreen(damageScreen.GetComponent<Image>().color.a, 0.99f, 5f);
         
         h.Out(restartWindow);
         if (restartWindow)
         {
             restartWindow.SetActive(true);
         }
+        
+        currentLossScreen = Instantiate(
+            lossScreenPrefab, playerParent.transform.position,
+            Quaternion.identity
+        );
     }
 
     private void FadeDamageScreen(float fromAlpha, float toAlpha, float duration)
@@ -125,6 +141,8 @@ public class GameFlowManager : MonoBehaviour
     {
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(0, 1, restartDuration/2));
         
+        if (currentLossScreen) Destroy(currentLossScreen);
+        
         GameObject damageScreen = GameObject.Find("DamageScreen");
         Color lossColor = damageScreen.GetComponent<Image>().color;
         lossColor.a = 0f;
@@ -138,6 +156,9 @@ public class GameFlowManager : MonoBehaviour
         }
         
         playerParent.SetActive(true);
+        
+        // Reset camera to initial position
+        Camera.main.transform.position = cameraInitialPosition;
         
         enemiesSpawnManager.ClearEnemies();
         upgradeManager.ClearNeuronsAndOrgans();

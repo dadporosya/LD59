@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class BPMManager : MonoBehaviour
 {
     [SerializeField] private int bpm=90;
-    [SerializeField] private int fatalBPM = 0;
+    [SerializeField] private int fatalMinBPM = 0;
+    [SerializeField] private int fatalMaxBPM = 0;
     [SerializeField] private TextMeshProUGUI bpmText;
     public float baseBPMReduction = 2;
     public float currentBPMReduction = 2;
@@ -89,7 +90,7 @@ public class BPMManager : MonoBehaviour
             }
             
             ProcessBeat();
-            if (bpm <= fatalBPM)
+            if (bpm <= fatalMinBPM)
             {
                 StopHeartBeat();
             }
