@@ -90,6 +90,11 @@ public class GameFlowManager : MonoBehaviour
     {
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(0, 1, restartDuration/2));
         
+        GameObject damageScreen = GameObject.Find("DamageScreen");
+        Color lossColor = damageScreen.GetComponent<Image>().color;
+        lossColor.a = 0f;
+        damageScreen.GetComponent<Image>().color = lossColor;
+        
         h.Out("restart");
         
         if (restartWindow)
