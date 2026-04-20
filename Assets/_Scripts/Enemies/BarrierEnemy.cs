@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BarrierEnemy : EnemyBase
@@ -10,6 +11,9 @@ public class BarrierEnemy : EnemyBase
     private ScrollManager scrollManager;
 
     public float ramValuePerHit = 1.5f / 1;
+    
+    public List<GameObject> cracks = new List<GameObject>();
+    [SerializeField] private List<Transform> crackSpawnPoints= new List<Transform>();
     private void Awake()
     {
         collider2D = GetComponent<Collider2D>();
@@ -17,6 +21,14 @@ public class BarrierEnemy : EnemyBase
 
         scrollManager = FindFirstObjectByType<ScrollManager>();
         
+        // Find all children with tag "Point"
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Point"))
+            {
+                crackSpawnPoints.Add(child);
+            }
+        }
     }
 
     // public override void Start()
@@ -78,5 +90,29 @@ public class BarrierEnemy : EnemyBase
         h.ShakeOnce(2, 10, 0, 0.25f);
         
         // check speed
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        
+        // Instantiate random crack above the sprite
+        if (cracks.Count == 0) return;
+        
+        for (int i = 0; i<damage; i++){
+            GameObject crack = Instantiate(h.RandChoice(cracks), transform);
+            
+            // // Position above the sprite
+            // if (TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer))
+            // {
+            //     float spriteHeight = spriteRenderer.sprite.bounds.size.y * transform.localScale.y;
+            //     crack.transform.localPosition = new Vector3(0, spriteHeight / 2, 0);
+            // }
+            float crakMultScale = 0.7f;
+            crack.transform.localScale = new Vector3(h.RangeWithCoof(crakMultScale, 0.2f), h.RangeWithCoof(crakMultScale, 0.2f), 0.5f);
+            crack.transform.position = crackSpawnPoints.Count == 0
+                ? transform.position
+                : h.RandChoice(crackSpawnPoints).position;
+        }
     }
 }

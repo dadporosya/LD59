@@ -151,10 +151,10 @@ TextureImporter:
       name: Barier_1
       rect:
         serializedVersion: 2
-        x: 504
-        y: 460
-        width: 244
-        height: 258
+        x: 517
+        y: 393
+        width: 247
+        height: 307
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: Barier_2
       rect:
         serializedVersion: 2
-        x: 797
-        y: 352
-        width: 151
-        height: 243
+        x: 780
+        y: 209
+        width: 154
+        height: 277
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,13 +192,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barier_5
+      name: Barier_4
       rect:
         serializedVersion: 2
-        x: 796
-        y: 389
-        width: 4
-        height: 7
+        x: 470
+        y: 74
+        width: 203
+        height: 302
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,30 +207,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df07e7f797a5b0d488bba28e3991fc7b
-      internalID: -246638693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Barier_6
-      rect:
-        serializedVersion: 2
-        x: 719
-        y: 69
-        width: 194
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cd843843577b204f90b98d4ec55d94b
-      internalID: -834253135
+      spriteID: 548d58ad3cf912b4b85d99d4e502c620
+      internalID: 334122786
       vertices: []
       indices: 
       edges: []
@@ -258,7 +236,6 @@ TextureImporter:
       Barier_4: 334122786
       Barier_5: -246638693
       Barier_6: -834253135
-      Barier_7: 965112020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

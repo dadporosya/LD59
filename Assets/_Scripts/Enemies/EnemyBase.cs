@@ -16,7 +16,7 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
         if (!playerDamageManager) playerDamageManager = FindFirstObjectByType<PlayerDamageManager>();
         if (!scrollManager) scrollManager = FindFirstObjectByType<ScrollManager>();
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         damageTaken += damage;
         if (damageTaken >= durability)
