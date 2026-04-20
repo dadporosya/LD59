@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 63c6464936fcefa4c80856f46c4598de
+guid: 9abdd970e9c905f4eac4c805dc8367bd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5249069621493545617
-    second: DamageScreen_0
+      213: 4077343802663152321
+    second: ramka_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DamageScreen_0
+      name: ramka_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19aba6e820178d840800000000000000
-      internalID: 5249069621493545617
+      spriteID: 1caa0e8f592a59830800000000000000
+      internalID: 4077343802663152321
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DamageScreen_0: 5249069621493545617
+      ramka_0: 4077343802663152321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

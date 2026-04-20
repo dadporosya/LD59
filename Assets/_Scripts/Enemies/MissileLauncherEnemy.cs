@@ -7,6 +7,9 @@ public class MissileLauncherEnemy : EnemyBase
     [Header("Missile launcher")] [SerializeField]
     private float distanceCoof = 0.8f;
 
+    [SerializeField] private float possibleRangeCoof = 0.4f;
+    
+    
     public float coolDown;
 
 
@@ -96,7 +99,7 @@ public class MissileLauncherEnemy : EnemyBase
                 .GetComponent<Missile>();
 
         Vector3 targetPos = targetIn.position;
-        targetPos.x += h.Range(0f, h.GetCameraWidth() * 0.5f);
+        targetPos.x += h.Range(-0.5f, h.GetCameraWidth() * possibleRangeCoof);
 
         GameObject currentAim = Instantiate(
             aimPrefab, targetPos, aimPrefab.transform.rotation, transform.parent);
