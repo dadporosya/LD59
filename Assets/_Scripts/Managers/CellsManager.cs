@@ -18,6 +18,15 @@ public class CellsManager : MonoBehaviour
     
     private UpgradeManager upgradeManager;
 
+    public void Init()
+    {
+        cellCount = 0;
+        maxCellCount = 0;
+        level = 1;
+        
+        Start();
+    }
+    
     private void Start()
     {
         upgradeManager = FindFirstObjectByType<UpgradeManager>();

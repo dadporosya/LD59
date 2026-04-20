@@ -30,6 +30,14 @@ public class GameFlowManager : MonoBehaviour
         enemiesSpawnManager = GameObject.FindFirstObjectByType<EnemiesSpawnManager>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            SetOnLoss();
+        }
+    }
+
     public void StartGame(bool firstTime = true)
     {
         Restart();
@@ -99,11 +107,16 @@ public class GameFlowManager : MonoBehaviour
         }
         
         // update cellmanager
+        FindFirstObjectByType<CellsManager>().Init();
+        
         // update xpmanager
         FindFirstObjectByType<EscapeProgressManager>().Init();
-        // update bpm manager
-        //update damage manager
         
+        // update bpm manager
+        FindFirstObjectByType<BPMManager>().Init();
+        
+        //update damage manager
+        FindFirstObjectByType<PlayerDamageManager>().Init();
         
         
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(1, 0, restartDuration/2));

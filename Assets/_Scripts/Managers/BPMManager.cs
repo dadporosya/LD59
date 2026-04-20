@@ -20,11 +20,23 @@ public class BPMManager : MonoBehaviour
 
     public UnityEvent OnBeat;
 
+    public void Init()
+    {
+        bpm = 90;
+        currentBPMReduction = baseBPMReduction;
+        
+        if (bpmCoroutine != null) StopCoroutine(bpmCoroutine);
+        if (beatCoroutine != null) StopCoroutine(beatCoroutine);
+        
+        Start();
+    }
+    
     private void Start()
     {
         currentBPMReduction = baseBPMReduction;
         if (!bpmText) bpmText = GameObject.Find("BPMNumberTextTMP").GetComponent<TextMeshProUGUI>();
         SetBPM(bpm);
+        
         StartHeartBeat();
     }
     

@@ -23,6 +23,14 @@ public class PlayerDamageManager : MonoBehaviour
     
     private GameFlowManager gameFlowManager;
     
+    public void Init()
+    {
+        damageTaken = 0;
+        punchStack = 0;
+        
+        Awake();
+    }
+    
     private void Awake()
     {
         gameFlowManager = FindFirstObjectByType<GameFlowManager>();
