@@ -161,6 +161,8 @@ MonoBehaviour:
   - {fileID: 8460811130287563177}
   - {fileID: 4065718357168012270}
   - {fileID: 1612920009675560800}
+  aimPrefab: {fileID: 6050853523417149969, guid: a59b41ff5f0bb424984a8426ca4c00de, type: 3}
+  explosionPrefab: {fileID: 3674265961787812128, guid: 6c1a358022f01b84193e58ec7536b4ef, type: 3}
 --- !u!1 &6509284383462635078
 GameObject:
   m_ObjectHideFlags: 0

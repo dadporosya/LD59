@@ -117,7 +117,7 @@ public class Missile : MonoBehaviour, IBlindable
     {
         Instantiate(explosionPrefab, target.position, Quaternion.identity, parent).GetComponent<Explosion>().Init(damage, radiusMult, enableCollider);
         
-        if (currentAim) Destroy(currentAim);
+        if (target) Destroy(target);
         Destroy(gameObject);
     }
 
