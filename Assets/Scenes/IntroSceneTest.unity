@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 205690751}
   - component: {fileID: 205690752}
   m_Layer: 0
-  m_Name: BG
+  m_Name: NeuronBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,6 +830,8 @@ MonoBehaviour:
   neurons: []
   neuronPrefab: {fileID: 7125259420758090977, guid: 2ea264467d130e54fb181c6574e69e57, type: 3}
   organInSpawnPoint: {fileID: 1978503083}
+  neuronBG: {fileID: 0}
+  maxNeuronCount: 10
 --- !u!1 &343979560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8227258964828168276, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
@@ -1536,7 +1538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b842c59ad9f3995418ab43463666e3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemiesSpawnManager
-  enemyPrefabs: {fileID: 11400000, guid: c6d2bf04178f2774d9538080292e744c, type: 2}
+  enemyPrefabs: {fileID: 11400000, guid: 2a336c199079dc244bb9b5cf433291bc, type: 2}
   threatLevel: 1
   spawnPoints: []
   deathPoint: {fileID: 0}

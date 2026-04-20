@@ -15,9 +15,13 @@ public class UpgradeManager : MonoBehaviour
     public List<Neuron> neurons=new List<Neuron>();
     public Neuron neuronPrefab;
     public Transform organInSpawnPoint;
+
+    public GameObject neuronBG;
+    public int maxNeuronCount = 10;
     
     private void Start()
     {
+        if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
         if (neuronParent)
         {
             foreach (Transform neuron in neuronParent)
@@ -44,7 +48,19 @@ public class UpgradeManager : MonoBehaviour
             organ.transform.SetParent(organsOutParent);
         }
         
-        Neuron neuron = Instantiate(neuronPrefab, neuronParent.position, Quaternion.identity, neuronParent);
+        
+        // Calculate neuron position with gap
+        float neuronBGWidth = 1f;
+        if (neuronBG && neuronBG.TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer))
+        {
+            neuronBGWidth = spriteRenderer.sprite.bounds.size.x * neuronBG.transform.localScale.x;
+        }
+        h.Out(neuronBGWidth);
+        float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f);
+        Vector3 neuronPosition = neuronParent.position;
+        neuronPosition.x = neuronParent.position.x + ((neurons.Count+1) * gap) - neuronBGWidth;
+        
+        Neuron neuron = Instantiate(neuronPrefab, neuronPosition, Quaternion.identity, neuronParent);
         string actionKey;
         if (neurons.Count+1 == 10)
         {
@@ -56,6 +72,8 @@ public class UpgradeManager : MonoBehaviour
         }
         neuron.Init(organ.gameObject, actionKey);
         neurons.Add(neuron);
-        //TODO : randomize pos of neuron
+        
+        
+        
     }
 }

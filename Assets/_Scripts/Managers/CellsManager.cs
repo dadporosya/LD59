@@ -15,9 +15,12 @@ public class CellsManager : MonoBehaviour
     [SerializeField] private float levelConst = 10;
 
     [HideInInspector] public PurchaseManager purchaseManager;
+    
+    private UpgradeManager upgradeManager;
 
     private void Start()
     {
+        upgradeManager = FindFirstObjectByType<UpgradeManager>();
         if (!cellBar) cellBar = GameObject.Find("CellBar").GetComponent<Bar>();
         if (!purchaseManager) purchaseManager = FindFirstObjectByType<PurchaseManager>();
         GenerateLevel(levelIn:level);
@@ -58,7 +61,11 @@ public class CellsManager : MonoBehaviour
     {
         // new organ or smt else
         if (cellCount < maxCellCount) return;
-        
+        if (upgradeManager.organs.Count >= upgradeManager.maxNeuronCount)
+        {
+            h.Out("max level reached");
+            return;
+        }
         // TODO : freeze game
         if (purchaseManager) purchaseManager.OpenShopWindow();
         GenerateLevel();
