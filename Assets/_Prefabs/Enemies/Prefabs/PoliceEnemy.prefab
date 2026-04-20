@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5700282073558784875}
   - component: {fileID: 8533602221708256260}
   - component: {fileID: 7145764589114962117}
+  - component: {fileID: 8329995102414540783}
   m_Layer: 0
   m_Name: PoliceEnemy
   m_TagString: Enemy
@@ -101,6 +102,28 @@ MonoBehaviour:
   damage: 2.5
   playerBumped: 0
   _blinded: 0
+--- !u!95 &8329995102414540783
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855456799935929099}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c2a9810289d90b4993833c4ad2874a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8448150264653782862
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class PoliceEnemy : EnemyBase,IBlindable
     public bool playerBumped = false;
 
     [SerializeField] private bool _blinded = false;
+    
+    private Animator animator;
 
     public bool blinded
     {
@@ -20,6 +22,7 @@ public class PoliceEnemy : EnemyBase,IBlindable
     private EscapeProgressManager escapeProgressManager;
     private void Awake()
     {
+        if (!animator) animator =  GetComponent<Animator>();
         collider2D = GetComponent<Collider2D>();
         escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
     }
@@ -64,14 +67,35 @@ public class PoliceEnemy : EnemyBase,IBlindable
         }
         // h.Out("damage");
         //anim
+        AttackPlayerIndirectly();
+    }
+
+    public void AttackPlayerIndirectly()
+    {
         playerDamageManager.TakeDamage((int)damage);
+        animator.Play("PoliceEnemyAttack");
     }
 
     public void Blind(float  duration)
     {
         blinded = true;
-        h.InvokeAfterTime(this, duration, () => { blinded = false; });
+        animator.Play("PoliceEnemyBlindEnter");
+        h.InvokeAfterTime(this, duration, () =>
+        {
+            blinded = false;
+            OnIdle();
+        });
         // h.Out("negro");
+    }
+    
+    public void OnIdle()
+    {
+        animator.CrossFade(
+            "PoliceEnemyIdle",
+            1f,
+            0,
+            1
+        );
     }
     
 }
