@@ -36,7 +36,8 @@ public class GameFlowManager : MonoBehaviour
         Intro,
         Game,
         Pause,
-        Loss
+        Loss,
+        Finale
     }
 
     public States state = States.Intro;
@@ -214,8 +215,9 @@ public class GameFlowManager : MonoBehaviour
         h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
         damageScreen.GetComponent<Image>().color = lossColor;
         h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
-        
-        
+
+
+        ClearAllConnections();
         
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(1, 0, restartDuration/2));
         SetOnGame();
@@ -245,4 +247,5 @@ public class GameFlowManager : MonoBehaviour
             connection.OnDestroy();
         }
     }
+    
 }

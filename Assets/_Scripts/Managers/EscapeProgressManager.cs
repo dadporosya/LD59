@@ -96,6 +96,14 @@ public class EscapeProgressManager : MonoBehaviour
         if  (nextLevel)
         {
             level++;
+
+            if (level >= maxLevel)
+            {
+                
+
+                return;
+            }
+            
             h.Out(currentXP, "xp before");
             SetXP(maxXP / maxLevel * level, 0);
             h.Out(currentXP, "xp after");

@@ -27,9 +27,11 @@ public class EnemiesSpawnManager : MonoBehaviour
     public List<EnemyBase> enemies;
 
     public bool finalReached = false;
+    private GameFlowManager gameFlowManager;
 
     private void Start()
     {
+        if (!gameFlowManager) gameFlowManager =  FindFirstObjectByType<GameFlowManager>();
         if (useContainer)
         {
             enemyPrefabs = new List<GameObject>();
@@ -94,7 +96,7 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     public GameObject SpawnEnemy(GameObject enemyPrefab = null)
     {
-        if (finalReached) return default;
+        if (finalReached ||  gameFlowManager.state == GameFlowManager.States.Finale) return default;
 
         if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs);
         GameObject enemy = null;

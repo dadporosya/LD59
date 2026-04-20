@@ -24,6 +24,7 @@ TagManager:
   - ArmSpawnPointIn
   - ArmSpawnPointOut
   - Migalka
+  - Mouth
   layers:
   - Default
   - TransparentFX
