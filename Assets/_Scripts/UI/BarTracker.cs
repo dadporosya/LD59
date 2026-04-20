@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class BarTracker : MonoBehaviour, IOnMove
 {
-    [SerializeField] private GameObject tracer;
+    public Animator animator;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+        if (!animator) animator = GetComponentInChildren<Animator>();
         EndMove();
     }
     
     public void StartMove()
     {
-        tracer.SetActive(true);
+        // start jump
     }
 
     public void OnMove(){}
 
     public void EndMove()
     {
-        tracer.SetActive(false);
+        //etner idle
     }
 }

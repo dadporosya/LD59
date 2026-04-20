@@ -2574,7 +2574,7 @@ GameObject:
   - component: {fileID: 918546574}
   - component: {fileID: 918546573}
   m_Layer: 0
-  m_Name: XPTracker
+  m_Name: XPTrackerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4680,7 +4680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aef800340fedbe428481a6339283b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bar
-  initOnStart: 0
+  initOnStart: 1
   currentValue: 0
   currentMaxValue: 0
   enableStartFill: 0
@@ -4719,11 +4719,12 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   _targetValue: 0
-  indicator: {fileID: 0}
-  sizeIncreasementForFirstAndLast: 1.2
+  indicator: {fileID: 6790509981089787542, guid: 8e8c940266d52874ba5d1af48e0e1dc8, type: 3}
+  sizeIncreasementForFirstAndLast: 1.25
   indicatorOffset: {x: 0, y: 0, z: 0}
-  tracker: {fileID: 0}
+  tracker: {fileID: 4539345098679224897, guid: 80a71892d7b0c3c45b6d078cca858a74, type: 3}
   trackersOffset: {x: 0, y: 0, z: 0}
+  indicatorCount: 5
   drainDuration: 0.25
 --- !u!1 &2054055029
 GameObject:

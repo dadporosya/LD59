@@ -34,6 +34,8 @@ public class Bar : MonoBehaviour
     private List<GameObject> _spawnedIndicators = new List<GameObject>();
     private BarTracker _spawnedTracker;
 
+    [SerializeField] private int indicatorCount = 2;
+
     private float targetValue
     {
         get => _targetValue;
@@ -69,6 +71,7 @@ public class Bar : MonoBehaviour
     private void Awake()
     {
         if (!image) image = GetComponent<Image>();
+        if (indicator && indicatorCount > 1) CreateSpreadIndicators(indicatorCount);
     }
 
     private void Start()

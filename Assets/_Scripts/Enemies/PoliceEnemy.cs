@@ -72,8 +72,13 @@ public class PoliceEnemy : EnemyBase,IBlindable
 
     public void AttackPlayerIndirectly()
     {
-        playerDamageManager.TakeDamage(damage);
+        
         animator.Play("PoliceEnemyAttack");
+    }
+
+    public void OnHit()
+    {
+        playerDamageManager.TakeDamage(damage);
     }
 
     public void Blind(float  duration)
