@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31051a8d525a7e045a1ab7dc96421457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Connection
-  lineRendererPrefab: {fileID: 7399853311439979957, guid: 510dd6ce975710e4a807ee70666c8682, type: 3}
+  lineRendererPrefab: {fileID: 7399853311439979957, guid: 30250c3231adb9242ac2f227c6806538, type: 3}
   lineRenderer: {fileID: 0}
   points: []

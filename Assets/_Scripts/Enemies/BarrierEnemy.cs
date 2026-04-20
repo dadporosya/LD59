@@ -15,6 +15,7 @@ public class BarrierEnemy : EnemyBase
     public List<GameObject> cracks = new List<GameObject>();
     [SerializeField] private List<Transform> crackSpawnPoints= new List<Transform>();
 
+    [Header("Attack Settings")]
     public OrganBase targetOrgan;
     public SpriteRenderer targetOrganIconHolder;
     public SpriteRenderer blockSign;
@@ -24,6 +25,10 @@ public class BarrierEnemy : EnemyBase
     public Connection laser;
     public GameObject explosionPrefab;
     [SerializeField] private float explosionDuration = 0.5f;
+
+    [Header("Possible targets")]
+    public bool generateTarget = true;
+    public List<OrganBase> possibleTargetsPrefabs = new List<OrganBase>();
     
     private void Awake()
     {
@@ -40,8 +45,17 @@ public class BarrierEnemy : EnemyBase
                 crackSpawnPoints.Add(child);
             }
         }
+        
+        h.Out(possibleTargetsPrefabs, generateTarget);
 
-        if (targetOrgan)
+        if (generateTarget && possibleTargetsPrefabs.Count > 0)
+        {
+            h.Out(possibleTargetsPrefabs);
+            targetOrgan = h.RandChoice(possibleTargetsPrefabs);
+            h.Out(targetOrgan);
+        }
+        
+        if (generateTarget && targetOrgan)
         {
             if (targetOrgan.targetIcon) targetOrganIconHolder.sprite = targetOrgan.targetIcon;
             else targetOrganIconHolder.sprite = targetOrgan.actionIcon;
@@ -56,6 +70,7 @@ public class BarrierEnemy : EnemyBase
         {
             attackRange = h.GetCameraWidth() * 0.8f;
         }
+        
     }
 
     // public override void Start()

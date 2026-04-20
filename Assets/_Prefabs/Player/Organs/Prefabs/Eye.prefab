@@ -171,13 +171,13 @@ MonoBehaviour:
   locationInAquarium: 0
   overlapAquarium: 0
   _actionIcon: {fileID: 0}
-  targetIcon: {fileID: -4746472984867862730, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
+  targetIcon: {fileID: 1931778834, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   scrollingParent: {fileID: 0}
   flashDuration: 2
   flashVFXDuration: 0.5
   maxDistance: 0
   sparkPrefab: {fileID: 7715541909288812568, guid: 36820bac02f64554eb5124bbd381abd5, type: 3}
-  linePrefab: {fileID: 7399853311439979957, guid: 30250c3231adb9242ac2f227c6806538, type: 3}
+  laser: {fileID: 4161439489676004461, guid: 120c5c34628e05e43b19d9df69feb213, type: 3}
 --- !u!1001 &3004202428505273352
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -337,7 +337,7 @@ MonoBehaviour:
   - {fileID: 6875332051640530347, guid: c122f55ac86fe8c43b4dae72a0f7e115, type: 3}
   - {fileID: 6365442535962660301, guid: 7ae0110558b461946bab34f208a5261e, type: 3}
   crackSpawnPoints: []
-  targetOrgan: {fileID: 4736005896824792586, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
+  targetOrgan: {fileID: 0}
   targetOrganIconHolder: {fileID: 964256561626884812}
   blockSign: {fileID: 0}
   gunPoint: {fileID: 7392169054478397639}
@@ -346,6 +346,12 @@ MonoBehaviour:
   laser: {fileID: 4161439489676004461, guid: 120c5c34628e05e43b19d9df69feb213, type: 3}
   explosionPrefab: {fileID: 3674265961787812128, guid: 6c1a358022f01b84193e58ec7536b4ef, type: 3}
   explosionDuration: 0.5
+  generateTarget: 1
+  possibleTargetsPrefabs:
+  - {fileID: 6003212802839069270, guid: 6b2da98878bc30f439dd0e814ae3bcad, type: 3}
+  - {fileID: 4736005896824792586, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
+  - {fileID: 6641410100827141005, guid: 67288b3420e457548981abb135dac343, type: 3}
+  - {fileID: 4814087643053107426, guid: 28d01660a0158fd43ba7ae07be894b25, type: 3}
 --- !u!61 &2106013124401727842
 BoxCollider2D:
   m_ObjectHideFlags: 0

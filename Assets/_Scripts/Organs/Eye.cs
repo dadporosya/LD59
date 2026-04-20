@@ -11,7 +11,7 @@ public class Eye : OrganBase
     
     [SerializeField] private GameObject sparkPrefab;
 
-    [SerializeField] private LineRenderer linePrefab;
+    [SerializeField] private Connection laser;
 
     public override void Awake()
     {
@@ -57,17 +57,16 @@ public class Eye : OrganBase
         GameObject temp = h.FindChildrenWithTag(blindSpot, "BlindSpot");
         if (temp) blindSpot = temp.transform;
 
-        if (linePrefab && blindSpot!=null)
+        if (laser && blindSpot!=null)
         {
-            LineRenderer laserLine = Instantiate(linePrefab, parent:transform);
+            Connection laserLine = Instantiate(laser, parent:transform);
             
-            laserLine.positionCount = 2;
-            laserLine.SetPosition(0, transform.position);
-            laserLine.SetPosition(1, blindSpot.position);
+            laserLine.points.Add(transform);
+            laserLine.points.Add(blindSpot);
 
             GameObject spark = Instantiate(sparkPrefab, blindSpot.position, Quaternion.identity, parent:scrollingParent);
             spark.transform.localScale *= 0.5f;
-            h.InvokeAfterTime(this, flashVFXDuration, () => { Destroy(laserLine); });
+            h.InvokeAfterTime(this, flashVFXDuration, () => { laserLine.OnDestroy(); });
             h.InvokeAfterTime(this, flashVFXDuration, () => { Destroy(spark); });
         }
         
