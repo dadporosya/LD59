@@ -142,14 +142,17 @@ public class BPMManager : MonoBehaviour
         {
             StopAllCoroutines();
             StopHeartBeat();
-            gameFlowManager.SetOnLoss();
             gameFlowManager.currentDeathMessage = gameFlowManager.heartStopDeathMessage;
+            gameFlowManager.SetOnLoss();
+            
         } else if (bpm >= fatalMaxBPM)
         {
             StopAllCoroutines();
             StopHeartBeat();
-            gameFlowManager.SetOnLoss();
+            h.Out("tooFar");
             gameFlowManager.currentDeathMessage = gameFlowManager.tooFarPushHeartDeathMessage;
+            gameFlowManager.SetOnLoss();
+            
         }
     }
     

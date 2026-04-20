@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public List<OrganBase> startOrgans  = new List<OrganBase>();
+    
     public List<OrganUpgrade> organUpgrades=new List<OrganUpgrade>();
     public List<OrganPurchaseItem> organPurchaseItems=new List<OrganPurchaseItem>();
     public List<OrganBase> organs=new List<OrganBase>();
@@ -50,7 +52,15 @@ public class UpgradeManager : MonoBehaviour
     
     private void Start()
     {
+
+
+        ClearNeuronsAndOrgans();
         
+        neurons.Clear();
+        organs.Clear();
+        
+        armSpawnPoints.Clear();
+        legSpawnPoints.Clear();
         
         if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
         if (neuronParent)
@@ -88,6 +98,11 @@ public class UpgradeManager : MonoBehaviour
             {
                 AddOrgan(legPrefab);
             }
+        }
+        
+        foreach (var organ in startOrgans)
+        {
+            AddOrgan(organ);
         }
         
     }

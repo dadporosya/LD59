@@ -41,7 +41,7 @@ public class GameFlowManager : MonoBehaviour
 
     public States state = States.Intro;
 
-    private void Awake()
+    private void OnEnable()
     {
         cutSceneManager = FindFirstObjectByType<CutSceneManager>();
         upgradeManager = GameObject.FindFirstObjectByType<UpgradeManager>();
@@ -51,7 +51,7 @@ public class GameFlowManager : MonoBehaviour
         
         cameraInitialPosition = Camera.main.transform.position;
 
-        StartGame();
+        // StartGame();
     }
 
     private void Update()
@@ -82,13 +82,13 @@ public class GameFlowManager : MonoBehaviour
 
     public void SetOnLoss()
     {
-        h.Out("CURENT LOSSS!!!!!!!_--------------------------------------", state);
+        // h.Out("CURENT LOSSS!!!!!!!_--------------------------------------", state);
         // cutSceneManager.RunCutscene("LossCutscene");
         if (state == States.Loss) return;
         state = States.Loss;
-        h.Out("ANOTHER LOSSS!!!!!!!_--------------------------------------", state);
+        // h.Out("ANOTHER LOSSS!!!!!!!_--------------------------------------", state);
         
-        h.Out(currentDeathMessage);
+        // h.Out(currentDeathMessage);
         ProcessLoss();
     }
 
@@ -107,15 +107,30 @@ public class GameFlowManager : MonoBehaviour
         {
             restartWindow.SetActive(true);
         }
-
-        restartWindow.GetComponentInChildren<TextMeshProUGUI>().text = $"{currentDeathMessage}\nRestart?";
         
-        h.Out("LOSS");
+        restartWindow.GetComponentInChildren<TextMeshProUGUI>().text = $"{currentDeathMessage}\n\nPress SPACE to restart";
+        
+        // h.Out("LOSS");
         if (currentLossScreen) Destroy(currentLossScreen);
         currentLossScreen = Instantiate(
             lossScreenPrefab, playerParent.transform.position,
             Quaternion.identity
         );
+        
+        StartCoroutine(PressSpaceToRestart());
+    }
+
+    public IEnumerator PressSpaceToRestart()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Restart();
+                yield break;
+            }
+            yield return null;
+        }
     }
 
    

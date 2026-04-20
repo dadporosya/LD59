@@ -96,11 +96,14 @@ public class EscapeProgressManager : MonoBehaviour
         if  (nextLevel)
         {
             level++;
-            SetXP(maxXP / maxLevel * level);
+            h.Out(currentXP, "xp before");
+            SetXP(maxXP / maxLevel * level, 0);
+            h.Out(currentXP, "xp after");
             // Wait for progress bar to fill before talking
             h.InvokeAfterTime(this, progressBar.drainDuration, () =>
             {
                 dialogueManager.GetComponent<Talkable>().Talk(level);
+                SetXP(maxXP / maxLevel * level, 0);
             });
         }
         

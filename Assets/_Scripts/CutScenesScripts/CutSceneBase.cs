@@ -29,7 +29,7 @@ public class CutSceneBase : MonoBehaviour
     {
         // if (!initialized) Init();
         CutSceneBase instance = Instantiate(this);
-        instance.StartCoroutine(instance.ExecuteSequence(instance.gameObject));
+        instance.StartCoroutine(instance.ExecuteSequence(instance.gameObject)); //
     }
 
     public IEnumerator ExecuteSequence(GameObject instanceToDestroy = null)
