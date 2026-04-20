@@ -26,10 +26,23 @@ public class UpgradeManager : MonoBehaviour
     // public 
     public List<Transform> armSpawnPoints = new List<Transform>();
     public List<Transform> legSpawnPoints = new List<Transform>();
-    
 
+
+    public void Init()
+    {
+        armPrefab = null;
+        legPrefab = null;
+        
+        neurons.Clear();
+        organs.Clear();
+        
+        Start();
+    }
+    
     private void Start()
     {
+        
+        
         if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
         if (neuronParent)
         {

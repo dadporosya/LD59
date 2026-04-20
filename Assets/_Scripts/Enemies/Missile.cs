@@ -47,7 +47,7 @@ public class Missile : MonoBehaviour, IBlindable
     private void Start()
     {
         parent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
-        h.Out(parent);
+        // h.Out(parent);
         if (initOnStart)
         {
             Init(target, damage,radiusMult,reactTime,missileSpeed, transform);
@@ -69,7 +69,7 @@ public class Missile : MonoBehaviour, IBlindable
             Vector3 dir = target.position - transform.position;
             targetAngleZ = -1* Mathf.Atan2(Mathf.Abs(dir.x), Mathf.Abs(dir.y)) * Mathf.Rad2Deg + 45*Mathf.Rad2Deg;
         }
-        h.Out(targetAngleZ);
+        // h.Out(targetAngleZ);
 
         float elapsed = 0f;
         while (elapsed < reactTime * reactTimeCoof)

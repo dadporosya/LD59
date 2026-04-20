@@ -135,7 +135,7 @@ public class BPMManager : MonoBehaviour
             bpm += reduction;
         }
         
-        h.Out(bpm);
+        // h.Out(bpm);
         bpmText.text = bpm.ToString();
 
         if (bpm <= fatalMinBPM)

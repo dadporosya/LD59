@@ -28,6 +28,11 @@ public class PlayerDamageManager : MonoBehaviour
         damageTaken = 0;
         punchStack = 0;
         
+        
+        
+        if (BPMReductionCoroutineInst != null)  StopCoroutine(BPMReductionCoroutineInst);
+        h.Out(BPMReductionCoroutineInst, "RESSEEEEEEEEEEEEEEEEET", BPMReductionCoroutineInst);
+        
         Awake();
     }
     
@@ -57,6 +62,7 @@ public class PlayerDamageManager : MonoBehaviour
         h.Out("TakeDamag");
         damageTaken += value;
         UpdateDamageScreen();
+        h.Out(BPMReductionCoroutineInst);
         if (BPMReductionCoroutineInst == null)
         {
             BPMReductionCoroutineInst = StartCoroutine(BPMReductionCoroutine());

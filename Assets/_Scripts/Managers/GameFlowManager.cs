@@ -140,7 +140,7 @@ public class GameFlowManager : MonoBehaviour
     public IEnumerator RestartCoroutine()
     {
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(0, 1, restartDuration/2));
-        
+        playerParent.SetActive(true);
         h.Out("loss screen", currentLossScreen);
         if (currentLossScreen) Destroy(currentLossScreen);
         
@@ -158,7 +158,7 @@ public class GameFlowManager : MonoBehaviour
             restartWindow.SetActive(false);
         }
         
-        playerParent.SetActive(true);
+        
         
         // Reset camera to initial position
         Camera.main.transform.position = cameraInitialPosition;
@@ -182,7 +182,12 @@ public class GameFlowManager : MonoBehaviour
         
         //update damage manager
         FindFirstObjectByType<PlayerDamageManager>().Init();
+
+        upgradeManager.Init();
         
+        h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
+        damageScreen.GetComponent<Image>().color = lossColor;
+        h.Out("restart", damageScreen, damageScreen.GetComponent<Image>().color);
         
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(1, 0, restartDuration/2));
         SetOnGame();
