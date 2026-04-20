@@ -8,6 +8,7 @@ public class Missile : MonoBehaviour, IBlindable
     public float damage = 2.5f;
     public float radiusMult = 1f;
     public float reactTime=2f;
+    public float reactTimeCoof = 0.95f;
     public float missileSpeed = 10f;
 
     public GameObject aimPrefab;
@@ -60,24 +61,29 @@ public class Missile : MonoBehaviour, IBlindable
 
     public IEnumerator LaunchCoroutine()
     {
-        // --- Phase 1: Rotate to face target over reactTime ---
-        Quaternion startRotation = transform.rotation;
-        float elapsed = 0f;
+        float startAngleZ = transform.eulerAngles.z;
+        float targetAngleZ = 0f;
 
+        if (target != null)
+        {
+            Vector3 dir = target.position - transform.position;
+            targetAngleZ = -1* Mathf.Atan2(Mathf.Abs(dir.x), Mathf.Abs(dir.y)) * Mathf.Rad2Deg + 45*Mathf.Rad2Deg;
+        }
+        h.Out(targetAngleZ);
+
+        float elapsed = 0f;
         while (elapsed < reactTime)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / reactTime;
 
-            if (target != null)
-            {
-                Vector3 dir = (target.position - transform.position).normalized;
-                Quaternion targetRotation = Quaternion.LookRotation(dir);
-                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
-            }
+            float angleZ = Mathf.LerpAngle(startAngleZ, targetAngleZ, t);
+            transform.rotation = Quaternion.Euler(0f, 0f, angleZ);
 
             yield return null;
         }
+
+        transform.rotation = Quaternion.Euler(0f, 0f, targetAngleZ);
 
         // --- Phase 2: Accelerate toward target and explode on arrival ---
         float velocity = -2f * missileSpeed; // starts negative (pulls back before launching)
@@ -105,7 +111,6 @@ public class Missile : MonoBehaviour, IBlindable
             }
 
             transform.position += direction * step;
-            transform.rotation = Quaternion.LookRotation(direction);
 
             yield return null;
         }
@@ -117,7 +122,7 @@ public class Missile : MonoBehaviour, IBlindable
     {
         Instantiate(explosionPrefab, target.position, Quaternion.identity, parent).GetComponent<Explosion>().Init(damage, radiusMult, enableCollider);
         
-        if (target) Destroy(target);
+        if (target) Destroy(target.gameObject);
         Destroy(gameObject);
     }
 
