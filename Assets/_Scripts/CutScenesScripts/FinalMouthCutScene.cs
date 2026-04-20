@@ -42,8 +42,7 @@ public class FinalMouthCutscene : CutSceneBase
         // Starting values
         Vector3 startPosition = mouth.transform.position;
         Vector3 startScale = mouth.transform.localScale;
-        
-        h.FadeIn(image.gameObject, duration, this);
+        float startImageAlpha = image.color.a;
         
         // Smoothly animate to target
         float elapsed = 0f;
@@ -55,12 +54,20 @@ public class FinalMouthCutscene : CutSceneBase
             mouth.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
             mouth.transform.localScale = Vector3.Lerp(startScale, targetScale, t);
             
+            // Smoothly change image alpha to 1
+            Color imageColor = image.color;
+            imageColor.a = Mathf.Lerp(startImageAlpha, 1f, t);
+            image.color = imageColor;
+            
             yield return null;
         }
         
         // Ensure final values are exact
         mouth.transform.position = targetPosition;
         mouth.transform.localScale = targetScale;
+        Color finalImageColor = image.color;
+        finalImageColor.a = 1f;
+        image.color = finalImageColor;
         
         yield return new  WaitForSeconds(2f);
     }
