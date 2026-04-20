@@ -15,6 +15,9 @@ public class UpgradeManager : MonoBehaviour
     public List<Neuron> neurons=new List<Neuron>();
     public Neuron neuronPrefab;
     public Transform organInSpawnPoint;
+    
+    [SerializeField] private OrganBase armPrefab;
+    [SerializeField] private OrganBase legPrefab;
 
     public GameObject neuronBG;
     public int maxNeuronCount = 10;
@@ -24,6 +27,7 @@ public class UpgradeManager : MonoBehaviour
     public List<Transform> armSpawnPoints = new List<Transform>();
     public List<Transform> legSpawnPoints = new List<Transform>();
     
+
     private void Start()
     {
         if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
@@ -46,6 +50,24 @@ public class UpgradeManager : MonoBehaviour
         armSpawnPoints.AddRange(h.FindAllTransformsWithTag("ArmSpawnPointOut"));
         legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointIn"));
         legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointOut"));
+
+
+        if (armPrefab)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                AddOrgan(armPrefab);
+            }
+        }
+        
+        if (legPrefab)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                AddOrgan(legPrefab);
+            }
+        }
+        
     }
 
     public void AddOrgan(OrganBase organPrefab)
