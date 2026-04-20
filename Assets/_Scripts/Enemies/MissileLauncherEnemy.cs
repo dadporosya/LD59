@@ -31,6 +31,9 @@ public class MissileLauncherEnemy : EnemyBase
     
     public List<Transform> missileSpawnPoints;
     
+    public GameObject aimPrefab;
+    public GameObject explosionPrefab;
+    
     private void Start()
     {
         if (!off)
@@ -86,6 +89,10 @@ public class MissileLauncherEnemy : EnemyBase
         Vector3 targetPos = targetIn.position;
         targetPos.x += h.Range(0f, h.GetCameraWidth() * 0.5f);
         
-        missile.Init(targetPos, damage, radiusMult, reactTime, missileSpeed);
+        GameObject currentAim= Instantiate(aimPrefab, targetPos, aimPrefab.transform.rotation, transform.parent);
+        currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
+
+        
+        missile.Init(currentAim, damage, radiusMult, reactTime, missileSpeed);
     }
 }

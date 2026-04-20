@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemiesSpawnManager : MonoBehaviour
 {
-    public GameObjectObjectsKindsContainer enemyPrefabs;
+    [SerializeField] private bool useContainer = false;
+    public GameObjectObjectsKindsContainer enemyPrefabsContainer;
+    public List<GameObject> enemyPrefabs = new List<GameObject>();
+    
     private EscapeProgressManager escapeProgressManager;
 
     private Transform scrollingParent;
@@ -26,6 +29,12 @@ public class EnemiesSpawnManager : MonoBehaviour
     public bool finalReached = false;
     private void Start()
     {
+        if (useContainer)
+        {
+            enemyPrefabs = new List<GameObject>();
+            enemyPrefabs.AddRange(enemyPrefabsContainer.objects.Values.ToList());
+        }
+        
         if (!scrollingParent) scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
         // Find all objects with tag EnemiesSpawnPoint and add to spawnPoints list
         GameObject[] spawnPointObjects = GameObject.FindGameObjectsWithTag("EnemiesSpawnPoint");
@@ -83,15 +92,22 @@ public class EnemiesSpawnManager : MonoBehaviour
     {
         if (finalReached) return default;
         
-        if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs.objects.Values.ToList());
+        if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs);
         GameObject enemy = null;
         Transform spawnPoint = h.RandChoice(spawnPoints);
         if (enemyPrefab && spawnPoint)
+        {
             enemy = Instantiate(
                 enemyPrefab, 
                 spawnPoint.position,
                 enemyPrefab.transform.rotation,
                 scrollingParent);
+            
+            //TEMP
+            if (enemy.GetComponent<EnemyBase>() is PoliceEnemy policeEnemy)
+                policeEnemy.transform.localPosition = new Vector3(enemy.transform.localPosition.x, 0, enemy.transform.localPosition.z);
+        }
+            
         
         if (enemy && enemy.TryGetComponent(out EnemyBase enemyComp)) enemies.Add(enemyComp);
         

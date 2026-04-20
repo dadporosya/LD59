@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour, IBlindable
 {
-    public Vector3 targetPos;
+    public Transform target;
     
     public float damage = 2.5f;
     public float radiusMult = 1f;
@@ -28,9 +28,9 @@ public class Missile : MonoBehaviour, IBlindable
         get { return _blinded; }
         set { _blinded = value; }
     }
-    public void Init(Vector3 targetPosIn, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue, Transform parentIn=null)
+    public void Init(Transform tra, float damageValue, float radiusMultValue, float reactTimeValue, float missileSpeedValue, Transform parentIn=null)
     {
-        targetPos = targetPosIn;
+        target = targetPosIn;
         damage = damageValue;
         radiusMult = radiusMultValue;
         reactTime = reactTimeValue;
@@ -49,19 +49,19 @@ public class Missile : MonoBehaviour, IBlindable
         h.Out(parent);
         if (initOnStart)
         {
-            Init(targetPos, damage,radiusMult,reactTime,missileSpeed, transform);
+            Init(target, damage,radiusMult,reactTime,missileSpeed, transform);
         }
     }
 
     public void Launch()
     {
         
-        currentAim= Instantiate(aimPrefab, targetPos, aimPrefab.transform.rotation, parent);
+        currentAim= Instantiate(aimPrefab, target, aimPrefab.transform.rotation, parent);
         currentAim.transform.localScale = explosionPrefab.transform.localScale * radiusMult;
 
         currentAim.transform.SetParent(parent);
         
-        targetPos = currentAim.transform.position;
+        target = currentAim.transform.position;
         
         StartCoroutine(LaunchCoroutine());
     }
@@ -77,7 +77,7 @@ public class Missile : MonoBehaviour, IBlindable
         Vector3 startRotation = transform.eulerAngles;
         
         // Calculate target angle based on x distance / y distance
-        Vector3 directionToTarget = targetPos - transform.position;
+        Vector3 directionToTarget = target - transform.position;
         float xDistance = directionToTarget.x;
         float yDistance = directionToTarget.y;
         float targetAngle = Mathf.Atan(xDistance / yDistance) * Mathf.Rad2Deg;
@@ -100,7 +100,7 @@ public class Missile : MonoBehaviour, IBlindable
         // ...existing code...
         // Phase 2: Move towards target with acceleration
         Vector3 startPosition = transform.position;
-        Vector3 endPosition = targetPos;
+        Vector3 endPosition = target;
         Vector3 direction = (endPosition - startPosition).normalized;
         float distance = Vector3.Distance(startPosition, endPosition);
         
@@ -136,7 +136,7 @@ public class Missile : MonoBehaviour, IBlindable
 
     public void Explode(bool enableCollider = true)
     {
-        Instantiate(explosionPrefab, targetPos, Quaternion.identity, parent).GetComponent<Explosion>().Init(damage, radiusMult, enableCollider);
+        Instantiate(explosionPrefab, target, Quaternion.identity, parent).GetComponent<Explosion>().Init(damage, radiusMult, enableCollider);
         
         if (currentAim) Destroy(currentAim);
         Destroy(gameObject);

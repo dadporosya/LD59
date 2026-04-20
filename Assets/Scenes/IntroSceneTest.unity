@@ -832,6 +832,7 @@ MonoBehaviour:
   organInSpawnPoint: {fileID: 1978503083}
   neuronBG: {fileID: 0}
   maxNeuronCount: 10
+  neuronOffset: {x: 0, y: -1.6, z: 0}
 --- !u!1 &343979560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8227258964828168276, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
@@ -3159,7 +3160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CellsManager
   cellCount: 0
   maxCellCount: 0
-  initialMaxCell: 20
+  initialMaxCell: 1
   level: 1
   cellBar: {fileID: 78007951}
   levelMult: 1.2
