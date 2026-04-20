@@ -49,6 +49,7 @@ MonoBehaviour:
   locationInAquarium: 0
   overlapAquarium: 0
   _actionIcon: {fileID: 0}
+  targetIcon: {fileID: -4746472984867862730, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   damage: 1
   animator: {fileID: 0}
   playerDamageManager: {fileID: 0}

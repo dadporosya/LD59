@@ -111,7 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Brain
   locationInAquarium: 0
+  overlapAquarium: 0
   _actionIcon: {fileID: 0}
+  targetIcon: {fileID: 5635947322711066577, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   cellsPerTap: 10
 --- !u!1001 &9167402157761925162
 PrefabInstance:

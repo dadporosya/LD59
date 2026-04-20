@@ -14,6 +14,12 @@ public class BarrierEnemy : EnemyBase
     
     public List<GameObject> cracks = new List<GameObject>();
     [SerializeField] private List<Transform> crackSpawnPoints= new List<Transform>();
+
+    public OrganBase targetOrgan;
+    public SpriteRenderer targetOrganIcon;
+    public Transform gunPoint;
+    public float disableRange = -1f;
+    
     private void Awake()
     {
         collider2D = GetComponent<Collider2D>();
@@ -28,6 +34,18 @@ public class BarrierEnemy : EnemyBase
             {
                 crackSpawnPoints.Add(child);
             }
+        }
+
+        if (targetOrgan)
+        {
+            if (targetOrgan.targetIcon) targetOrganIcon.sprite = targetOrgan.targetIcon;
+            else targetOrganIcon.sprite = targetOrgan.actionIcon;
+        }
+        
+        if (!gunPoint) gunPoint = transform;
+        if (disableRange <= 0)
+        {
+            disableRange = h.GetCameraWidth() * 0.8f;
         }
     }
 

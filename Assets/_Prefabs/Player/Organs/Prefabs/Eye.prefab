@@ -169,7 +169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Eye
   locationInAquarium: 0
+  overlapAquarium: 0
   _actionIcon: {fileID: 0}
+  targetIcon: {fileID: 7510810662688118461, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   scrollingParent: {fileID: 0}
   flashDuration: 2
   flashVFXDuration: 0.5

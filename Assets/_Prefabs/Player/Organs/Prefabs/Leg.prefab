@@ -49,6 +49,7 @@ MonoBehaviour:
   locationInAquarium: 0
   overlapAquarium: 0
   _actionIcon: {fileID: 0}
+  targetIcon: {fileID: -702573179590016310, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   XPPerStep: 0
   aquariumParent: {fileID: 0}
 --- !u!1 &6519161667865337870
