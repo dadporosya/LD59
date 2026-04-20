@@ -20,8 +20,17 @@ public class EscapeProgressManager : MonoBehaviour
     public EnemiesSpawnManager enemiesSpawnManager;
     private DialogueManager  dialogueManager;
     private GameFlowManager gameFlowManager;
-    
-    
+
+    public void Init()
+    {
+        currentXP = 0;
+        progressCoefficient = 1f;
+        level = 0;
+        onChangeTempXP = 0;
+        initialTempXp = float.MaxValue;
+        
+        Start();
+    }
     private void Start()
     {
         gameFlowManager = FindFirstObjectByType<GameFlowManager>();

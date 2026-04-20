@@ -30,6 +30,11 @@ public class GameFlowManager : MonoBehaviour
         enemiesSpawnManager = GameObject.FindFirstObjectByType<EnemiesSpawnManager>();
     }
 
+    public void StartGame(bool firstTime = true)
+    {
+        Restart();
+    }
+    
     public void SetOnPause()
     {
         state = States.Pause;
@@ -87,14 +92,18 @@ public class GameFlowManager : MonoBehaviour
         
         enemiesSpawnManager.ClearEnemies();
         upgradeManager.ClearNeuronsAndOrgans();
-        
-        
-        
 
         foreach (OrganBase organ in organsOnStart)
         {
             upgradeManager.AddOrgan(organ);
         }
+        
+        // update cellmanager
+        // update xpmanager
+        FindFirstObjectByType<EscapeProgressManager>().Init();
+        // update bpm manager
+        //update damage manager
+        
         
         
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(1, 0, restartDuration/2));
