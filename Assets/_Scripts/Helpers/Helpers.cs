@@ -990,5 +990,74 @@ public static class h
             go => go.transform
         );
     }
+
+    public static void ShakeObject(MonoBehaviour runner, GameObject target,
+        float magnitude,
+        float sharpness,
+        float duration,
+        float fadeInDuration = 0,
+        float fadeOutDuration = 0)
+    {
+        runner.StartCoroutine(ShakeObjectCoroutine(
+            target, magnitude, sharpness, duration, fadeInDuration, fadeOutDuration
+            ));
+    }
+    public static IEnumerator ShakeObjectCoroutine(
+        GameObject target,
+        float magnitude,
+        float sharpness,
+        float duration,
+        float fadeInDuration=0,
+        float fadeOutDuration=0
+    )
+    {
+        if (target == null)
+            yield break;
+
+        Transform boneTransform = target.transform;
+
+        // Save initial local position so we can restore it later
+        Vector3 initialLocalPosition = boneTransform.localPosition;
+
+        float totalDuration = fadeInDuration + duration + fadeOutDuration;
+        float elapsed = 0f;
+
+        while (elapsed < totalDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float strength = 1f;
+
+            // Fade in
+            if (elapsed <= fadeInDuration)
+            {
+                strength = Mathf.Clamp01(elapsed / fadeInDuration);
+            }
+            // Sustain full shake
+            else if (elapsed <= fadeInDuration + duration)
+            {
+                strength = 1f;
+            }
+            // Fade out
+            else
+            {
+                float fadeOutTime = elapsed - fadeInDuration - duration;
+                strength = 1f - Mathf.Clamp01(fadeOutTime / fadeOutDuration);
+            }
+
+            // Sharp shake offset
+            Vector3 randomOffset = Random.insideUnitSphere * magnitude * strength;
+
+            // Sharpness makes movement snappier
+            randomOffset *= sharpness;
+
+            boneTransform.localPosition = initialLocalPosition + randomOffset;
+
+            yield return null;
+        }
+
+        // Ensure exact reset at the end
+        boneTransform.localPosition = initialLocalPosition;
+    }
     
 }

@@ -123,7 +123,7 @@ public class Neuron : MonoBehaviour
         SpawnSpark();
         if (neuronManager && actionPerformerGO.TryGetComponent(out OrganBase organ))
         {
-            neuronManager.OnNeuronActivation(organ, bottomPoint);
+            neuronManager.OnNeuronActivation(organ, bottom.transform);
         }
     }
 
