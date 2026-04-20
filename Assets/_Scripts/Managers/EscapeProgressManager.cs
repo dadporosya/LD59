@@ -99,7 +99,7 @@ public class EscapeProgressManager : MonoBehaviour
 
             if (level >= maxLevel)
             {
-                gameFlowManager.;
+                gameFlowManager.SetFinal();
 
                 return;
             }
