@@ -94,9 +94,9 @@ public class EnemiesSpawnManager : MonoBehaviour
         //TODO
     }
 
-    public GameObject SpawnEnemy(GameObject enemyPrefab = null)
+    public GameObject SpawnEnemy(GameObject enemyPrefab = null, bool ignoreConditions=false)
     {
-        if (finalReached ||  gameFlowManager.state == GameFlowManager.States.Finale) return default;
+        if (!ignoreConditions && (finalReached ||  gameFlowManager.state == GameFlowManager.States.Finale)) return default;
 
         if (!enemyPrefab) enemyPrefab = h.RandChoice(enemyPrefabs);
         GameObject enemy = null;

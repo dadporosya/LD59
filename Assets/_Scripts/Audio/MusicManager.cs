@@ -74,4 +74,33 @@ public class MusicManager : AudioManagerBase
         }
     }
     
+    public void ShutdownMusic(float fadeTime = 1.5f)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ShutdownMusicCoroutine(fadeTime));
+    }
+    
+    private IEnumerator ShutdownMusicCoroutine(float fadeTime)
+    {
+        float t = 0f;
+        
+        while (t < fadeTime)
+        {
+            t += Time.deltaTime;
+            float normalized = t / fadeTime;
+            
+            current.volume = Mathf.Lerp(1f, 0f, normalized);
+            
+            yield return null;
+        }
+        
+        current.Stop();
+        current.volume = 1f;
+        current.clip = null;
+        next.Stop();
+        next.volume = 1f;
+        next.clip = null;
+    }
+    
+    
 }

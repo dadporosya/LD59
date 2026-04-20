@@ -31,6 +31,8 @@ public class GameFlowManager : MonoBehaviour
 
     private Coroutine damageScreenFadeCoroutine;
     
+    public GameObject mouth;
+    
     public enum States
     {
         Intro,
@@ -246,6 +248,17 @@ public class GameFlowManager : MonoBehaviour
         {
             connection.OnDestroy();
         }
+    }
+
+    public void SetFinal()
+    {
+        state = States.Finale;
+        MusicManager.Instance.ShutdownMusic();
+        enemiesSpawnManager.SpawnEnemy(mouth);
+        mouth.GetComponent<SmartCollider>().onTriggerEnter.AddListener((gameObject) =>
+        {
+            cutSceneManager.RunCutscene("MouthCutscene");
+        });
     }
     
 }

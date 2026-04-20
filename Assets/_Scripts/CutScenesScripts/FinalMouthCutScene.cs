@@ -30,7 +30,12 @@ public class FinalMouthCutscene : CutSceneBase
 
     public IEnumerator TranslateMouthToCenter(float duration = 1f)
     {
+        GameObject.FindGameObjectWithTag("UICanvas").SetActive(false);
+
+        MusicManager.Instance.ShutdownMusic(duration);
+        
         mouth = FindFirstObjectByType<Mouth>();
+        
         finalCanvas =  GameObject.FindGameObjectWithTag("FinalCanvas");
         Image image =  finalCanvas.GetComponentInChildren<Image>();
         
@@ -75,7 +80,7 @@ public class FinalMouthCutscene : CutSceneBase
     {
         List<string> phrase = new List<string>()
         {
-            "Thanks", " For", " Playing"
+            "Thanks", " For", " Playing!"
         };
         if (!mouth) mouth = FindFirstObjectByType<Mouth>();
         if (!finalCanvas) finalCanvas =  GameObject.FindGameObjectWithTag("FinalCanvas");
