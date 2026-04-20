@@ -1708,7 +1708,7 @@ MonoBehaviour:
   useContainer: 0
   enemyPrefabsContainer: {fileID: 0}
   enemyPrefabs:
-  - {fileID: 5580267807220663651, guid: ad32b2cd61615664f8c37978664cd356, type: 3}
+  - {fileID: 6478168308004483992, guid: ae8d8439d5f2a0e4da05b260ab8c70de, type: 3}
   threatLevel: 1
   spawnPoints: []
   deathPoint: {fileID: 0}
@@ -5421,11 +5421,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2582913542391482210, guid: 6b2da98878bc30f439dd0e814ae3bcad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.413
       objectReference: {fileID: 0}
     - target: {fileID: 2582913542391482210, guid: 6b2da98878bc30f439dd0e814ae3bcad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.94
       objectReference: {fileID: 0}
     - target: {fileID: 2582913542391482210, guid: 6b2da98878bc30f439dd0e814ae3bcad, type: 3}
       propertyPath: m_LocalPosition.z

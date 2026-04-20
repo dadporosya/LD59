@@ -33,6 +33,8 @@ public class Neuron : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI numberText;
     
+    public NeuronManager neuronManager;
+    
     private void OnEnable()
     {
         GlobalEventManager m = FindFirstObjectByType<GlobalEventManager>();
@@ -52,6 +54,8 @@ public class Neuron : MonoBehaviour
 
     public void Init(GameObject actionPerformerIn=null, string actionKey="")
     {
+        neuronManager = FindFirstObjectByType<NeuronManager>();
+        
         if (actionPerformerIn) actionPerformerGO = actionPerformerIn;
         
         if (!numberText) numberText = GetComponentInChildren<TextMeshProUGUI>();
@@ -117,6 +121,10 @@ public class Neuron : MonoBehaviour
         onCooldown = true;
         StartCoroutine(ResetCooldown());
         SpawnSpark();
+        if (neuronManager && actionPerformerGO.TryGetComponent(out OrganBase organ))
+        {
+            neuronManager.OnNeuronActivation(organ, bottomPoint);
+        }
     }
 
     private IEnumerator ResetCooldown()

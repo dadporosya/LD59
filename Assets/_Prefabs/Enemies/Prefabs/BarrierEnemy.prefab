@@ -246,6 +246,14 @@ MonoBehaviour:
   - {fileID: 6875332051640530347, guid: c122f55ac86fe8c43b4dae72a0f7e115, type: 3}
   - {fileID: 6365442535962660301, guid: 7ae0110558b461946bab34f208a5261e, type: 3}
   crackSpawnPoints: []
+  targetOrgan: {fileID: 4736005896824792586, guid: f61529923d20ca94195c6fd254c6b073, type: 3}
+  targetOrganIcon: {fileID: 0}
+  gunPoint: {fileID: 0}
+  attackRange: -1
+  damage: 0
+  linePrefab: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  explosionDuration: 0.5
 --- !u!61 &2106013124401727842
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class NeuronManager : MonoBehaviour
         scrollingParent = GameObject.FindGameObjectWithTag("ScrollingParent").transform;
     }
 
-    public void OnNeuronActivation(OrganBase organ)
+    public void OnNeuronActivation(OrganBase organ, Transform target)
     {
         if (!organ) return;
         
@@ -19,7 +19,12 @@ public class NeuronManager : MonoBehaviour
         BarrierEnemy[] barriers = scrollingParent.GetComponentsInChildren<BarrierEnemy>();
         foreach (BarrierEnemy barrier in barriers)
         {
+            if (barrier.targetOrgan == null || barrier.targetOrgan.GetType() != organ.GetType())
+            {
+                continue;
+            }
             
+            barrier.Shoot(target);
         }
     }
     
