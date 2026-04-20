@@ -25,6 +25,8 @@ TagManager:
   - ArmSpawnPointOut
   - Migalka
   - Mouth
+  - UICanvas
+  - FinalCanvas
   layers:
   - Default
   - TransparentFX
