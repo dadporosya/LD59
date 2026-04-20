@@ -31,6 +31,7 @@ public class EscapeProgressManager : MonoBehaviour
         enemiesSpawnManager = FindFirstObjectByType<EnemiesSpawnManager>();
 
         progressBar.CreateSpreadIndicators(maxLevel);
+        XPTillNextLevel = maxXP / maxLevel;
         UpdateBar();
     }
 
