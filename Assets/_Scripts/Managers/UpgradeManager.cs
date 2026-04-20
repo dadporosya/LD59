@@ -50,8 +50,6 @@ public class UpgradeManager : MonoBehaviour
         armSpawnPoints.AddRange(h.FindAllTransformsWithTag("ArmSpawnPointOut"));
         legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointIn"));
         legSpawnPoints.AddRange(h.FindAllTransformsWithTag("LegSpawnPointOut"));
-
-        h.Out(armPrefab);
         
         if (armPrefab)
         {
@@ -59,7 +57,6 @@ public class UpgradeManager : MonoBehaviour
             {
                 AddOrgan(armPrefab);
             }
-            h.Out("add leg");
         }
         
         if (legPrefab)

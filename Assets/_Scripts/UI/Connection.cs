@@ -30,6 +30,11 @@ public class Connection : MonoBehaviour, IOnDestroy
         for (int i = 0; i < points.Count; i++)
         {
             if (points[i] == null) continue;
+            if (points[i].position == new Vector3(0, 0, 0))
+            {
+                OnDestroy();
+                break;
+            }
             lineRenderer.SetPosition(i, points[i].position);
         }
     }
