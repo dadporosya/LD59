@@ -7,7 +7,7 @@ public class BPMManager : MonoBehaviour
 {
     [SerializeField] private int bpm=90;
     [SerializeField] private int fatalMinBPM = 0;
-    [SerializeField] private int fatalMaxBPM = 0;
+    [SerializeField] private int fatalMaxBPM = 200;
     [SerializeField] private TextMeshProUGUI bpmText;
     public float baseBPMReduction = 2;
     public float currentBPMReduction = 2;
@@ -131,6 +131,18 @@ public class BPMManager : MonoBehaviour
         }
         
         bpmText.text = bpm.ToString();
+
+        if (bpm <= fatalMinBPM)
+        {
+            StopAllCoroutines();
+            gameFlowManager.SetOnLoss();
+            gameFlowManager.currentDeathMessage = gameFlowManager.heartStopDeathMessage;
+        } else if (bpm >= fatalMaxBPM)
+        {
+            StopAllCoroutines();
+            gameFlowManager.SetOnLoss();
+            gameFlowManager.currentDeathMessage = gameFlowManager.tooFarPushHeartDeathMessage;
+        }
     }
     
 }

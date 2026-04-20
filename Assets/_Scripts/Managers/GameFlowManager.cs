@@ -23,7 +23,7 @@ public class GameFlowManager : MonoBehaviour
 
     public string currentDeathMessage;
     public string heartStopDeathMessage;
-    public string toFarPushHeartDeathMessage;
+    public string tooFarPushHeartDeathMessage;
 
     public GameObject lossScreenPrefab;
     private GameObject currentLossScreen;
@@ -77,6 +77,7 @@ public class GameFlowManager : MonoBehaviour
     public void SetOnLoss()
     {
         // cutSceneManager.RunCutscene("LossCutscene");
+        h.Out(currentDeathMessage);
         ProcessLoss();
     }
 
@@ -103,16 +104,7 @@ public class GameFlowManager : MonoBehaviour
         );
     }
 
-    private void FadeDamageScreen(float fromAlpha, float toAlpha, float duration)
-    {
-        GameObject damageScreen = GameObject.Find("DamageScreen");
-        if (!damageScreen) return;
-        
-        Image damageImage = damageScreen.GetComponent<Image>();
-        if (!damageImage) return;
-        
-        StartCoroutine(FadeDamageScreenCoroutine(damageImage, fromAlpha, toAlpha, duration));
-    }
+   
 
     private IEnumerator FadeDamageScreenCoroutine(Image damageImage, float fromAlpha, float toAlpha, float duration)
     {
@@ -188,5 +180,16 @@ public class GameFlowManager : MonoBehaviour
     public bool IsPaused()
     {
         return state != States.Game;
+    }
+    
+    private void FadeDamageScreen(float fromAlpha, float toAlpha, float duration)
+    {
+        GameObject damageScreen = GameObject.Find("DamageScreen");
+        if (!damageScreen) return;
+        
+        Image damageImage = damageScreen.GetComponent<Image>();
+        if (!damageImage) return;
+        
+        StartCoroutine(FadeDamageScreenCoroutine(damageImage, fromAlpha, toAlpha, duration));
     }
 }
