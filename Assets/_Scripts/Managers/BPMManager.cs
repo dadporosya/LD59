@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class BPMManager : MonoBehaviour
 {
+    private int startBPM = 90;
     [SerializeField] private int bpm=90;
     [SerializeField] private int fatalMinBPM = 0;
     [SerializeField] private int fatalMaxBPM = 200;
@@ -25,17 +26,17 @@ public class BPMManager : MonoBehaviour
 
     public void Init()
     {
-        bpm = 90;
-        currentBPMReduction = baseBPMReduction;
+        StopHeartBeat();
         
-        if (bpmCoroutine != null) StopCoroutine(bpmCoroutine);
-        if (beatCoroutine != null) StopCoroutine(beatCoroutine);
+        bpm = startBPM;
+        currentBPMReduction = baseBPMReduction;
         
         Start();
     }
     
     private void Start()
     {
+        bpm = startBPM;
         gameFlowManager = FindFirstObjectByType<GameFlowManager>();
         currentBPMReduction = baseBPMReduction;
         if (!bpmText) bpmText = GameObject.Find("BPMNumberTextTMP").GetComponent<TextMeshProUGUI>();
@@ -49,11 +50,11 @@ public class BPMManager : MonoBehaviour
         bpm = value;
         ProcessBeat(true);
     }
-    
-    public void ChangeBPM(int delta)
+
+    public void ChangeBPM(int delta, bool processBeat = true)
     {
         bpm += delta;
-        ProcessBeat(true);
+        if (processBeat) ProcessBeat(true);
     }
 
     public void StartHeartBeat()
@@ -90,10 +91,6 @@ public class BPMManager : MonoBehaviour
             }
             
             ProcessBeat();
-            if (bpm <= fatalMinBPM)
-            {
-                StopHeartBeat();
-            }
             yield return new WaitForSeconds(1);
         }
         
@@ -127,19 +124,22 @@ public class BPMManager : MonoBehaviour
         if (!newValue)
         {
             int reduction = -1 * (int)h.RangeWithCoof(currentBPMReduction, 0.5f);
-            ChangeBPM(reduction);
+            ChangeBPM(reduction, false);
         }
         
+        h.Out(bpm);
         bpmText.text = bpm.ToString();
 
         if (bpm <= fatalMinBPM)
         {
             StopAllCoroutines();
+            StopHeartBeat();
             gameFlowManager.SetOnLoss();
             gameFlowManager.currentDeathMessage = gameFlowManager.heartStopDeathMessage;
         } else if (bpm >= fatalMaxBPM)
         {
             StopAllCoroutines();
+            StopHeartBeat();
             gameFlowManager.SetOnLoss();
             gameFlowManager.currentDeathMessage = gameFlowManager.tooFarPushHeartDeathMessage;
         }
