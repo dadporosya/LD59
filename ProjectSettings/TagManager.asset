@@ -23,6 +23,7 @@ TagManager:
   - LegSpawnPointOut
   - ArmSpawnPointIn
   - ArmSpawnPointOut
+  - Migalka
   layers:
   - Default
   - TransparentFX

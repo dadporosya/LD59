@@ -20,11 +20,31 @@ public class PoliceEnemy : EnemyBase,IBlindable
     }
 
     private EscapeProgressManager escapeProgressManager;
+
+    [SerializeField] private SpriteRenderer migalka;
+    [SerializeField] private Color migalkaOff;
+    [SerializeField] private Color migalkaOn;
+    
     private void Awake()
     {
         if (!animator) animator =  GetComponent<Animator>();
         collider2D = GetComponent<Collider2D>();
         escapeProgressManager = FindFirstObjectByType<EscapeProgressManager>();
+        
+        // Find Migalka in self (children)
+        if (!migalka)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("Migalka"))
+                {
+                    migalka = child.gameObject.GetComponent<SpriteRenderer>();
+                    break;
+                }
+            }
+        }
+        migalka.color = migalkaOff;
+        
     }
 
     // public override void Start()
@@ -63,6 +83,7 @@ public class PoliceEnemy : EnemyBase,IBlindable
             // h.Out("bumped 1st");
 
             playerBumped = true;
+            migalka.color = migalkaOn;
             return;
         }
         // h.Out("damage");
@@ -84,11 +105,16 @@ public class PoliceEnemy : EnemyBase,IBlindable
     public void Blind(float  duration)
     {
         blinded = true;
+        migalka.color = migalkaOff;
         animator.Play("PoliceEnemyBlindEnter");
         h.InvokeAfterTime(this, duration, () =>
         {
             blinded = false;
             OnIdle();
+            if (playerBumped)
+            {
+                migalka.color = migalkaOn;
+            }
         });
         // h.Out("negro");
     }
