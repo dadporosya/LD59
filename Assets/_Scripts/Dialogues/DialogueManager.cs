@@ -31,9 +31,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private const float MAX_TYPE_SPEED = 0.1f;
 
     public UnityEvent onDialogueEnd;
+
+    private GameFlowManager gameFlowManager;
     
     private void Start()
     {
+        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
+        
         EndDialogue();
         portraitScalingTitle = portraitTitle.GetComponent<ScalingText>();
         dialogueScalingText = dialogueText.GetComponent<ScalingText>();
@@ -258,6 +262,7 @@ public class DialogueManager : MonoBehaviour
         dialogue = null;
         currentParagraphs.Clear();
         
+        gameFlowManager.SetOnGame();
         onDialogueEnd?.Invoke();
     }
 }

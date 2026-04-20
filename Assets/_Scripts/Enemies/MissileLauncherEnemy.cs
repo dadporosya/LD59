@@ -97,8 +97,7 @@ public class MissileLauncherEnemy : EnemyBase
     {
         if (gameFlowManager.IsPaused()) return;
         
-        h.Out(playerDamageManager.aquariumParent, playerDamageManager);
-        if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return; // temp?
+        // if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return; // todo
         
         h.ShakeObject(this, launcherBone, 0.1f, 1f, 0.5f);
         

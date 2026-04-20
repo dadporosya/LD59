@@ -27,7 +27,7 @@ public class PlayerDamageManager : MonoBehaviour
     {
         gameFlowManager = FindFirstObjectByType<GameFlowManager>();
         
-        if (!aquariumParent) aquariumParent = GameObject.Find("AquariumParent").transform;
+        if (!aquariumParent) aquariumParent = GameObject.FindGameObjectWithTag("AquariumParent").transform;
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         if (!playerSmartCollider) FindPlayerCollider();
         playerSmartCollider.collider.enabled = false;

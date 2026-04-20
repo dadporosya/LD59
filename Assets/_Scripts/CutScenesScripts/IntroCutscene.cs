@@ -84,13 +84,5 @@ public class IntroCutscene : CutSceneBase
         
         gameFlowManager.SetOnPause();
         dialogueManager.GetComponent<Talkable>().Talk(0);
-
-        void Action()
-        {
-            gameFlowManager.SetOnGame();
-            dialogueManager.onDialogueEnd.RemoveListener(Action);
-        }
-        
-        dialogueManager.onDialogueEnd.AddListener(Action);
     }
 }

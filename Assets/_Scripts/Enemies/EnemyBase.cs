@@ -13,8 +13,8 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
     
     public virtual void Start()
     {
-        if (!playerDamageManager) playerDamageManager = FindFirstObjectByType<PlayerDamageManager>();
-        if (!scrollManager) scrollManager = FindFirstObjectByType<ScrollManager>();
+        playerDamageManager = FindFirstObjectByType<PlayerDamageManager>();
+        scrollManager = FindFirstObjectByType<ScrollManager>();
     }
     public virtual void TakeDamage(int damage)
     {

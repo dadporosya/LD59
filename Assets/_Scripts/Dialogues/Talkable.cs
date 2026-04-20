@@ -96,6 +96,9 @@ public class Talkable : MonoBehaviour
         DialogueContainer dialogue;
         if (i >= 0 && i < dialogues.Count)  dialogue =  dialogues[i];
         else dialogue = h.RandChoice(dialogues);
+        
+        h.Out(dialogues.Count, dialogue);
+        
         dialogueManager.StartDialogue(dialogue);
         
         gameFlowManager.SetOnPause();

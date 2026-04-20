@@ -3,9 +3,14 @@ using UnityEngine;
 public class EscapeProgressManager : MonoBehaviour
 {
     public float currentXP=0;
-    // public float maxXP=500;
-    public int level=0;
-    public int xpPperLeve
+    public float maxXP=500;
+    public float progressCoefficient = 1f;
+    public float coofReductionPerLevel=0.1f; // temp
+
+    public int level = 0;
+    public int maxLevel = 5;
+    private float XPTillNextLevel;
+    
     
     public Bar progressBar;
     
@@ -13,14 +18,19 @@ public class EscapeProgressManager : MonoBehaviour
     [HideInInspector] public float initialTempXp=float.MaxValue;
 
     public EnemiesSpawnManager enemiesSpawnManager;
-
-    public int checkPointCount = 5;
+    private DialogueManager  dialogueManager;
+    private GameFlowManager gameFlowManager;
+    
     
     private void Start()
     {
+        gameFlowManager = FindFirstObjectByType<GameFlowManager>();
+        dialogueManager =  FindFirstObjectByType<DialogueManager>();
         initialTempXp = float.MaxValue;
         if (!progressBar) progressBar = GameObject.Find("EscapeProgressBar").GetComponent<Bar>();
         enemiesSpawnManager = FindFirstObjectByType<EnemiesSpawnManager>();
+
+        progressBar.CreateSpreadIndicators(maxLevel);
         UpdateBar();
     }
 
@@ -43,8 +53,12 @@ public class EscapeProgressManager : MonoBehaviour
 
     public void ChangeXP(float value, float newTimeToFadeFill = -1f)
     {
-        enemiesSpawnManager.ProcessXP(value);
-        currentXP += value;
+        enemiesSpawnManager.ProcessXP(value*progressCoefficient);
+
+        float processedValue = value * progressCoefficient;
+        currentXP += processedValue;
+        XPTillNextLevel -= processedValue;
+        
         if (newTimeToFadeFill >= 0f)
         {
             ChangeBarFillTime(newTimeToFadeFill);
@@ -55,16 +69,30 @@ public class EscapeProgressManager : MonoBehaviour
 
     public void CheckOverflow()
     {
-        // new organ or smt else
-        if (currentXP < maxXP) return;
-        
-        // win cond
-        
+        if (XPTillNextLevel > 0) return;
+
+        UpdateLevel(true);
+
     }
 
     public void ChangeBarFillTime(float duration)
     {
         progressBar.drainDuration = duration;
+        
+    }
+
+    public void UpdateLevel(bool nextLevel = true)
+    {
+        if  (nextLevel)
+        {
+            level++;
+            dialogueManager.GetComponent<Talkable>().Talk(level);
+        }
+        
+        
+        coofReductionPerLevel = Mathf.Clamp(Mathf.Pow(1-coofReductionPerLevel, level), 0, 1f);
+        XPTillNextLevel = maxXP / maxLevel;
+        XPTillNextLevel -= currentXP - (maxXP / maxLevel) * level;
     }
 
 }
