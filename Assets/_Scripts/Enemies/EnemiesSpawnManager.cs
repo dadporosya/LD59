@@ -10,7 +10,7 @@ public class EnemiesSpawnManager : MonoBehaviour
 
     private EscapeProgressManager escapeProgressManager;
 
-    private Transform scrollingParent;
+    public Transform scrollingParent;
 
     public int threatLevel = 1;
 

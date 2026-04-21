@@ -30,6 +30,9 @@ public class FinalMouthCutscene : CutSceneBase
 
     public IEnumerator TranslateMouthToCenter(float duration = 1f)
     {
+        FindFirstObjectByType<GameFlowManager>().SetOnPause();
+        yield return new WaitForSeconds(3f);
+        
         GameObject.FindGameObjectWithTag("UICanvas").SetActive(false);
 
         MusicManager.Instance.ShutdownMusic(duration);

@@ -102,5 +102,54 @@ public class MusicManager : AudioManagerBase
         next.clip = null;
     }
     
+    public void SlowDownMusic(float targetPitch = 0.5f, float duration = 2f)
+    {
+        StopAllCoroutines();
+        StartCoroutine(SlowDownMusicCoroutine(targetPitch, duration));
+    }
+    
+    private IEnumerator SlowDownMusicCoroutine(float targetPitch, float duration)
+    {
+        float startPitch = current.pitch;
+        float t = 0f;
+        
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float normalized = t / duration;
+            
+            current.pitch = Mathf.Lerp(startPitch, targetPitch, normalized);
+            
+            yield return null;
+        }
+        
+        current.pitch = targetPitch;
+    }
+    
+    public void RestoreMusicSpeed(float duration = 2f)
+    {
+        StopAllCoroutines();
+        StartCoroutine(RestoreMusicSpeedCoroutine(duration));
+    }
+    
+    private IEnumerator RestoreMusicSpeedCoroutine(float duration)
+    {
+        float startPitch = current.pitch;
+        float t = 0f;
+        
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float normalized = t / duration;
+            
+            current.pitch = Mathf.Lerp(startPitch, 1f, normalized);
+            
+            yield return null;
+        }
+        
+        current.pitch = 1f;
+    }
+    
+    
     
 }

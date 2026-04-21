@@ -8,7 +8,7 @@ public class EscapeProgressManager : MonoBehaviour
     public float coofReductionPerLevel=0.1f; // temp
 
     public int level = 0;
-    public int maxLevel = 5;
+    public int maxLevel = 1;
     private float XPTillNextLevel;
     
     
@@ -96,8 +96,8 @@ public class EscapeProgressManager : MonoBehaviour
         if  (nextLevel)
         {
             level++;
-
-            if (level >= maxLevel)
+            h.Out(level);
+            if (level >= maxLevel && gameFlowManager.state != GameFlowManager.States.Finale)
             {
                 gameFlowManager.SetFinal();
 

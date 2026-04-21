@@ -137,7 +137,9 @@ public class BPMManager : MonoBehaviour
         
         // h.Out(bpm);
         bpmText.text = bpm.ToString();
-
+        
+        if (gameFlowManager.state == GameFlowManager.States.Finale) return;
+        
         if (bpm <= fatalMinBPM)
         {
             StopAllCoroutines();

@@ -31,7 +31,7 @@ public class GameFlowManager : MonoBehaviour
 
     private Coroutine damageScreenFadeCoroutine;
     
-    public GameObject mouth;
+    public GameObject mouthPrefab;
     
     public enum States
     {
@@ -41,6 +41,11 @@ public class GameFlowManager : MonoBehaviour
         Loss,
         Finale
     }
+    
+    private List<States> onPauseStates = new List<States>()
+    {
+        States.Pause, States.Loss, States.Intro
+    };
 
     public States state = States.Intro;
 
@@ -121,6 +126,8 @@ public class GameFlowManager : MonoBehaviour
         );
         
         StartCoroutine(PressSpaceToRestart());
+
+        MusicManager.Instance.SlowDownMusic();
     }
 
     public IEnumerator PressSpaceToRestart()
@@ -223,11 +230,13 @@ public class GameFlowManager : MonoBehaviour
         
         yield return StartCoroutine(ScreenManager.Instance.FadeRoutine(1, 0, restartDuration/2));
         SetOnGame();
+        
+        MusicManager.Instance.RestoreMusicSpeed();
     }
 
     public bool IsPaused()
     {
-        return state != States.Game;
+        return onPauseStates.Contains(state);
     }
     
     private void FadeDamageScreen(float fromAlpha, float toAlpha, float duration)
@@ -254,7 +263,13 @@ public class GameFlowManager : MonoBehaviour
     {
         state = States.Finale;
         MusicManager.Instance.ShutdownMusic();
-        enemiesSpawnManager.SpawnEnemy(mouth);
+        GameObject mouth = Instantiate(
+            mouthPrefab,
+            h.RandChoice(enemiesSpawnManager.spawnPoints).position,
+            Quaternion.identity,
+            enemiesSpawnManager.scrollingParent
+            );
+        
         mouth.GetComponent<SmartCollider>().onTriggerEnter.AddListener((gameObject) =>
         {
             cutSceneManager.RunCutscene("MouthCutscene");
