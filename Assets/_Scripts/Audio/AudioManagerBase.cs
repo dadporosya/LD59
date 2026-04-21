@@ -120,13 +120,13 @@ public class AudioManagerBase : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>(path);
         if (clip != null)
         {
-            PlayClip(clip, volumeIn);
+            PlayClipIndependently(clip, volumeIn);
         }
     }
     
     public void PlayRandomClip(List<AudioClip> clip, float? volumeIn = null)
     {
-        PlayClip(h.RandChoice(clip), volumeIn);
+        PlayClipIndependently(h.RandChoice(clip), volumeIn);
     }
     
     public void PlayRandomClip(List<string> paths, float? volumeIn = null)

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OrganPurchaseItem
   sprite: {fileID: 49417335881396728, guid: 6b13dffd1cbb8cd43937bf22f0ff0c31, type: 3}
   itemName: Eye
-  itemDescription: Wanna be <b>Homelander</b>?
+  itemDescription: Wanna be <b>Homelander</b>?  That one cool guy who destroys rockets
+    with his eyes and saves citizens!
   content: {fileID: 6641410100827141005, guid: 67288b3420e457548981abb135dac343, type: 3}

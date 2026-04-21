@@ -160,6 +160,11 @@ public class BarrierEnemy : EnemyBase
 
     public void Shoot(Transform target)
     {
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/laser1",
+            "Audio/SFX/laser2",
+        });
         
         if (target)
         {

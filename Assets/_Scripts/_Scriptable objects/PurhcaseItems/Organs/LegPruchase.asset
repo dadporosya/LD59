@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OrganPurchaseItem
   sprite: {fileID: -1698409776173867450, guid: ead18d472167a2f42940c7f82be77f88, type: 3}
   itemName: Leg
-  itemDescription: Run to your goal, or ram enemies with enough speed. <i>whatever.</i>
+  itemDescription: Run to your goal, or ram doors with enough speed. <i>whatever.</i>
   content: {fileID: 2014305852749447437, guid: cf8169140b292ee498973a8a2007c11c, type: 3}

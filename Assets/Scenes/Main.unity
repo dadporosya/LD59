@@ -4049,7 +4049,7 @@ MonoBehaviour:
   dialogueText: {fileID: 175179838}
   portraitScalingTitle: {fileID: 0}
   dialogueScalingText: {fileID: 0}
-  defaultTypeSpeed: 10
+  defaultTypeSpeed: 5
   typeSpeed: 0
   onDialogueEnd:
     m_PersistentCalls:
@@ -4068,18 +4068,224 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Talkable
   name: ???
   portrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
-  voiceClips: []
+  voiceClips:
+  - {fileID: 8300000, guid: 4b5c4d2bc5b4a1f4aa239f9b3d4d18b8, type: 3}
   dialogueManager: {fileID: 0}
-  simpleMonologues:
+  simpleMonologues: []
+  rawDialogues:
   - values:
-    - Heeeeeeyy111
-    - Wanna talk?
-    - Ouh yhea...
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Hellooo there.
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'I am feeling a bit talkative right now. How about you? How is the weather?
+        <pause=0.3> Heeey, do you hear me?
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Haha, look at this buddy without a mouth.
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Next time, you would think twice before saying things like you said
+        to me that day.
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Okay, up to the point. '
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'I decided to do some experiments, you know.
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'So, at first, try to push your blood. <pause=0.2> Just THINK OF IT (press
+        button "1")
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Okay, once your heart stops, you will not be alive, <pause=0.2> understood? '
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Okay then, try to push your brain and develop some new neurons (button
+        2).
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Here we go. <pause=0.1> At last, try to move yourself a bit (button
+        3).
+
+        
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Okay then, good job, jerk. Now, try to pass some distance on your own,
+        okay? '
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'Oh yeah, there are some dudes of mine nearby. Just try to punch them
+        or just run away, idk. Good luck.
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
   - values:
-    - ThatsDialogue2222
-    - You deserved it. <pause=0.5> :)
-    - Yikes
-  rawDialogues: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: "I hadn\u2019t thought you would manage to go so far.\r\n"
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: ' Okay, now you may relax and stop.'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+  - values:
+    - initialized: 0
+      speakerIsThis: 1
+      text: DIDN'T I TELL YOU TO STOP?
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: YOU HAVE NO EARS TO, SEE
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: 'DON''T YOU EVEN LISTEN? Ah, yeah...
+
+'
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+  - values:
+    - initialized: 0
+      speakerIsThis: 1
+      text: STEP BACK!
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: THERE'S NOTHING TO SEE FOR YOU.
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
+    - initialized: 0
+      speakerIsThis: 1
+      text: JUST DON'T.
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: 0}
+      _speakerVoiceClips: []
   dialogues: []
 --- !u!1 &1150171877
 GameObject:
@@ -4463,7 +4669,7 @@ MonoBehaviour:
   level: 1
   cellBar: {fileID: 78007951}
   levelMult: 1.5
-  levelConst: 10
+  levelConst: 15
   purchaseManager: {fileID: 0}
 --- !u!1 &1239692112
 GameObject:

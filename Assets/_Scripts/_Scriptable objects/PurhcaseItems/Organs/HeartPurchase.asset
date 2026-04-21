@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Heart
   itemDescription: 'Pushes blood.
 
-    It stops = <color=#FF0000><b>U DIE</b> ^_^'
+    It stops = <b>U DIE</b> ^_^'
   content: {fileID: 4814087643053107426, guid: 28d01660a0158fd43ba7ae07be894b25, type: 3}

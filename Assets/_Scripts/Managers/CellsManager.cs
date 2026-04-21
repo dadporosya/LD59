@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using M=System.MathF;
 public class CellsManager : MonoBehaviour
@@ -78,6 +79,11 @@ public class CellsManager : MonoBehaviour
         // TODO : freeze game
         if (purchaseManager) purchaseManager.OpenShopWindow();
         GenerateLevel();
+        
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/levelUp",
+        });
         
     }
 

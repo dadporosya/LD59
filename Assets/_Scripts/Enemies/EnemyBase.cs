@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IOnDestroy
@@ -32,6 +33,10 @@ public class EnemyBase : MonoBehaviour, IOnDestroy
 
     public void Death()
     {
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/deathEnemy"
+        });
         // try
         // {
             StartCoroutine(DeathCoroutine());

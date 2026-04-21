@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Brain : OrganBase
@@ -14,6 +15,10 @@ public class Brain : OrganBase
     public override void Action()
     {
         base.Action();
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/brainActive",
+        }, volumeIn:0.5f);
         cellsManager.ChangeCellCount(cellsPerTap);
     }
 }
