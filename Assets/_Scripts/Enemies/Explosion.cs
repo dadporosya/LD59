@@ -24,6 +24,11 @@ public class Explosion : MonoBehaviour
 
     public void Explode(bool explodeWithCollider=true)
     {
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/explosion"
+        });
+        
         h.ShakeOnce(1.5f, 5, 0, 0.15f);
         
         if (!explodeWithCollider) smartCollider.enabled = false;

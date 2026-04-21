@@ -23,6 +23,12 @@ public class Eye : OrganBase
     {
         base.Action();
         
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/laser1",
+            "Audio/SFX/laser2",
+        });
+        
         // Find all IBlindable objects in scrolling parent
         IBlindable[] blindableObjects = scrollingParent.GetComponentsInChildren<IBlindable>();
         h.Out(blindableObjects);
