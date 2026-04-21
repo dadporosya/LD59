@@ -97,6 +97,11 @@ public class MissileLauncherEnemy : EnemyBase
     {
         if (gameFlowManager.IsPaused()) return;
         
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/rocket1", 
+            "Audio/SFX/rocket2", 
+        });
         // if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return; // todo
         
         h.ShakeObject(this, launcherBone, 0.1f, 1f, 0.5f);

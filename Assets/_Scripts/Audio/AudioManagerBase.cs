@@ -107,27 +107,29 @@ public class AudioManagerBase : MonoBehaviour
         }
     }
 
-    public void PlayClip(AudioClip clip)
+    public void PlayClip(AudioClip clip, float? volumeIn = null)
     {
+        float volumeToUse = volumeIn ?? defaultAudioSource.volume;
+        defaultAudioSource.volume = volumeToUse;
         defaultAudioSource.clip = clip;
         defaultAudioSource.Play();
     }
     
-    public void PlayClip(string path)
+    public void PlayClip(string path, float? volumeIn = null)
     {
         AudioClip clip = Resources.Load<AudioClip>(path);
         if (clip != null)
         {
-            PlayClip(clip);
+            PlayClip(clip, volumeIn);
         }
     }
     
-    public void PlayRandomClip(List<AudioClip> clip)
+    public void PlayRandomClip(List<AudioClip> clip, float? volumeIn = null)
     {
-        PlayClip(h.RandChoice(clip));
+        PlayClip(h.RandChoice(clip), volumeIn);
     }
     
-    public void PlayRandomClip(List<string> paths)
+    public void PlayRandomClip(List<string> paths, float? volumeIn = null)
     {
         List<AudioClip> clips = new List<AudioClip>();
         foreach (string path in paths)
@@ -135,6 +137,6 @@ public class AudioManagerBase : MonoBehaviour
             AudioClip clip = Resources.Load<AudioClip>(path);
             if (clip != null) clips.Add(clip);
         }
-        PlayRandomClip(clips);
+        PlayRandomClip(clips, volumeIn);
     }
 }

@@ -65,6 +65,11 @@ public class PlayerDamageManager : MonoBehaviour
 
     public void TakeDamage(float value)
     {
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/gotHit"
+        });
+        
         h.ShakeOnce(2, 2, 0, 0.25f);
         
         if (gameFlowManager.IsPaused()) return;

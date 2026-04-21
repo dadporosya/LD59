@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -116,6 +117,12 @@ public class BPMManager : MonoBehaviour
                 StopHeartBeat();
                 yield break;
             }
+            
+            SFXManager.Instance.PlayRandomClip(new List<string>()
+            {
+                "Audio/SFX/heartBeat",
+            });
+            
             yield return new WaitForSeconds((float)60/(float)bpm);
         }
         yield return null;

@@ -88,6 +88,13 @@ public class Arm : OrganBase
 
     public void Punch(GameObject target)
     {
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/punch1", 
+            "Audio/SFX/punch2", 
+            "Audio/SFX/punch3", 
+        });
+        
         EnemyBase enemy = target.GetComponent<EnemyBase>();
         if (enemy == null) return;
 

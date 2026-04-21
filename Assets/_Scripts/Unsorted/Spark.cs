@@ -34,6 +34,7 @@ public class Spark : MonoBehaviour
 
     public void StartMovement()
     {
+        SFXManager.Instance.PlayClip("Audio/SFX/zap");
         StartCoroutine(MoveCoroutine());
     }
     

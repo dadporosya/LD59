@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Leg : OrganBase
@@ -49,6 +50,14 @@ public class Leg : OrganBase
     // This will be called from Animation Event
     public void OnLegStep2()
     {
+        SFXManager.Instance.PlayRandomClip(new List<string>()
+        {
+            "Audio/SFX/step1", 
+            "Audio/SFX/step2", 
+            "Audio/SFX/step3", 
+            "Audio/SFX/step4", 
+        });
+        
         float distance = XPPerStep * Preferences.distancePerXP;
         float currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         float speed = distance / currentAnimationLength;
