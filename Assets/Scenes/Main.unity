@@ -806,7 +806,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -4
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.039215688, g: 0.08235294, b: 0.21568629, a: 1}
+  m_Color: {r: 0.6, g: 0.74509805, b: 0.7058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4044,7 +4044,7 @@ MonoBehaviour:
       text: 'Here we go. <pause=0.1> At last, try to move yourself a bit (button
         3).
 
-        
+
 
 '
       initFromScriptableObject: 0

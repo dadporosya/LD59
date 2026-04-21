@@ -56,7 +56,7 @@ public class Leg : OrganBase
             "Audio/SFX/step2", 
             "Audio/SFX/step3", 
             "Audio/SFX/step4", 
-        });
+        }, volumeIn:1.5f);
         
         float distance = XPPerStep * Preferences.distancePerXP;
         float currentAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;

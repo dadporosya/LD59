@@ -116,7 +116,7 @@ public class GameFlowManager : MonoBehaviour
             restartWindow.SetActive(true);
         }
         
-        restartWindow.GetComponentInChildren<TextMeshProUGUI>().text = $"{currentDeathMessage}\n\nPress SPACE to restart";
+        restartWindow.GetComponentInChildren<TextMeshProUGUI>().text = $"{currentDeathMessage}\n\nPress R to restart";
         
         // h.Out("LOSS");
         if (currentLossScreen) Destroy(currentLossScreen);
@@ -134,7 +134,7 @@ public class GameFlowManager : MonoBehaviour
     {
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 Restart();
                 yield break;
