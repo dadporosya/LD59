@@ -17,8 +17,6 @@ public class PlayerDamageManager : MonoBehaviour
     public SmartCollider playerSmartCollider;
     public int punchStack=0;
     
-    public TextMeshProUGUI tempDamageLabel;
-
     public Transform aquariumParent;
     
     private GameFlowManager gameFlowManager;
@@ -117,7 +115,6 @@ public class PlayerDamageManager : MonoBehaviour
                 bpmManager.baseBPMReduction + damageTaken, bpmManager.baseBPMReduction
                 );
 
-            tempDamageLabel.text = bpmManager.currentBPMReduction.ToString();
             
             UpdateDamageScreen();
             

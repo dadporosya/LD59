@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 4161439489676004461, guid: 8160b826e9cc3504f9308bc8e0e9f13a, type: 3}
     - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: vesselPrefabs.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: 'vesselPrefabs.Array.data[0]'

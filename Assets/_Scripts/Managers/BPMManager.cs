@@ -121,7 +121,7 @@ public class BPMManager : MonoBehaviour
             SFXManager.Instance.PlayRandomClip(new List<string>()
             {
                 "Audio/SFX/heartBeat",
-            }, volumeIn:0.5f);
+            }, volumeIn:0.1f);
             
             yield return new WaitForSeconds((float)60/(float)bpm);
         }

@@ -101,7 +101,7 @@ public class MissileLauncherEnemy : EnemyBase
         {
             "Audio/SFX/rocket1", 
             "Audio/SFX/rocket2", 
-        });
+        }, volumeIn:2.5f);
         // if (playerDamageManager.aquariumParent.transform.position.x > transform.position.x) return; // todo
         
         h.ShakeObject(this, launcherBone, 0.1f, 1f, 0.5f);

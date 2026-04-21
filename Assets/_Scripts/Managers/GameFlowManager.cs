@@ -62,13 +62,13 @@ public class GameFlowManager : MonoBehaviour
         // StartGame();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            SetOnLoss();
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.D))
+    //     {
+    //         SetOnLoss();
+    //     }
+    // }
 
     public void StartGame(bool firstTime = true)
     {

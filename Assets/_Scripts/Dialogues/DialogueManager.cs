@@ -232,7 +232,7 @@ public class DialogueManager : MonoBehaviour
                 //TODO
                 AudioClip clip = h.RandChoice(audioClips);
                 // SFXManager.Instance.PlayClip(AudioClipController.Generate(clip, dPitch:h.Range(0.05f), dVolume:h.Range(0.05f)));
-                SFXManager.Instance.PlayClip(clip);
+                SFXManager.Instance.PlayClip(clip, volumeIn:3);
             }
 
             if (alphaIndex == filteredText.Length)

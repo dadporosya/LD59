@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OrganPurchaseItem
   sprite: {fileID: -7081593589501655515, guid: b3813522721d2604fa0f134b45e020ea, type: 3}
   itemName: Arm
-  itemDescription: 'BE ACCURATE WITH IT. The power is unlimited... Punches everything!
-    Except flying machines...
-
-'
+  itemDescription: "BE ACCURATE WITH IT. The power is unlimited... Punches everything!
+    Except flying machines... \r\n"
   content: {fileID: 6003212802839069270, guid: 6b2da98878bc30f439dd0e814ae3bcad, type: 3}

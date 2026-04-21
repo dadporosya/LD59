@@ -27,7 +27,7 @@ public class Explosion : MonoBehaviour
         SFXManager.Instance.PlayRandomClip(new List<string>()
         {
             "Audio/SFX/explosion"
-        });
+        }, volumeIn:3f);
         
         h.ShakeOnce(1.5f, 5, 0, 0.15f);
         
