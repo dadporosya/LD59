@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FinalMouthCutscene
   runOnStart: 0
   gapBetweenWords: 1
+  mouthPrefab: {fileID: -3578173666543294475, guid: 138c8c4faf5ef5145b83ff7e10654629, type: 3}
+  mouth: {fileID: 0}
   translateDuration: 3

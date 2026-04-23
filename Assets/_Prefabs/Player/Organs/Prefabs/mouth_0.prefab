@@ -109,7 +109,8 @@ MonoBehaviour:
   - {fileID: 1509186045285368620, guid: a0de62fe734388647a8906403ac72f68, type: 3}
   - {fileID: -8624616599934999286, guid: a0de62fe734388647a8906403ac72f68, type: 3}
   gapBetweenFrames: 0.2
-  clip: {fileID: 0}
+  voice:
+  - {fileID: 8300000, guid: 0e936a8489b046342a271bd090f26ed2, type: 3}
 --- !u!114 &2419604335371479643
 MonoBehaviour:
   m_ObjectHideFlags: 0

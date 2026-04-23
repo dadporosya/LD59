@@ -9,9 +9,13 @@ using UnityEngine.UI;
 public class FinalMouthCutscene : CutSceneBase
 {
     [SerializeField] float gapBetweenWords = 1f;
-    private Mouth mouth;
+    [SerializeField] private Mouth mouthPrefab;
+    [SerializeField] private Mouth mouth;
     private GameObject finalCanvas;
+    [SerializeField] private float pauseBeforeCutscene = 0f;
     [SerializeField] private float translateDuration=3f;
+    
+    [SerializeField] private float talkShakeMagnitude=7f;
     public override void Init()
     {
         base.Init();
@@ -31,13 +35,14 @@ public class FinalMouthCutscene : CutSceneBase
     public IEnumerator TranslateMouthToCenter(float duration = 1f)
     {
         FindFirstObjectByType<GameFlowManager>().SetOnPause();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(pauseBeforeCutscene);
         
         GameObject.FindGameObjectWithTag("UICanvas").SetActive(false);
 
         MusicManager.Instance.ShutdownMusic(duration);
         
         mouth = FindFirstObjectByType<Mouth>();
+        if (!mouth) mouth = Instantiate(mouthPrefab);
         
         finalCanvas =  GameObject.FindGameObjectWithTag("FinalCanvas");
         Image image =  finalCanvas.GetComponentInChildren<Image>();
@@ -96,7 +101,7 @@ public class FinalMouthCutscene : CutSceneBase
         {
             text.text += word;
             mouth.Talk();
-            h.ShakeOnce(2, 2, 0, gapBetweenWords/2);
+            h.ShakeOnce(talkShakeMagnitude, 2, 0, gapBetweenWords/2);
             yield return new WaitForSeconds(gapBetweenWords);
         }
         
