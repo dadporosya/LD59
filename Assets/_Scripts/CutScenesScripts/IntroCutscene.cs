@@ -94,6 +94,7 @@ public class IntroCutscene : CutSceneBase
         
         gameFlowManager.SetOnPause();
         dialogueManager.GetComponent<Talkable>().Talk(0);
+        // gameFlowManager.SetOnGame();
         yield return new WaitForSeconds(0.1f);
     }
 }

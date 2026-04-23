@@ -30,7 +30,12 @@ public class DialogueManager : MonoBehaviour
     
     [SerializeField] private const float MAX_TYPE_SPEED = 0.1f;
 
+    [SerializeField] private GameObject skipIcon;
+    
     public UnityEvent onDialogueEnd;
+    public UnityEvent onDialogueStart;
+    public UnityEvent onStartNode;
+    public UnityEvent onEndNode;
 
     private GameFlowManager gameFlowManager;
     
@@ -43,6 +48,25 @@ public class DialogueManager : MonoBehaviour
         dialogueScalingText = dialogueText.GetComponent<ScalingText>();
         
         typeSpeed = defaultTypeSpeed;
+        
+        onStartNode.AddListener(DisableSkipIcon);
+        onEndNode.AddListener(EnableSkipIcon);
+    }
+
+    private void EnableSkipIcon()
+    {
+        StartCoroutine(EnableSkipIconCoroutine());
+    }
+
+    private IEnumerator EnableSkipIconCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        skipIcon.SetActive(true);
+    }
+    
+    private void DisableSkipIcon()
+    {
+        skipIcon.SetActive(false);
     }
 
     private void Update()
@@ -93,6 +117,7 @@ public class DialogueManager : MonoBehaviour
         if (typingState == TypingState.finished)
         {
             typingState = TypingState.notStarted;
+            
             DisplayNextParagraph();
             return;
         }
@@ -103,19 +128,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         
-        paragraph = currentParagraphs.Dequeue();
-        portraitImage.sprite = paragraph.speakerPortrait;
-        SetText(portraitScalingTitle, portraitTitle, paragraph.speakerName);
-        
-        typeCoroutine = StartCoroutine(
-            TypingDialogue(
-                paragraph.text,
-                dialogueScalingText,
-                dialogueText,
-                audioClips:paragraph.speakerVoiceClips
-                )
-            );
-
+        if (typingState == TypingState.notStarted)
+        {
+            StartTyping();
+        }
     }
 
     private IEnumerator TypingDialogue(
@@ -246,11 +262,38 @@ public class DialogueManager : MonoBehaviour
         StopTyping();
     }
 
+    private void StartTyping()
+    {
+        paragraph = currentParagraphs.Dequeue();
+        if (paragraph == null)
+        {
+            h.Out("Paragraph == null!!!");
+            DisplayNextParagraph();
+        }
+        
+        paragraph?.onNodeStart?.Invoke();
+        onStartNode?.Invoke();
+        
+        portraitImage.sprite = paragraph.speakerPortrait;
+        SetText(portraitScalingTitle, portraitTitle, paragraph.speakerName);
+        
+        typeCoroutine = StartCoroutine(
+            TypingDialogue(
+                paragraph.text,
+                dialogueScalingText,
+                dialogueText,
+                audioClips:paragraph.speakerVoiceClips
+            )
+        );
+    }
+    
     private void StopTyping()
     {
         if (typeCoroutine != null) StopCoroutine(typeCoroutine);
         if (paragraph != null) SetText(dialogueScalingText, dialogueText, HTML.RemoveUniqueTags(paragraph.text));
         typingState = TypingState.finished;
+        paragraph?.onNodeEnd?.Invoke();
+        onEndNode?.Invoke();
     }
     
 

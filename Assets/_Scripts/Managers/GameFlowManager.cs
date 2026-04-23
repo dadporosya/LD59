@@ -79,7 +79,7 @@ public class GameFlowManager : MonoBehaviour
     public void SetOnPause()
     {
         state = States.Pause;
-        h.Out("oause");
+        h.Out("pause");
     }
 
     public void SetOnGame()

@@ -38,6 +38,6 @@ public class GlobalEventManager : MonoBehaviour
         {
             actionContainer.Add(actionLabels[i], actionReferences[i]);
         }
-        h.Out(actionContainer);
+        // h.Out(actionContainer);
     }
 }

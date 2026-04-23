@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "DialogueSpeaker", menuName = "Dialogues/DialogueSpeaker")]
 public class DialogueSpeaker : ScriptableObject
@@ -18,6 +19,7 @@ public class DialogueNode
 {
     [HideInInspector] public bool initialized = false;
     public bool speakerIsThis=true; // 
+    public bool overWriteValues = true;
     [TextArea(3, 7)]
     public string text;
     
@@ -28,6 +30,11 @@ public class DialogueNode
     public Sprite speakerPortrait;
     public List<AudioClip> _speakerVoiceClips = new List<AudioClip>();
 
+    public UnityEvent onNodeStart;
+    public UnityEvent onNodeEnd;
+    
+    
+    
     public List<AudioClip> speakerVoiceClips
     {
         get { return _speakerVoiceClips; }
@@ -70,25 +77,24 @@ public class DialogueNode
     public void InitFromScriptableObject(DialogueSpeaker data)
     {
         initialized = true;
-        speaker = data;
-        speakerName = speaker.name;
-        speakerPortrait = speaker.portrait;
-        speakerVoiceClips = speaker.voiceClips;
+        if (overWriteValues || speaker == null) speaker = data;
+        if (overWriteValues || string.IsNullOrEmpty(speakerName)) speakerName = speaker.name;
+        if (overWriteValues || speakerPortrait == null) speakerPortrait = speaker.portrait;
+        if (overWriteValues || _speakerVoiceClips.Count == 0) speakerVoiceClips = speaker.voiceClips;
     }
     public void InitFromGameObject(GameObject go)
     {
         initialized = true;
         if (go.TryGetComponent<Talkable>(out var talkable))
         {
-            speakerName = talkable.Name;
-            speakerPortrait = talkable.Portrait;
-            speakerVoiceClips = talkable.voiceClips;
-            // h.Out(speakerVoiceClips, talkable.voiceClips);
+            if (overWriteValues || string.IsNullOrEmpty(speakerName)) speakerName = talkable.Name;
+            if (overWriteValues || speakerPortrait == null) speakerPortrait = talkable.Portrait;
+            if (overWriteValues || _speakerVoiceClips.Count == 0) speakerVoiceClips = talkable.voiceClips;
         }
         else
         {
-            speakerName = go.name;
-            speakerPortrait = go.GetComponent<SpriteRenderer>().sprite;
+            if (overWriteValues || string.IsNullOrEmpty(speakerName)) speakerName = go.name;
+            if (overWriteValues || speakerPortrait == null) speakerPortrait = go.GetComponent<SpriteRenderer>().sprite;
         }
 
         InitSpeaker();
@@ -100,9 +106,9 @@ public class DialogueNode
         List<AudioClip> voiceIn
         )
     {
-        speakerName = nameIn;
-        speakerPortrait = spriteIn;
-        speakerVoiceClips = voiceIn;
+        if (overWriteValues || string.IsNullOrEmpty(speakerName)) speakerName = nameIn;
+        if (overWriteValues || speakerPortrait == null) speakerPortrait = spriteIn;
+        if (overWriteValues || _speakerVoiceClips.Count == 0) speakerVoiceClips = voiceIn;
         InitSpeaker();
     }
 

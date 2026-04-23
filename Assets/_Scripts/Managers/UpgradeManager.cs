@@ -159,7 +159,7 @@ public class UpgradeManager : MonoBehaviour
         {
             neuronBGWidth = spriteRenderer.sprite.bounds.size.x * neuronBG.transform.localScale.x;
         }
-        h.Out(neuronBGWidth);
+        // h.Out(neuronBGWidth);
         float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f) + 0.3f;
         Vector3 neuronPosition = neuronParent.position + neuronOffset;
         neuronPosition.x = neuronParent.position.x + ((neurons.Count+1) * gap) - neuronBGWidth/2;

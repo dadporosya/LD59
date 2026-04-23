@@ -54,16 +54,16 @@ PrefabInstance:
       objectReference: {fileID: 4161439489676004461, guid: 8160b826e9cc3504f9308bc8e0e9f13a, type: 3}
     - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: vesselPrefabs.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: 'vesselPrefabs.Array.data[0]'
       value: 
-      objectReference: {fileID: 4161439489676004461, guid: 8160b826e9cc3504f9308bc8e0e9f13a, type: 3}
+      objectReference: {fileID: 4161439489676004461, guid: 6553555f87618ff489ec4a8653bb62d7, type: 3}
     - target: {fileID: 3202432391726722158, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: 'vesselPrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 4161439489676004461, guid: 6553555f87618ff489ec4a8653bb62d7, type: 3}
+      objectReference: {fileID: 4161439489676004461, guid: 8160b826e9cc3504f9308bc8e0e9f13a, type: 3}
     - target: {fileID: 5997165767098043586, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_Name
       value: Brain
