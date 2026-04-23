@@ -2054,7 +2054,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1827508562}
   - {fileID: 243776728}
   - {fileID: 1104496253}
   - {fileID: 1864327083}
@@ -4038,26 +4037,7 @@ MonoBehaviour:
   - values:
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 0
-      text: YOU <pause=0.4>WILL <pause=0.4>NOT <pause=0.4>GET <pause=0.4>YOUR <pause=0.4>MOUTH
-        <pause=0.4>BACK!
-      initFromScriptableObject: 0
-      speaker: {fileID: 0}
-      speakerGameObject: {fileID: 0}
-      speakerName: 
-      speakerPortrait: {fileID: 0}
-      _speakerVoiceClips:
-      - {fileID: 8300000, guid: 14acf84ae8d26514cb7328f0177089be, type: 3}
-      onNodeStart:
-        m_PersistentCalls:
-          m_Calls: []
-      onNodeEnd:
-        m_PersistentCalls:
-          m_Calls: []
-  - values:
-    - initialized: 0
-      speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Hellooo there.
 
 '
@@ -4065,7 +4045,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips:
       - {fileID: 8300000, guid: 4b5c4d2bc5b4a1f4aa239f9b3d4d18b8, type: 3}
       onNodeStart:
@@ -4076,7 +4056,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'I am feeling a bit talkative right now. <pause=0.3>How about you? <pause=0.3>How
         is the weather? <pause=0.3>Heeey, do you hear me?
 
@@ -4085,7 +4065,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips:
       - {fileID: 8300000, guid: 4b5c4d2bc5b4a1f4aa239f9b3d4d18b8, type: 3}
       onNodeStart:
@@ -4096,7 +4076,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Haha, <pause=0.5>look at this buddy without a mouth.
 
 '
@@ -4104,7 +4084,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1456289274, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips:
       - {fileID: 8300000, guid: 4b5c4d2bc5b4a1f4aa239f9b3d4d18b8, type: 3}
       onNodeStart:
@@ -4115,7 +4095,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Next time, you would think twice before saying things like you said
         to me that day.
 
@@ -4124,7 +4104,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1456289274, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips:
       - {fileID: 8300000, guid: 4b5c4d2bc5b4a1f4aa239f9b3d4d18b8, type: 3}
       onNodeStart:
@@ -4135,13 +4115,13 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Okay, <pause=0.3>up to the point. '
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1496662183, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4151,7 +4131,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'I decided to do some experiments, you know.
 
 '
@@ -4159,7 +4139,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4169,7 +4149,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'So, at first, try to push your blood. <pause=0.3>Just THINK OF IT <pause=0.5>(press
         button "1")
 
@@ -4178,7 +4158,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4200,13 +4180,13 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Okay, once your heart stops, you will not be alive, <pause=0.3>understood? '
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1466364332, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4216,7 +4196,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Okay then, try to strain your brain and develop some new neurons <pause=0.5>(button
         2).
 
@@ -4225,7 +4205,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4235,7 +4215,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Here we go. <pause=0.2>At last, try to move yourself a bit <pause=0.5>(button
         3).
 
@@ -4246,7 +4226,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1466364332, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4256,14 +4236,14 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Okay then, good job, jerk. Now, try to pass some distance on your own,
         okay? '
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -8407555342299441177, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4273,7 +4253,7 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: 'Oh yeah, there are some dudes of mine nearby. Just try to punch them
         or just run away, idk. Good luck.
 
@@ -4282,7 +4262,7 @@ MonoBehaviour:
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1456289274, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4293,13 +4273,13 @@ MonoBehaviour:
   - values:
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: "I hadn\u2019t thought you would manage to go so far.\r\n"
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1496662183, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4309,13 +4289,13 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: ' Okay, now you may relax and stop.'
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1466364332, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4326,13 +4306,13 @@ MonoBehaviour:
   - values:
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: DIDN'T I TELL YOU TO STOP?
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1466364332, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4342,13 +4322,13 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
-      text: YOU HAVE NO EARS TO, SEE
+      overWriteValues: 0
+      text: YOU HAVE NO EARS TOO, SEE
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1466364332, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4358,15 +4338,15 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
-      text: 'DON''T YOU EVEN LISTEN? Ah, yeah...
+      overWriteValues: 0
+      text: 'DON''T YOU EVEN LISTEN? <pause=0.3>Ah, yeah...
 
 '
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1496662183, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4377,13 +4357,13 @@ MonoBehaviour:
   - values:
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: STEP BACK!
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1466364332, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4393,13 +4373,13 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: THERE'S NOTHING TO SEE FOR YOU.
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1456289274, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
       onNodeStart:
         m_PersistentCalls:
@@ -4409,14 +4389,33 @@ MonoBehaviour:
           m_Calls: []
     - initialized: 0
       speakerIsThis: 1
-      rewriteValues: 1
+      overWriteValues: 0
       text: JUST DON'T.
       initFromScriptableObject: 0
       speaker: {fileID: 0}
       speakerGameObject: {fileID: 0}
       speakerName: 
-      speakerPortrait: {fileID: 0}
+      speakerPortrait: {fileID: -1456289274, guid: b226fba082d437848af040636dd96139, type: 3}
       _speakerVoiceClips: []
+      onNodeStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onNodeEnd:
+        m_PersistentCalls:
+          m_Calls: []
+  - values:
+    - initialized: 0
+      speakerIsThis: 1
+      overWriteValues: 0
+      text: YOU <pause=0.4>WILL <pause=0.4>NOT <pause=0.4>GET <pause=0.4>YOUR <pause=0.4>MOUTH
+        <pause=0.4>BACK!
+      initFromScriptableObject: 0
+      speaker: {fileID: 0}
+      speakerGameObject: {fileID: 0}
+      speakerName: 
+      speakerPortrait: {fileID: -1456289274, guid: b226fba082d437848af040636dd96139, type: 3}
+      _speakerVoiceClips:
+      - {fileID: 8300000, guid: 14acf84ae8d26514cb7328f0177089be, type: 3}
       onNodeStart:
         m_PersistentCalls:
           m_Calls: []
@@ -4555,6 +4554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1827508562}
   - {fileID: 1659053164}
   - {fileID: 1676382160}
   - {fileID: 1137833715}
@@ -6081,7 +6081,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 536678994}
+  m_Father: {fileID: 1182929481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1827508563
 MonoBehaviour:

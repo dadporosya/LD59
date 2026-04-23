@@ -19,7 +19,7 @@ public class DialogueNode
 {
     [HideInInspector] public bool initialized = false;
     public bool speakerIsThis=true; // 
-    public bool overWriteValues = true;
+    public bool overWriteValues = false;
     [TextArea(3, 7)]
     public string text;
     
@@ -43,6 +43,7 @@ public class DialogueNode
             _speakerVoiceClips = value;
             if (_speakerVoiceClips == null || _speakerVoiceClips.Count == 0)
             {
+                // h.Out(_speakerVoiceClips);
                 _speakerVoiceClips = SFXManager.Instance.defaultDialogueVoiceList;
             }
         }
@@ -89,7 +90,9 @@ public class DialogueNode
         {
             if (overWriteValues || string.IsNullOrEmpty(speakerName)) speakerName = talkable.Name;
             if (overWriteValues || speakerPortrait == null) speakerPortrait = talkable.Portrait;
+            // h.Out("before", _speakerVoiceClips, _speakerVoiceClips.Count);
             if (overWriteValues || _speakerVoiceClips.Count == 0) speakerVoiceClips = talkable.voiceClips;
+            // h.Out("after", _speakerVoiceClips);
         }
         else
         {

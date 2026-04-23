@@ -48,4 +48,6 @@ MonoBehaviour:
   gapBetweenWords: 1
   mouthPrefab: {fileID: -3578173666543294475, guid: 138c8c4faf5ef5145b83ff7e10654629, type: 3}
   mouth: {fileID: 0}
+  pauseBeforeCutscene: 3
   translateDuration: 3
+  talkShakeMagnitude: 7
