@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -29,28 +30,35 @@ public class AudioManagerBase : MonoBehaviour
     /// (plays in manager)</param>
     public void PlayClipIndependently(AudioClip clip, float? volumeIn=null, Transform parent=null)
     {
-        float volume = volumeIn ?? defaultAudioSource.volume;
-        
-        // if (parent == null)
-        // {
-        //     defaultAudioSource.volume = volume;
-        //     defaultAudioSource.PlayOneShot(clip);
-        //     return;
-        // }
-        
-        if (!parent) parent = transform;
-        
-        AudioSource audioSource = Instantiate(defaultAudioSource, parent.position, Quaternion.identity, parent);
-        
-        audioSource.clip = clip;
-        audioSource.volume = volume;
-        
-        audioSource.Play();
-        
-        float clipLength = audioSource.clip.length;
-        Destroy(audioSource.gameObject, clipLength);
-        
-        h.Out("Played");
+        try
+        {
+            float volume = volumeIn ?? defaultAudioSource.volume;
+
+            // if (parent == null)
+            // {
+            //     defaultAudioSource.volume = volume;
+            //     defaultAudioSource.PlayOneShot(clip);
+            //     return;
+            // }
+
+            if (!parent) parent = transform;
+
+            AudioSource audioSource = Instantiate(defaultAudioSource, parent.position, Quaternion.identity, parent);
+
+            audioSource.clip = clip;
+            audioSource.volume = volume;
+
+            audioSource.Play();
+
+            float clipLength = audioSource.clip.length;
+            Destroy(audioSource.gameObject, clipLength);
+
+            h.Out("Played");
+        }
+        catch (Exception e)
+        {
+            h.Out($"Error playing audio clip: {e.Message}");
+        }
 
     }
 
