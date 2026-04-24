@@ -53,7 +53,7 @@ public class AudioManagerBase : MonoBehaviour
             float clipLength = audioSource.clip.length;
             Destroy(audioSource.gameObject, clipLength);
 
-            h.Out("Played");
+            // h.Out("Played");
         }
         catch (Exception e)
         {

@@ -6096,9 +6096,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutSceneManager
   currentCutScene: {fileID: 0}
-  currentCutScenePath: MouthCutscene
+  currentCutScenePath: IntroCutscene
   pathLabel: Cutscenes/
-  runOnStart: 1
+  runOnStart: 0
 --- !u!1 &1849617288
 GameObject:
   m_ObjectHideFlags: 0

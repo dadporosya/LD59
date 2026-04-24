@@ -7,6 +7,7 @@ public class Heart : OrganBase
     public int BMPPerBeat = 10;
     private BPMManager bpmManager;
     public float beatPower = 1.1f;
+    [SerializeField] private Vector3 initialScale;
 
     public float healPerBeat = 0.05f;
     
@@ -15,6 +16,8 @@ public class Heart : OrganBase
     public override void Awake()
     {
         base.Awake();
+        initialScale = transform.localScale;
+        
         if (!bpmManager) bpmManager = FindFirstObjectByType<BPMManager>();
         bpmManager.OnBeat.AddListener(() => StartCoroutine(BeatSize(1 + (beatPower-1)/4)));
         damageManager = FindFirstObjectByType<PlayerDamageManager>();
@@ -36,7 +39,6 @@ public class Heart : OrganBase
     {
         yield return null;
         
-        Vector3 initialScale = transform.localScale;
         yield return StartCoroutine(h.SmoothScalingCoroutine(transform, initialScale * scale, 0.1f));
         yield return StartCoroutine(h.SmoothScalingCoroutine(transform, initialScale, 0.1f));
     }

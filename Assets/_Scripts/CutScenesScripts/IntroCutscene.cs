@@ -18,11 +18,12 @@ public class IntroCutscene : CutSceneBase
     {
         base.Init();
         introUI = GameObject.Find("IntroUI");
+        if (!introUI) intro = false;
         List<IEnumerator> rawSteps = new List<IEnumerator>();
 
         if (!intro)
         {
-            introUI.SetActive(false);
+            if (introUI) introUI.SetActive(false);
             waitDuration=0f;
             fadeDuration=0f;
             introDuration=0f;
