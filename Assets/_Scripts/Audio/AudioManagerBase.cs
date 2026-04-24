@@ -31,14 +31,16 @@ public class AudioManagerBase : MonoBehaviour
     {
         float volume = volumeIn ?? defaultAudioSource.volume;
         
-        if (parent == null)
-        {
-            defaultAudioSource.volume = volume;
-            defaultAudioSource.PlayOneShot(clip);
-            return;
-        }
-
-        AudioSource audioSource = Instantiate(defaultAudioSource, parent.position, Quaternion.identity);
+        // if (parent == null)
+        // {
+        //     defaultAudioSource.volume = volume;
+        //     defaultAudioSource.PlayOneShot(clip);
+        //     return;
+        // }
+        
+        if (!parent) parent = transform;
+        
+        AudioSource audioSource = Instantiate(defaultAudioSource, parent.position, Quaternion.identity, parent);
         
         audioSource.clip = clip;
         audioSource.volume = volume;
@@ -137,6 +139,6 @@ public class AudioManagerBase : MonoBehaviour
             AudioClip clip = Resources.Load<AudioClip>(path);
             if (clip != null) clips.Add(clip);
         }
-        PlayRandomClip(clips, volumeIn);
+        PlayClipIndependently(h.RandChoice(clips), volumeIn);
     }
 }
