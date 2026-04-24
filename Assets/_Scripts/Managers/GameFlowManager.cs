@@ -58,7 +58,8 @@ public class GameFlowManager : MonoBehaviour
         playerParent =  GameObject.FindGameObjectWithTag("PlayerParent");
         
         cameraInitialPosition = Camera.main.transform.position;
-
+        
+        SetOnPause();
         // StartGame();
     }
 
