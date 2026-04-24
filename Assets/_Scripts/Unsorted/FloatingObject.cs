@@ -47,6 +47,9 @@ public class FloatingObject : MonoBehaviour
 
     private void GenerateVessels()
     {
+        if (vesselPoints == null || vesselPoints.Count == 0) return;
+        if (vesselPrefabs == null || vesselPrefabs.Count == 0) return;
+        
         // Find all objects with tag BloodVesselPoint
         GameObject[] allVesselPointObjects = GameObject.FindGameObjectsWithTag("BloodVesselPoint");
         List<Transform> availablePoints = new List<Transform>();

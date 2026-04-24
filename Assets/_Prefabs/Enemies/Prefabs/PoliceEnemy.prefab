@@ -189,7 +189,7 @@ MonoBehaviour:
   damageTaken: 0
   playerDamageManager: {fileID: 0}
   scrollManager: {fileID: 0}
-  damage: 3.5
+  damage: 4
   playerBumped: 0
   _blinded: 0
   migalka: {fileID: 6606805975802517728}

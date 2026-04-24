@@ -23,8 +23,8 @@ public class GameFlowManager : MonoBehaviour
     private CutSceneManager cutSceneManager;
 
     public string currentDeathMessage;
-    public string heartStopDeathMessage;
-    public string tooFarPushHeartDeathMessage;
+    public string heartStopDeathMessage="The heart stopped.";
+    public string tooFarPushHeartDeathMessage="You pushed the heart too far!";
 
     public GameObject lossScreenPrefab;
     private GameObject currentLossScreen;
@@ -116,6 +116,7 @@ public class GameFlowManager : MonoBehaviour
             restartWindow.SetActive(true);
         }
         
+        h.Out(currentDeathMessage);
         restartWindow.GetComponentInChildren<TextMeshProUGUI>().text = $"{currentDeathMessage}\n\nPress R to restart";
         
         // h.Out("LOSS");

@@ -68,8 +68,7 @@ public class BPMManager : MonoBehaviour
 
     public void StopHeartBeat()
     {
-        SetBPM(0);
-        h.Out("stop heart");
+        // SetBPM(0);
         if (bpmCoroutine != null)
         {
             StopCoroutine(bpmCoroutine);
