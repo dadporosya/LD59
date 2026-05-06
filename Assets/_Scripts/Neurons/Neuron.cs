@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Neuron : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class Neuron : MonoBehaviour
 
     [SerializeField] private string actionLabel="";
     [SerializeField] private InputActionReference actionTrigger;
-    public SpriteRenderer actionIcon;
+    public SpriteRenderer actionIconSprite;
+    public Image actionIconImage;
+
     public IAction actionPerformer;
     public Spark sparkPrefab;
     public float signalSpeed = 3f;
@@ -70,16 +73,34 @@ public class Neuron : MonoBehaviour
         if (actionPerformerGO) actionPerformer = actionPerformerGO.GetComponent<IAction>();
         if (actionPerformer != null) 
         {
-            actionIcon.sprite = actionPerformer.actionIcon;
-            if (actionPerformer.actionIcon != null)
+            if (actionIconSprite)
             {
-                Sprite sprite = actionPerformer.actionIcon;
-                float width = sprite.bounds.size.x;
-                float height = sprite.bounds.size.y;
-                float maxDimension = Mathf.Max(width, height);
-                actionIcon.transform.localScale = new Vector3(1f / maxDimension, 1f / maxDimension, 1f);
+                actionIconSprite.sprite = actionPerformer.actionIcon;
+                if (actionPerformer.actionIcon != null)
+                {
+                    Sprite sprite = actionPerformer.actionIcon;
+                    float width = sprite.bounds.size.x;
+                    float height = sprite.bounds.size.y;
+                    float maxDimension = Mathf.Max(width, height);
+                    actionIconSprite.transform.localScale = new Vector3(1f / maxDimension, 1f / maxDimension, 1f);
+                }
             }
+
+            if (actionIconImage)
+            {
+                actionIconImage.sprite = actionPerformer.actionIcon;
+                if (actionPerformer.actionIcon != null)
+                {
+                    Sprite sprite = actionPerformer.actionIcon;
+                    float width = sprite.bounds.size.x;
+                    float height = sprite.bounds.size.y;
+                    float maxDimension = Mathf.Max(width, height);
+                    actionIconImage.transform.localScale = new Vector3(1f / maxDimension, 1f / maxDimension, 1f);
+                }
+            }
+            
         }
+        
         
         if (!lineRenderer)
         {

@@ -64,6 +64,7 @@ public class UpgradeManager : MonoBehaviour
         
         if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
         if (!neuronParent) neuronParent = GameObject.FindGameObjectWithTag("NeuronParent").transform;
+        if (!neuronBG && neuronParent) neuronBG = neuronParent.transform.parent.Find("BG")?.gameObject; 
         if (neuronParent)
         {
             foreach (Transform neuron in neuronParent)
@@ -154,22 +155,30 @@ public class UpgradeManager : MonoBehaviour
         
         
         
-        // Calculate neuron position with gap
+        // Calculate neuron position with gap for NON UI
         float neuronBGWidth = 1f;
+        float xOffset = 0f;
+        float yOffset = 0f;
         if (neuronBG && neuronBG.TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer))
         {
             neuronBGWidth = spriteRenderer.sprite.bounds.size.x * neuronBG.transform.localScale.x;
+        } else if (neuronBG && neuronBG.TryGetComponent<RectTransform>(out RectTransform rectTransform))
+        {
+            neuronBGWidth = rectTransform.rect.width * neuronBG.transform.localScale.x;
+            yOffset = -1 * rectTransform.rect.height * neuronBG.transform.localScale.y / 2f;
         }
         // h.Out(neuronBGWidth);
         float gap = (neuronBGWidth * 0.9f) / (maxNeuronCount+2f) + 0.3f;
         Vector3 neuronPosition = neuronParent.position + neuronOffset;
         neuronPosition.x = neuronParent.position.x + ((neurons.Count+1) * gap) - neuronBGWidth/2;
-
-        neuronPosition.y += h.Range(-0.3f, 0f);
-        neuronPosition.x +=  h.Range(-0.25f, 0.2f);
         
+        neuronPosition.y += h.Range(-0.3f, 0f) + yOffset;
+        neuronPosition.x +=  h.Range(-0.25f, 0.2f) + xOffset;
         
         Neuron neuron = Instantiate(neuronPrefab, neuronPosition, Quaternion.identity, neuronParent);
+        
+        
+        
         string actionKey;
         if (neurons.Count+1 == 10)
         {

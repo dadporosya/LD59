@@ -28,6 +28,7 @@ public class ShiftingAnimation : MonoBehaviour
     private int frameCount;
     private Image image;
     private SpriteRenderer spriteRenderer;
+    
 
     void Start()
     {
