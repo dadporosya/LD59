@@ -127,6 +127,11 @@ public static class h
         }
         return result;
     }
+
+    public static float Area(Vector2 v2)
+    {
+        return v2.x * v2.y;
+    }
     
     // OUTPUT & DEBUG
     public static void Out(params object[] args)
@@ -639,6 +644,49 @@ public static class h
         if (!spriteAsset) spriteAsset = TMP_Settings.defaultSpriteAsset;
         return spriteAsset.spriteCharacterTable
             .Any(c => c.name == name);
+    }
+
+    public static float FindOptimalFontSize(TextMeshProUGUI src, RectTransform rect, float minSize=-1f, float maxSize=-1f, int loops=10)
+    {
+        float optimalSize=1f;
+        if (minSize < 0) minSize = 1f;
+        if (maxSize < 0) maxSize = src.fontSize;
+        
+        float targetWidth = rect.rect.width;
+        float targetHeight = rect.rect.height;
+        float targetArea = targetWidth * targetHeight;
+        
+        while (minSize < maxSize && loops > 0)
+        {
+            optimalSize = (minSize + maxSize) / 2f;
+            src.fontSize = optimalSize;
+            src.ForceMeshUpdate();
+            
+            Vector2 preferredBoundSize = src.GetPreferredValues(src.text);
+            float area = preferredBoundSize.x * preferredBoundSize.y;
+        
+            if (area > targetArea)
+            {
+                maxSize = optimalSize;
+            } else if (area < targetArea)
+            {
+                minSize = optimalSize;
+            }
+            else
+            {
+                break;
+            }
+            
+            loops--;
+        }
+
+        optimalSize = (minSize + maxSize) / 2f;
+        // optimalSize = minSize;
+        
+        optimalSize = h.Max(optimalSize, minSize);
+        optimalSize = h.Min(optimalSize, maxSize);
+
+        return optimalSize;
     }
 
     

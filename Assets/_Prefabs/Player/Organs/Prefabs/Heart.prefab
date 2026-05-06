@@ -195,24 +195,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.46
       objectReference: {fileID: 0}
     - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_LocalPosition.z
@@ -245,10 +233,6 @@ PrefabInstance:
     - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517567305374673481, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2528890109785197907, guid: ee2b3587c1a77714ca733ba0e618a481, type: 3}
       propertyPath: m_LocalPosition.x
@@ -388,7 +372,6 @@ MonoBehaviour:
   targetIcon: {fileID: 7510810662688118461, guid: ca5da88da71b03442811e7dbd4a2dffa, type: 3}
   BMPPerBeat: 10
   beatPower: 1.1
-  initialScale: {x: 0, y: 0, z: 0}
   healPerBeat: 0.2
 --- !u!4 &4918156287331791538 stripped
 Transform:
