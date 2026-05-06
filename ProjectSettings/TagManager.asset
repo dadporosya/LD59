@@ -27,6 +27,7 @@ TagManager:
   - Mouth
   - UICanvas
   - FinalCanvas
+  - NeuronParent
   layers:
   - Default
   - TransparentFX

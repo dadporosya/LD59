@@ -63,6 +63,7 @@ public class UpgradeManager : MonoBehaviour
         legSpawnPoints.Clear();
         
         if (!neuronBG) neuronBG = GameObject.Find("NeuronBG");
+        if (!neuronParent) neuronParent = GameObject.FindGameObjectWithTag("NeuronParent").transform;
         if (neuronParent)
         {
             foreach (Transform neuron in neuronParent)
